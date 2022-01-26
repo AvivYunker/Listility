@@ -1,7 +1,9 @@
 # Listility
 | Made By |||
 |---|---|---|
-|
+| Aviv Yunker ||
+| Boris Sholkov||
+| Natanel Adler ||
 
 ---
 ---
@@ -114,8 +116,9 @@ DELETE reqrest
 | id        | String | ✔️      |      |
 
 Reply: 204
-
+```
 empty Reply
+```
 
 ---
 ### Lists
@@ -148,17 +151,141 @@ Reply: 200
 |--------------|----------|-------|
 | id           | String   |       |
 | header       | String   |       |
-| content      | String   |       |
 | date_created | Date     |       |
 | date_modifyed| Date     |       |
 | header_color | String   |       |
+| list_color   | String   |       |
 | task         | JSON     |       |
 
 #### POST
+| Key       | Value  | requried | Notes            |
+|-----------|--------|----------|------------------|
+| header    | String | ✔️      |                  |
+
+Reply: 201
+| Key       | Value  | Notes            |
+|-----------|--------|------------------|
+| id        | String |                  |
+| header    | String |                  |
 
 #### PUT
+| Key       | Value  | requried | Notes                    |
+|--------------|-----------|------------|------------------|
+| id           | String    | ✔️         |                  |
+| header       | String    | ❌         |                  |
+| header_color | String    | ❌         |                  |
+| list_color | String      | ❌         |                  |
+
+Reply: 200
+| Key          | Value    | Notes |
+|--------------|----------|-------|
+| id           | String   |       |
+| header       | String   |       |
+| date_created | Date     |       |
+| date_modifyed| Date     |       |
+| header_color | String   |       |
+| list_color   | String   |       |
+| task         | JSON     |       |
 
 #### DELETE
+| Key       | Value  | requried | Notes                    |
+|--------------|-----------|------------|------------------|
+| id           | String    | ✔️         |                 |
+
+Reply: 204
+
+```
+empty Reply
+```
+
 
 ---
 ### Task
+```
+/api/1/list/<list id>/
+```
+#### GET
+```
+Empty Reqrest
+```
+Reply: 200
+
+Body:
+```
+JSON with Task Objects
+```
+Task:
+| Key          | Value    | Notes |
+|--------------|----------|-------|
+| id           | String   |       |
+| task_name    | String   |       |
+| sub_task     | JSON     |       |
+| is_checked   | Boolen   |       |
+
+
+#### POST
+| Key          | Value    |requried | Notes |
+|--------------|----------|------|----------|
+| task_name    | String   | ✔️   |         |
+| is_checked   | Boolen   | ✔️   |         |
+
+#### PUT
+| Key          | Value    |requried | Notes |
+|--------------|----------|-----|--------|
+| id           | String   | ✔️  |       |
+| task_name    | String   | ❌  |       |
+| is_checked   | Boolen   | ❌  |       |
+
+#### DELETE
+| Key          | Value    |requried | Notes |
+|--------------|----------|-----|--------|
+| id           | String   | ✔️  |       |
+
+Reply: 204
+```
+Empty Body
+```
+
+### Sub-Task
+```
+/api/1/list/<list id>/<task id>/
+```
+#### GET
+```
+Empty Reqrest
+```
+Reply: 200
+
+Body:
+```
+JSON with Sub_Task Objects
+```
+Sub_Task:
+| Key              | Value    | Notes |
+|------------------|----------|-------|
+| id               | String   |       |
+| Sub_task_name    | String   |       |
+| is_checked       | Boolen   |       |
+
+#### POST
+| Key              | Value    |requried | Notes |
+|------------------|----------|------|----------|
+| sub_task_name    | String   | ✔️  |          |
+| is_checked       | Boolen   | ✔️  |          |
+
+#### PUT
+| Key              | Value    |requried | Notes |
+|------------------|----------|---------|-------|
+| id               | String   | ✔️     |       |
+| Sub_task_name    | String   | ❌     |       |
+| is_checked       | Boolen   | ❌     |       |
+
+#### DELETE
+| Key          | Value    |requried | Notes |
+|--------------|----------|-----|--------|
+| id           | String   | ✔️  |       |
+
+Reply: 204
+```
+Empty Body
+```
