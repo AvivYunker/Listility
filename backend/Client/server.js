@@ -1,15 +1,3 @@
-// const { MongoClient } = require('mongodb');
-// const uri = "mongodb+srv://Listility_User:123456654321@cluster0.udhog.gcp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-// client.connect(err => {
-//   const collection = client.db("Listility").collection("listility_users");
-//   const result = collection.findOne({"_id": 0});
-//   console.log("the results are: " + result);
-//   // perform actions on the collection object
-//   client.close();
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
