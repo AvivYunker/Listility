@@ -1,6 +1,11 @@
+import Landing from "./pages/Landing";
+
 function App() {
   return (
-    <h1>Listility</h1>
+    <div>
+      <h1>Listility</h1>
+      <Landing/>
+    </div>
   );
 }
 
