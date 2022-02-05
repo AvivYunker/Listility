@@ -1,6 +1,7 @@
 import logo from '../assets/images/logo.svg';
 import main from '../assets/images/main.svg';
 import Wrapper from '../assets/wrappers/Testing';
+import Logo from '../components/Logo';
 
 import React from 'react';
 
@@ -8,7 +9,7 @@ const Landing = () => {
   return(
       <Wrapper>
           <nav>
-              <img src={logo} alt="listility" className="logo"/>
+              <Logo/>
           </nav>
           <div className="container page">
               <div className="info">
