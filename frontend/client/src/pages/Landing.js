@@ -1,7 +1,7 @@
 import logo from '../assets/images/logo.svg';
 import main from '../assets/images/main.svg';
 import Wrapper from '../assets/wrappers/Testing';
-import Logo from '../components/Logo';
+import Logo from '../components';
 
 import React from 'react';
 
