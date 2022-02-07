@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
-import Logo from '../components';
+import { Logo, FormRow, Alert } from '../components'; 
 import Wrapper from '../assets/wrappers/RegisterPage';
 
 const initialState = {
@@ -8,6 +8,7 @@ const initialState = {
     email: '',
     password: '',
     isMember: true,
+    showAlert: true,
 }
 
 const Register = () => {
@@ -23,14 +24,16 @@ const Register = () => {
         console.log(e.target);
     }
     return <Wrapper className="full-page">
-        <form className="form" action="">
+        <form className="form" onSubmit={onSubmit}>
             <Logo/>
             <h3>Login</h3>
+            {values.showAlert && <Alert/>}
             {/* name input */}
-            <div className="form-row">
-                <label htmlFor="name" className="form-label">Name</label>
-                <input type="text" value={values.name} name="name" onChange={handleChange} className="form-label"/>
-            </div>
+            <FormRow type="text" name="name" value={values.name} handleChange={handleChange}/>
+            {/* email input */}
+            <FormRow type="email" name="email" value={values.email} handleChange={handleChange}/>
+            {/* password input */}
+            <FormRow type="password" name="password" value={values.password} handleChange={handleChange}/>
             <button type="submit" className="btn btn-block">
                 submit
             </button>
