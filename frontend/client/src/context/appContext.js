@@ -8,15 +8,19 @@ const initialState = {
     alertType: '',
 }
 
-const appContext = React.createContext();
+const AppContext = React.createContext();
 
 const appProvider = ({children}) => {
     const [state, setState] = useState(initialState);
-    return <AppContext.Provider value={{...state}}>
-        {children}
-    </AppContext.Provider>
+    return(
+        <AppContext.Provider value={{...state}}>
+            {children}
+        </AppContext.Provider>
+    );
 }
 
-const useAppContext = () => {}
+const useAppContext = () => {
+    return useContext(AppContext);
+}
 
-export {appProvider, initialState}
+export {appProvider, initialState, useAppContext};
