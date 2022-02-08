@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-08T09:01:34.044Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43" etag="mA2L20j3y_MHzaQw0qZw" version="16.4.7" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2022-02-08T09:04:57.673Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43" etag="YM-WXrbtzXsoPcuIub1L" version="16.4.7" type="github" pages="3">
   <diagram id="CIzQjFlQaGnvJAiPNnmD" name="Page-1">
     <mxGraphModel dx="2637" dy="1150" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -108,7 +108,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="knCowYE-7uyltPwX5hiY" name="Page-3">
-    <mxGraphModel dx="1102" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2755" dy="1125" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="U0ZIme2RosOILW2kTRPL-0" />
         <mxCell id="U0ZIme2RosOILW2kTRPL-1" parent="U0ZIme2RosOILW2kTRPL-0" />
@@ -148,7 +148,7 @@
         <mxCell id="dvJK_oZCIlBRAtcMgUTN-11" value="Shopping List&lt;br&gt;1. item-1&lt;br&gt;2. item2&lt;br&gt;3. item3&lt;br&gt;4. item4&lt;br&gt;5. item5" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="U0ZIme2RosOILW2kTRPL-1">
           <mxGeometry x="620" y="530" width="160" height="190" as="geometry" />
         </mxCell>
-        <mxCell id="Uk2AdJadJXBymt7tM8GS-0" value="&lt;span style=&quot;font-size: 36px&quot;&gt;Shopping List&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;1. Apples&lt;br&gt;2. Eggs&lt;br&gt;3. Bread&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="U0ZIme2RosOILW2kTRPL-1">
+        <mxCell id="Uk2AdJadJXBymt7tM8GS-0" value="&lt;span style=&quot;font-size: 36px&quot;&gt;Shopping List&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;1. Apples&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;a. Granny Smith&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;b. Pink Lady&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;c. Golden&lt;br&gt;2. Eggs&lt;br&gt;3. Bread&lt;br&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="U0ZIme2RosOILW2kTRPL-1">
           <mxGeometry x="170" y="50" width="530" height="540" as="geometry" />
         </mxCell>
       </root>
