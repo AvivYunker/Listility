@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-02-08T08:58:44.508Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43" etag="H5vCuTuul_I3D8py4V-u" version="16.4.7" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-02-08T08:59:50.408Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36 Edg/98.0.1108.43" etag="MCEPAuOH5QGotoQWzil4" version="16.4.7" type="github" pages="2">
   <diagram id="CIzQjFlQaGnvJAiPNnmD" name="Page-1">
     <mxGraphModel dx="2637" dy="1150" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -97,6 +97,12 @@
         </mxCell>
         <mxCell id="IO0NCA32Hcr1Dk4-gXXb-14" value="Shopping List&lt;br&gt;1. item-1&lt;br&gt;2. item2&lt;br&gt;3. item3&lt;br&gt;4. item4&lt;br&gt;5. item5" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="IO0NCA32Hcr1Dk4-gXXb-1">
           <mxGeometry x="580" y="520" width="160" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="IO0NCA32Hcr1Dk4-gXXb-15" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/evil-icons-user-interface/64/plus-128.png" vertex="1" parent="IO0NCA32Hcr1Dk4-gXXb-1">
+          <mxGeometry x="530" y="770" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="IO0NCA32Hcr1Dk4-gXXb-16" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-minus-outline-128.png" vertex="1" parent="IO0NCA32Hcr1Dk4-gXXb-1">
+          <mxGeometry x="670" y="770" width="128" height="128" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
