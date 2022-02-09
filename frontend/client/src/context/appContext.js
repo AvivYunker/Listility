@@ -20,6 +20,13 @@ const AppProvider = ({children}) => {
 
     const displayAlert = () => {
         dispatch({type: DISPLAY_ALERT});
+        clearAlert();
+    }
+
+    const clearAlert = () => {
+        setTimeout(({ type: CLEAR_ALERT }) => {
+            dispatch()
+        }, 3000);
     }
 
     return (<AppContext.Provider value={{...state, displayAlert}}>
