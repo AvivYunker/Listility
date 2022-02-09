@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useReducer, useContext } from 'react';
+import React, { useState, useReducer, useContext } from 'react'
 
 const initialState = {
     isLoading: false,
@@ -8,15 +7,17 @@ const initialState = {
     alertType: '',
 }
 
-const appContext = React.createContext();
+const AppContext = React.createContext()
 
-const appProvider = ({children}) => {
+const AppProvider = ({children}) => {
     const [state, setState] = useState(initialState);
-    return <AppContext.Provider value={{...state}}>
+    return (<AppContext.Provider value={{...state}}>
         {children}
-    </AppContext.Provider>
+    </AppContext.Provider>);
 }
 
-const useAppContext = () => {}
+const useAppContext = () => {
+    return useContext(AppContext);
+}
 
-export {appProvider, initialState}
+export { AppProvider, initialState, useAppContext }
