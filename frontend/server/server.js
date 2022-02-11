@@ -18,6 +18,11 @@ dotenv.config()
 
 app.use(express.json());
 
+// console.log('hello');
+// console.log('hello');
+// console.log('hello');
+// console.log('hello');
+
 app.get('/', (req,res) => {
     // throw new Error('error');
     res.send("Welcome!");
