@@ -13,6 +13,12 @@ const SmallSidebar = () => {
           <button type="button" className="close-btn" onClick={() => {console.log("toggle sidebar")}}>
             <FaTimes/>
           </button>
+          <header>
+            <Logo/>
+          </header>
+          <div className="nav-links">
+            nav links
+          </div>
         </div>
       </div>
     </Wrapper>
