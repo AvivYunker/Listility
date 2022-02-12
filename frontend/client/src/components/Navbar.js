@@ -1,15 +1,16 @@
 import Wrapper from '../assets/wrappers/Navbar';
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from 'react-icons/fa';
-import { userAppContext } from '../context/appContext';
+import { useAppContext } from '../context/appContext';
 import Logo from './Logo';
 
 import React from 'react'
 
 const Navbar = () => {
+  const {toggleSidebar} = useAppContext()
   return (
     <Wrapper>
       <div className="nav-center">
-        <button className="toggle-btn" onClick={() => console.log("toggle sidebar")}>
+        <button className="toggle-btn" onClick={toggleSidebar}>
           <FaAlignLeft/>
         </button>
         <div>
@@ -23,7 +24,7 @@ const Navbar = () => {
           onClick={() => console.log('show/hide dropdown')}
           >
             <FaUserCircle/>
-            john
+              john
             <FaCaretDown/>
           </button>
           <div className="dropdown show-dropdown">
