@@ -41,7 +41,13 @@ const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     // axios
-    axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`
+    const authFetch = axios.create({
+        baseURL: '/api/v1',
+        headers:{
+            Authorization: `Bearer ${state.token}`
+        }
+    })
 
     const AppProvider = ({children}) => {
         const [state, dispatch] = useReducer(reducer, initialState);
@@ -141,7 +147,7 @@ const AppProvider = ({children}) => {
 
     const updateUser = async (currentUser) => {
         try {
-            const { data } = await axios.patch('/api/v1/auth/updateUser', currentUser)
+            const { data } = await authFetch.patch('/auth/updateUser', currentUser)
             const { data:tours } = await axios.get(
                 'http://course-api.com/react-tours-project'
             )
