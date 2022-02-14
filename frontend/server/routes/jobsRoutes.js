@@ -1,6 +1,7 @@
 import express from 'express'
 const router = express.Router();
 import { createJob, getAllJobs, updateJobs, deleteJob, showStats} from '../controllers/jobsController.js';
+import authenticateUser from '../middleware/auth.js';
 
 router.route('/').post(createJob).get(getAllJobs);
 // remember about: id
