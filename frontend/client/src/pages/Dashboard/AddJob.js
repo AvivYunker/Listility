@@ -1,4 +1,4 @@
-import { FormRow, Alert } from '../../components'
+import { FormRow, FormRowSelect, Alert } from '../../components'
 import { useAppContext } from '../../context/appContext'
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
 
@@ -14,6 +14,7 @@ const AddJob = () => {
     jobTypeOptions,
     status,
     statusOptions,
+    handleChange,
   } = useAppContext()
 
   const handleSubmit = e => {
@@ -28,7 +29,8 @@ const AddJob = () => {
   const handleJobInput = (e) => {
     const name = e.target.name
     const value = e.target.value
-    console.log(`${name}: ${value}`)
+    // console.log(`${name}: ${value}`)
+    handleChange({ name, value })
   }
 
   return( <Wrapper>
@@ -58,22 +60,22 @@ const AddJob = () => {
           value={jobLocation}
           handleChange={handleJobInput}
         />
-        {/* job type */}
-        <FormRow
-          type="text"
-          labelText='job location'
-          name="jobLocation"
-          value={jobLocation}
-          handleChange={handleJobInput}
-        />
         {/* job status */}
-        <FormRow
-          type="text"
-          labelText='job location'
-          name="jobLocation"
-          value={jobLocation}
+        <FormRowSelect
+          name="status"
+          value={status}
           handleChange={handleJobInput}
-        />
+          list={statusOptions}
+        /> 
+        {/* job type */}
+        <FormRowSelect
+          name="jobType"
+          labelText="job type"
+          value={jobType}
+          handleChange={handleJobInput}
+          list={jobTypeOptions}
+        /> 
+        {/* btn container */}
         <div className="btn-container">
           <button type="submit" className="btn btn-block submit-btn" onClick={handleSubmit}>
             submit
