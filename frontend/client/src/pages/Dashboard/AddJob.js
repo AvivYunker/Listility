@@ -59,21 +59,27 @@ const AddJob = () => {
           handleChange={handleJobInput}
         />
         {/* job type */}
-        <FormRow
-          type="text"
-          labelText='job location'
-          name="jobLocation"
-          value={jobLocation}
-          handleChange={handleJobInput}
-        />
+        <div className="form-row">
+          <label htmlFor="jobType">
+            job type
+          </label>
+          <select
+            name='jobType'
+            value={jobType}
+            onChange={handleJobInput}
+            className='form-select'
+          >
+            {jobTypeOptions.map((itemValue, index) => {
+              return (
+                <option key={index} value={itemValue}>
+                  {itemValue}
+                </option>
+              )
+            })}
+          </select>
+        </div>
         {/* job status */}
-        <FormRow
-          type="text"
-          labelText='job location'
-          name="jobLocation"
-          value={jobLocation}
-          handleChange={handleJobInput}
-        />
+
         <div className="btn-container">
           <button type="submit" className="btn btn-block submit-btn" onClick={handleSubmit}>
             submit
