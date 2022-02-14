@@ -242,7 +242,7 @@ const AppProvider = ({children}) => {
                 payload: {
                     jobs,
                     totalJobs,
-                    numOfPags,
+                    numOfPages,
                 },
             })
         } catch (error) {
@@ -265,6 +265,7 @@ const AppProvider = ({children}) => {
             handleChange,
             clearValues,
             createJob,
+            getJobs,
         }}
     >
         {children}
