@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build-client": "cd ../client && npm run build",
     "server": "nodemon server --ignore client",
     "client": "npm start --prefix ../client",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
@@ -18,9 +19,13 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "css-clean": "^1.7.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-async-error": "^0.0.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.2.1",
+    "helmet": "^5.0.2",
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1",
