@@ -25,11 +25,11 @@ const getAllJobs = async (req, res) => {
 
     // add stuff based on condition
 
-    if (status !== 'all') {
+    if (status && status !== 'all') {
         queryObject.status = status
     }
 
-    if (jobType !== 'all') {
+    if (jobType && jobType !== 'all') {
         queryObject.jobType = jobType
     }
 
@@ -38,7 +38,7 @@ const getAllJobs = async (req, res) => {
     }
 
     // NO AWAIT
-    const result = await Job.find(queryObject)
+    let result = await Job.find(queryObject)
 
     // chain sort condition
 
