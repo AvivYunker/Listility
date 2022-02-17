@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "cors": "^2.8.5",
-    "morgan": "^1.10.0",
-    "react-icons": "^4.3.1"
-  }
-}
