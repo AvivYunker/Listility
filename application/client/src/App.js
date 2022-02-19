@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Register, Landing, Error, ProtectedRoute } from './pages'
 import {
-  AllJobs,
+  AllLists,
   Profile,
   SharedLayout,
   AddJob,
@@ -19,7 +19,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route path='all-jobs' element={<AllJobs />} />
+          <Route path='all-lists' element={<AllLists />} />
           <Route path='add-job' element={<AddJob />} />
           <Route path='profile' element={<Profile />} />
         </Route>
