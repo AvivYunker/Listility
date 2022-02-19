@@ -13,26 +13,23 @@ const SearchContainer = () => {
     handleChange,
     clearFilters,
     jobTypeOptions,
-    status,
-    statusOptions
+    statusOptions,
   } = useAppContext()
-  
   const handleSearch = (e) => {
     if (isLoading) return
-    handleChange({name:e.target.name, value:e.target.value})
+    handleChange({ name: e.target.name, value: e.target.value })
   }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     clearFilters()
   }
-
   return (
     <Wrapper>
       <form className='form'>
         <h4>search form</h4>
         <div className='form-center'>
           {/* search position */}
+
           <FormRow
             type='text'
             name='search'
@@ -41,14 +38,21 @@ const SearchContainer = () => {
           />
           {/* search by status */}
           <FormRowSelect
+            labelText='status'
+            name='searchStatus'
+            value={searchStatus}
+            handleChange={handleSearch}
+            list={['all', ...statusOptions]}
+          />
+          {/* search by type */}
+          <FormRowSelect
             labelText='type'
             name='searchType'
             value={searchType}
             handleChange={handleSearch}
             list={['all', ...jobTypeOptions]}
           />
-
-          {/* search by status */}
+          {/* sort */}
           <FormRowSelect
             name='sort'
             value={sort}
@@ -59,7 +63,9 @@ const SearchContainer = () => {
             className='btn btn-block btn-danger'
             disabled={isLoading}
             onClick={handleSubmit}
-          >clear filters</button> 
+          >
+            clear filters
+          </button>
         </div>
       </form>
     </Wrapper>

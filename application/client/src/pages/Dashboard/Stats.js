@@ -10,13 +10,14 @@ const Stats = () => {
     // eslint-disable-next-line
   }, [])
   if (isLoading) {
-    return <Loading center/>
+    return <Loading center />
   }
   return (
     <>
-      <StatsContainer/>
-      {monthlyApplications.length > 0 && <ChartsContainer/>}
+      <StatsContainer />
+      {monthlyApplications.length > 0 && <ChartsContainer />}
     </>
   )
 }
+
 export default Stats

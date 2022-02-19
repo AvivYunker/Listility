@@ -12,43 +12,40 @@ const Job = ({
   jobLocation,
   jobType,
   createdAt,
-  status
+  status,
 }) => {
   const { setEditJob, deleteJob } = useAppContext()
 
   let date = moment(createdAt)
-  date = date.format('MMM, Do, YYYY')
+  date = date.format('MMM Do, YYYY')
   return (
     <Wrapper>
       <header>
         <div className='main-icon'>{company.charAt(0)}</div>
-        <div className="info">
+        <div className='info'>
           <h5>{position}</h5>
-          <h5>{company}</h5>
+          <p>{company}</p>
         </div>
       </header>
-      <div className="content">
-
-        <div className="content-center">
-          <JobInfo icon={<FaLocationArrow/>} text={jobLocation}/>
-          <JobInfo icon={<FaCalendarAlt/>} text={date}/>
-          <JobInfo icon={<FaBriefcase/>} text={jobType}/>
+      <div className='content'>
+        <div className='content-center'>
+          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <JobInfo icon={<FaBriefcase />} text={jobType} />
           <div className={`status ${status}`}>{status}</div>
         </div>
-
-        {/* content center later */}
         <footer>
-          <div className="actions">
+          <div className='actions'>
             <Link
               to='/add-job'
-              className="btn edit-btn"
+              className='btn edit-btn'
               onClick={() => setEditJob(_id)}
             >
               Edit
             </Link>
             <button
               type='button'
-              className="btn delete-btn"
+              className='btn delete-btn'
               onClick={() => deleteJob(_id)}
             >
               Delete
