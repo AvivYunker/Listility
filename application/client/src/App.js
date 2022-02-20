@@ -7,6 +7,7 @@ import {
   AddJob,
 } from './pages/dashboard'
 import About from './pages/dashboard/About'
+import Settings from './pages/dashboard/Settings'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           }
         >
           <Route path='all-lists' element={<AllLists />} />
-          <Route path='add-job' element={<AddJob />} />
+          <Route path='settings' element={<Settings/>} />
           <Route path='about' element={<About />} />
         </Route>
         <Route path='/register' element={<Register />} />
