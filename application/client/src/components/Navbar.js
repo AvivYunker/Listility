@@ -14,7 +14,7 @@ const Navbar = () => {
         </button>
         <div>
           <Logo />
-          <h3 className='logo-text'>dashboard</h3>
+          <h3 className='logo-text'>welcome, {user.name}!</h3>
         </div>
         <div className='btn-container'>
           <button
