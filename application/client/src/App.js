@@ -6,6 +6,7 @@ import {
   SharedLayout,
   AddJob,
 } from './pages/dashboard'
+import About from './pages/dashboard/About'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         >
           <Route path='all-lists' element={<AllLists />} />
           <Route path='add-job' element={<AddJob />} />
-          <Route path='profile' element={<Profile />} />
+          <Route path='about' element={<About />} />
         </Route>
         <Route path='/register' element={<Register />} />
         <Route path='/landing' element={<Landing />} />
