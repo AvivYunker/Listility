@@ -1,2 +1,2 @@
 # Listility
-this repository is dedicated to the final project of the Zionet course
+this repository is dedicated to the project
