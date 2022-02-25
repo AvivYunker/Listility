@@ -12,13 +12,13 @@ const Landing = () => {
         {/* info */}
         <div className='info'>
           <h1>
-            job <span>tracking</span> app
+            list <span>creating</span> app
           </h1>
           <p>
-            I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
-            bottle single-origin coffee chia. Aesthetic post-ironic venmo,
-            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
-            narwhal.
+            Use this app to create and view lists, to help organize your life,
+            get things done, and stop proctastinating. This app can be used
+            cross-platform, and each list can be shared with collaborators,
+            to either edit the list, or view contents only.
           </p>
           <Link to='/register' className='btn btn-hero'>
             Login/Register
