@@ -1,11 +1,16 @@
-import { AllListsButtons, ListsContainer } from '../../components'
+// import { AllListsButtons, ListsContainer, Header } from '../../components'
+import { Header, Footer, Note } from '../../components'
 
 const AllLists = () => {
   return (
-    <>
-      <AllListsButtons />
-      <ListsContainer />
-    </>
+    <div>
+      {/* <AllListsButtons/> */}
+      {/* <ListsContainer/> */}
+      <Header/>
+      <Note/>
+      <Footer/>
+      {/* <h1>Hello App</h1> */}
+    </div>
   )
 }
 
