@@ -3,11 +3,11 @@ import BigSidebar from './BigSidebar'
 import ChartsContainer from './ChartsContainer'
 import FormRow from './FormRow'
 import FormRowSelect from './FormRowSelect'
-import JobsContainer from './JobsContainer'
+import ListsContainer from './ListsContainer'
 import Loading from './Loading'
 import Logo from './Logo'
 import Navbar from './Navbar'
-import SearchContainer from './SearchContainer'
+import AllListsButtons from './AllListsButtons'
 import SmallSidebar from './SmallSidebar'
 import StatsContainer from './StatsContainer'
 export {
@@ -18,8 +18,8 @@ export {
   BigSidebar,
   SmallSidebar,
   FormRowSelect,
-  SearchContainer,
-  JobsContainer,
+  AllListsButtons,
+  ListsContainer,
   StatsContainer,
   ChartsContainer,
   Loading,

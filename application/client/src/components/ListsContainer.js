@@ -5,7 +5,7 @@ import Job from './Job'
 import Wrapper from '../assets/wrappers/JobsContainer'
 import PageBtnContainer from './PageBtnContainer'
 
-const JobsContainer = () => {
+const ListsContainer = () => {
   const {
     getJobs,
     jobs,
@@ -29,7 +29,7 @@ const JobsContainer = () => {
   if (jobs.length === 0) {
     return (
       <Wrapper>
-        <h2>No jobs to display...</h2>
+        <h2>No lists to display...</h2>
       </Wrapper>
     )
   }
@@ -49,4 +49,4 @@ const JobsContainer = () => {
   )
 }
 
-export default JobsContainer
+export default ListsContainer
