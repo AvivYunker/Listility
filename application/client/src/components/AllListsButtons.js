@@ -25,32 +25,30 @@ const AllListsButtons = () => {
   }
   return (
     <Wrapper>
-      <form className='form'>
-        <h4>Lists Buttons</h4>
-        <div className='form-center'>
-          <button
-            className='btn btn-block btn-danger'
-            disabled={isLoading}
-            onClick={handleSubmit}
-          >
-          Share
-          </button>
-          <button
-            className='btn btn-block btn-danger'
-            disabled={isLoading}
-            onClick={handleSubmit}
-          >
-            +
-          </button>
-          <button
-            className='btn btn-block btn-danger'
-            disabled={isLoading}
-            onClick={handleSubmit}
-          >
-            -
-          </button>
-        </div>
-      </form>
+      <h4>Lists Buttons</h4>
+      <div className='form-center'>
+        <button
+          className='btn btn-block btn-danger'
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+        +
+        </button>
+        <button
+          className='btn btn-block btn-danger'
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+        -
+        </button>
+        <button
+          className='btn btn-block btn-danger'
+          disabled={isLoading}
+          onClick={handleSubmit}
+        >
+        share
+        </button>
+      </div>
     </Wrapper>
   )
 }
