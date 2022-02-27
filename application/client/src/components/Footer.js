@@ -1,15 +1,12 @@
-import React from 'react'
-import styles from '../assets/css/index.css'
+import React from "react";
 
 const Footer = () => {
-    
-  const currentYear = new Date().getFullYear()
-  
+  const year = new Date().getFullYear();
   return (
     <footer>
-        <p>Copyrights © {currentYear}</p>
+      <p>Copyright ⓒ {year}</p>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

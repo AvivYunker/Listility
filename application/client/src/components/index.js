@@ -13,6 +13,7 @@ import StatsContainer from './StatsContainer'
 import Header from './Header'
 import Footer from './Footer'
 import Note from './Note'
+import CreateArea from './CreateArea'
 export {
   Logo,
   FormRow,
@@ -29,4 +30,5 @@ export {
   Header,
   Footer,
   Note,
+  CreateArea,
 }
