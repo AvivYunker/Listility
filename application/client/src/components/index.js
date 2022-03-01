@@ -12,7 +12,6 @@ import SmallSidebar from './SmallSidebar'
 import StatsContainer from './StatsContainer'
 import Header from './Header'
 import Footer from './Footer'
-import Note from './Note'
 import CreateArea from './CreateArea'
 export {
   Logo,
@@ -29,6 +28,5 @@ export {
   Loading,
   Header,
   Footer,
-  Note,
   CreateArea,
 }

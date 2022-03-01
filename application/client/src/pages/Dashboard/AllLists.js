@@ -1,8 +1,8 @@
-// import { AllListsButtons, ListsContainer, Header } from '../../components'
-import react, { useState } from 'react'
-import { Header, Footer, Note, CreateArea } from '../../components'
-import notes from '../notes'
-
+import React, { useState } from "react";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import Note from "../../components/Note";
+import CreateArea from "../../components/CreateArea";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
         return (
