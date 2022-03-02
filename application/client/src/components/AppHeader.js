@@ -5,7 +5,7 @@ import TodoModal from './TodoModal'
 
 const AppHeader = () => {
 
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div /*className={styles.appHeader}*/>

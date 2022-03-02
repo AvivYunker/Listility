@@ -27,6 +27,11 @@ export const todoSlice = createSlice({
                     ...action.payload,
                 });
                 window.localStorage.setItem('todoList', JSON.stringify(todoListArr));
+            } else {
+                window.localStorage.setImte(
+                    'todoList',
+                    JSON.stringify([{ ...action.payload }])
+                )
             }
         }
     }

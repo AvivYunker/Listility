@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { addTodo } from '../slices/todoSlice';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
+import toast from 'react-hot-toast'
 
 const TodoModal = ({ modalOpen, setModalOpen }) => {
   const [title, setTitle] = useState('');
@@ -13,7 +14,7 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
-    //   console.log({ title, status });
+      console.log({ title, status });
     if (title && status) {
         dispatch(addTodo({
            id: uuid(),
@@ -21,6 +22,10 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
            status,
            time: new Date().toLocaleDateString(),
         }));
+        toast.success('Task Added Successfully');
+        setModalOpen(false);
+    } else {
+        toast.error("Title shouldn't be empty");
     }
   }
 

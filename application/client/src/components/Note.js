@@ -1,4 +1,5 @@
 import React from 'react'
+import { Toaster } from 'react-hot-toast' 
 import styles from '../assets/css/index.css'
 import AppHeader from './AppHeader'
 import PageTitle from './PageTitle'
@@ -13,13 +14,22 @@ const Note = (props) => {
   }
 
   return (
-  <div className="note">
-      {/* <h1>{props.title}</h1>
-      <p>{props.content}</p>
-      <button onClick={handleClick}>DELETE</button> */}
-      <AppHeader/>
-      <AppContent></AppContent>
-  </div>
+    <>
+      <div className="container">
+        <PageTitle>TODO LIST</PageTitle>
+        <div /*className={styles.app__wrapper}*/>
+          <AppHeader/>
+          <AppContent/>
+        </div>
+      </div>
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            fontSize: '1.4rem',
+          },
+        }}/>
+    </>
   )
 }
 
