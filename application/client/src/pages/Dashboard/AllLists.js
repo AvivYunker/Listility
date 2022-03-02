@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Note from "../../components/Note";
 import CreateArea from "../../components/CreateArea";
+import PageTitle from "../../components/PageTitle";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -24,6 +25,7 @@ function App() {
   return (
     <div>
       <Header />
+      <PageTitle/>
       <CreateArea onAdd={addNote} />
       {notes.map((noteItem, index) => {
         return (
@@ -42,3 +44,4 @@ function App() {
 }
 
 export default App;
+
