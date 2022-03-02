@@ -13,7 +13,7 @@ const TodoItem = ({ todo }) => {
                       {format(new Date(todo.time), 'p, MM/dd/yyyy')}</p>
               </div>
           </div>
-          <div className={styles.todoActions}>
+          <div /*className={styles.todoActions}*/>
               <div></div>
           </div>
       </div>
