@@ -10,7 +10,7 @@ const AppHeader = () => {
   return (
     <div /*className={styles.appHeader}*/>
         <h1>hello from header</h1>
-        <Button type="button" variant="secondary">Add Task</Button>
+        <Button type="button" variant="secondary" onClick={() => setModalOpen(true)}>Add Task</Button>
         <SelectButton id="status">
             <option value="all">All</option>
             <option value="incomplete">Incomplete</option>
