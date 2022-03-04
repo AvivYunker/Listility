@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import styles from '../styles/modules/modal.module.scss';
 import { MdOutlineClose } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
-import { addTodo } from '../slices/todoSlice';
+import { addTodo, updateTodo } from '../slices/todoSlice';
 import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import toast from 'react-hot-toast'
 
-const TodoModal = ({ type, modalOpen, setModalOpen }) => {
+const TodoModal = ({ type, modalOpen, setModalOpen, todo }) => {
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+      if (type === 'update' && todo) {
+        setTitle(todo.title);
+        setStatus(todo.status);
+      } else {
+        setTitle('');
+        setStatus('incomplete');
+      }
+  }, [type, todo, modalOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,13 +37,20 @@ const TodoModal = ({ type, modalOpen, setModalOpen }) => {
                 time: new Date().toLocaleDateString(),
             }));
             toast.success('Task Added Successfully');
-            setModalOpen(false);
         }
         if (type === 'update') {
-            console.log('updating task');
+            if (todo.title !== title || todo.tatus !== status) {
+                dispatch(updateTodo({
+                    ...todo,
+                    title,
+                    status,
+                }));
+
+            } else {
+                toast.error("No changes made");
+            }
         }
-    } else {
-        toast.error("Title shouldn't be empty");
+    setModalOpen(false);
     }
   }
 
