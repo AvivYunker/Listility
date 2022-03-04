@@ -20,7 +20,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.4.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.9"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
@@ -41,6 +42,7 @@
     "moment": "^2.29.1",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
+    "motion": "^10.6.2",
     "normalize.css": "^8.0.1",
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",

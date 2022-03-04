@@ -1,5 +1,5 @@
 import React from 'react'
-// import styles from '../styles/modules/todoItem.module.scss'
+import styles from '../styles/modules/todoItem.module.scss'
 
 const checkVariants = {
   initial: {
@@ -27,12 +27,12 @@ const boxVariant = {
 }
 
 const CheckButton = ({ checked, handleCheck }) => {
-  /*const pathLength = useMotionValue(0);*/
-  /*const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);*/
+  // const pathLength = useMotionValue(0);
+  // const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
   return (
-    <div /*className={StyleSheet.svgBox} animate={checked ? 'checked' : 'unchecked'}*/ variants={boxVariant} onClick={handleCheck}>
+    <div className={StyleSheet.svgBox} animate={checked ? 'checked' : 'unchecked'} variants={boxVariant} onClick={handleCheck}>
         <svg
-            /*className={styles.svg}*/
+            className={styles.svg}
             viewBox="0 0 53 38"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ const CheckButton = ({ checked, handleCheck }) => {
         <path
             ariants={checkVariants}
             animate={checked ? 'checked' : 'unchecked'}
-            /*style={{ pathLength, opacity }}*/
+            // style={{ pathLength, opacity }}
             fill="none"
             strokeMiterlimit="10"
             strokeWidth="6"

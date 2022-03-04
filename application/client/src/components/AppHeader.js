@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateFilterStatus } from '../slices/todoSlice';
 import Button, { SelectButton } from './Button'
 import TodoModal from './TodoModal'
+import styles from '../styles/modules/modal.module.scss';
 
 
 const AppHeader = () => {
@@ -16,7 +17,7 @@ const AppHeader = () => {
   }
 
   return (
-    <div /*className={styles.appHeader}*/>
+    <div className={styles.appHeader}>
         <h1>hello from header</h1>
         <Button type="button" variant="secondary" onClick={() => setModalOpen(true)}>Add Task</Button>
         <SelectButton id="status" value={filterStatus} onChange={updateFilter}>

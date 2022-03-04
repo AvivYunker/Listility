@@ -17,7 +17,7 @@ const Note = (props) => {
     <>
       <div className="container">
         <PageTitle>TODO LIST</PageTitle>
-        <div /*className={styles.app__wrapper}*/>
+        <div className={styles.app__wrapper}>
           <AppHeader/>
           <AppContent/>
         </div>

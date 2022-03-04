@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux'
 import TodoItem from './TodoItem';
 import { Motion, AnimatePresence } from "framer-motion"
 
-// import styles from '../styles/modules/app.module.scss';
+import styles from '../styles/modules/app.module.scss';
+
 
 const container = {
   hidden: {opacity: 1},
@@ -39,9 +40,9 @@ const AppContent = () => {
   })
 
   return (
-    <div /*className={styles.content__wrapper} variants={container} initial='hidden' animate='visible' */>
+    <div className={styles.content__wrapper} variants={container} initial='hidden' animate='visible'>
       <AnimatePresence>
-        {filteredTodoList && filteredTodoList.length > 0 ? filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo}/>) : <p /*className={styles.emptyText} variant={child}*/>No Todo Found</p>}
+        {filteredTodoList && filteredTodoList.length > 0 ? filteredTodoList.map((todo) => <TodoItem key={todo.id} todo={todo}/>) : <p className={styles.emptyText} variant={child}>No Todo Found</p>}
       </AnimatePresence>
     </div>
   );

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTodo, updateTodo } from '../slices/todoSlice';
 import CheckButton from './CheckButton';
 import TodoModal from './TodoModal';
-// import styles from '../styles/modules/todoItem.module.scss'
+import styles from '../styles/modules/todoItem.module.scss'
 
 const child = {
     hidden: { y: 20, opacity: 0},
@@ -40,26 +40,26 @@ const TodoItem = ({ todo }) => {
       setChecked(!checked)
       dispatch(updateTodo(
           ...todo,
-          /*status: checked ? 'incomplete' : 'complete';*/
+        //   status: checked ? 'incomplete' : 'complete';
       ));
   }
   return (
       <>
-      <div /*className={styles.item} variants={child}*/>
-          <div /*className={styles.todoDetails}*/>
+      <div className={styles.item} variants={child}>
+          <div className={styles.todoDetails}>
               <CheckButton check={checked} handleCheck={handleCheck}/>
-              <div /*className={styles.texts}*/>
-                  <p /*className={getClasses([styles.todoText, todo.status === 'complete' && styles['todoText--complete']])}*/>{todo.title}</p>
-                  <p /*className={styles.time}*/>
+              <div className={styles.texts}>
+                  <p className={/*getClasses*/([styles.todoText, todo.status === 'complete' && styles['todoText--complete']])}>{todo.title}</p>
+                  <p className={styles.time}>
                       {format(new Date(todo.time), 'p, MM/dd/yyyy')}
                   </p>
               </div>
           </div>
-          <div /*className={styles.todoActions}*/>
-              <div /*className={styles.icon}*/ onKeyDown={handleDelete} onClick={handleDelete} role="button" tabIndex={0}>
+          <div className={styles.todoActions}>
+              <div className={styles.icon} onKeyDown={handleDelete} onClick={handleDelete} role="button" tabIndex={0}>
                   <MdDelete/>
               </div>
-              <div /*className={styles.icon}*/ onKeyDown={handleUpdate} onClick={handleUpdate} role="button" tabIndex={0}>
+              <div className={styles.icon} onKeyDown={handleUpdate} onClick={handleUpdate} role="button" tabIndex={0}>
                     <MdEdit/>
               </div>
           </div>
