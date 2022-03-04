@@ -3,10 +3,18 @@ import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { MdDelete, MdEdit } from 'react-icons/md'
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../slices/todoSlice';
+import { deleteTodo, updateTodo } from '../slices/todoSlice';
 import CheckButton from './CheckButton';
 import TodoModal from './TodoModal';
 // import styles from '../styles/modules/todoItem.module.scss'
+
+const child = {
+    hidden: { y: 20, opacity: 0},
+    visible: {
+        y: 0,
+        opacity: 1,
+    }
+}
 
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch();
@@ -28,11 +36,18 @@ const TodoItem = ({ todo }) => {
   const handleUpdate = () => {
       setUpdateModalOpen(true)
   }
+  const handleCheck = () => {
+      setChecked(!checked)
+      dispatch(updateTodo(
+          ...todo,
+          /*status: checked ? 'incomplete' : 'complete';*/
+      ));
+  }
   return (
       <>
-      <div /*className={styles.item}*/>
+      <div /*className={styles.item} variants={child}*/>
           <div /*className={styles.todoDetails}*/>
-              <CheckButton/>
+              <CheckButton check={checked} handleCheck={handleCheck}/>
               <div /*className={styles.texts}*/>
                   <p /*className={getClasses([styles.todoText, todo.status === 'complete' && styles['todoText--complete']])}*/>{todo.title}</p>
                   <p /*className={styles.time}*/>

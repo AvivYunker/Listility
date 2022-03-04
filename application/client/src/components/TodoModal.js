@@ -7,6 +7,27 @@ import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import toast from 'react-hot-toast'
 
+const dropIn = {
+    hidden: {
+        opacity: 0,
+        transform: 'scale(0.9)',
+    },
+    visible: {
+        transform: 'scale(1)',
+        opacity: 1,
+        transition: {
+            duration: 0.1,
+            type: 'spring',
+            damping: 25,
+            stiffness: 500,
+        },
+    },
+    exit: {
+        transform: 'scale(0.9)',
+        opacity: 0,
+    },
+};
+
 const TodoModal = ({ type, modalOpen, setModalOpen, todo }) => {
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
@@ -48,6 +69,7 @@ const TodoModal = ({ type, modalOpen, setModalOpen, todo }) => {
 
             } else {
                 toast.error("No changes made");
+                return;
             }
         }
     setModalOpen(false);
@@ -56,10 +78,11 @@ const TodoModal = ({ type, modalOpen, setModalOpen, todo }) => {
 
   return (
       <div>
+          {/* <AnimatePresence> */}
       {modalOpen && (
-      <div /*className={styles.wrapper}*/>
-          <div /*className={styles.container}*/>
-              <div /*className={styles.closeButton}*/onClick={() => setModalOpen(false)} onKeyDown={() => setModalOpen(false)} tabIndex={0} role="button">
+          <div /*className={styles.wrapper} initial={{opacity: 0}} animate={{ opacity: 1 }} exit={{ opacity: 0 }}*/>
+          <div /*className={styles.container} variants={dropIn} initial="hidden" animate="visible" exit="exit"*/>
+              <div /*className={styles.closeButton} initial={{top: 40, opacity: 0}} animate={{ top:-10, opacity: 1 }} exit={{top: 40, opacity: 0}}*/onClick={() => setModalOpen(false)} onKeyDown={() => setModalOpen(false)} tabIndex={0} role="button">
                 <MdOutlineClose/>
               </div>
               <form /*className={styles.form}*/ onSubmit={(e) => handleSubmit(e)}>
@@ -87,6 +110,7 @@ const TodoModal = ({ type, modalOpen, setModalOpen, todo }) => {
           </div>
       </div>
       )}
+      {/* </AnimatePresence> */}
       </div>
   );
 }
