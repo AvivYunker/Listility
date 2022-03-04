@@ -7,23 +7,31 @@ import Button from './Button';
 import { v4 as uuid } from 'uuid';
 import toast from 'react-hot-toast'
 
-const TodoModal = ({ modalOpen, setModalOpen }) => {
+const TodoModal = ({ type, modalOpen, setModalOpen }) => {
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      console.log({ title, status });
+    e.preventDefault();
+    if (title === '') {
+        toast.error('Please enter a title');
+        return;
+    }
     if (title && status) {
-        dispatch(addTodo({
-           id: uuid(),
-           title,
-           status,
-           time: new Date().toLocaleDateString(),
-        }));
-        toast.success('Task Added Successfully');
-        setModalOpen(false);
+        if (type === 'add') {
+            dispatch(addTodo({
+                id: uuid(),
+                title,
+                status,
+                time: new Date().toLocaleDateString(),
+            }));
+            toast.success('Task Added Successfully');
+            setModalOpen(false);
+        }
+        if (type === 'update') {
+            console.log('updating task');
+        }
     } else {
         toast.error("Title shouldn't be empty");
     }
@@ -38,7 +46,7 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
                 <MdOutlineClose/>
               </div>
               <form /*className={styles.form}*/ onSubmit={(e) => handleSubmit(e)}>
-                    <h1 /*className={StyleSheet.formTitle}*/>Add Task</h1>
+                    <h1 /*className={StyleSheet.formTitle}*/> {type === 'update' ? 'Update' : 'Add'}Task</h1>
                     <label htmlFor="title" onChange={(e) => setTitle(e.target.value)}>
                         title
                         <input type="text" id="title"/>
@@ -52,7 +60,7 @@ const TodoModal = ({ modalOpen, setModalOpen }) => {
                     </label>
                     <div /*className={StyleSheet.buttonContainer}*/>
                         <Button type="submit" variant="primary">
-                            Add Task
+                            {type === 'update' ? 'Update' : 'Add'} Task
                         </Button>
                         <Button type="button" variant="secondary" onClick={() => setModalOpen(false)} onKeyDown={() => setModalOpen(false)}>
                             Cancel
