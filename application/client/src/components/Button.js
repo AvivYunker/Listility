@@ -1,6 +1,7 @@
 import React, { Children } from 'react'
 import { getClasses } from '../utils/getClasses'
-// import styles from '../styles/modules/button.modules.scss'
+import styles from '../styles/modules/button.module.scss'
+
 
 const buttonTypes = {
     primary: 'primary',
