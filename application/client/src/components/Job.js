@@ -22,10 +22,15 @@ const Job = ({
           <JobInfo icon={<FaCalendarAlt />} text={date} />
         </div>
       </header>
+      <main>
+        <div className='info'>
+          This is where the tasks will go...
+        </div>
+      </main>
       <div className='content'>
         <footer>
           <div className='actions'>
-            {/* Start of Share button */}
+            {/* Start of Add-Task button */}
             <button
               type='button'
               className='btn edit-btn' // this should be green
@@ -33,7 +38,7 @@ const Job = ({
             >
               Add Task
             </button>
-            {/* End of Share button */}
+            {/* End of Add-Task button */}
             {/* Start of Share button */}
             <button
               type='button'
