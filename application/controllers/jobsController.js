@@ -11,9 +11,9 @@ import moment from 'moment'
 const createJob = async (req, res) => {
   const { position, company } = req.body
 
-  if (!position || !company) {
-    throw new BadRequestError('Please provide all values')
-  }
+  // if (!position) {
+  //   throw new BadRequestError('Please provide all values')
+  // }
   req.body.createdBy = req.user.userId
   const job = await Job.create(req.body)
   res.status(StatusCodes.CREATED).json({ job })
@@ -74,9 +74,9 @@ const updateJob = async (req, res) => {
   const { id: jobId } = req.params
   const { company, position } = req.body
 
-  if (!position || !company) {
-    throw new BadRequestError('Please provide all values')
-  }
+  // if (!position) {
+  //   throw new BadRequestError('Please provide all values')
+  // }
   const job = await Job.findOne({ _id: jobId })
 
   if (!job) {
