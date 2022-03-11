@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Job'
 import JobInfo from './JobInfo'
+import TodoList from './TodoList'
 
 const Job = ({
   _id,
@@ -25,7 +26,7 @@ const Job = ({
       </header>
       <main>
         <div className='info'>
-          This is where the tasks will go...
+          <TodoList/>
         </div>
       </main>
       <div className='content'>
