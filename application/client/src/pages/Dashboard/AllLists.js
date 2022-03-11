@@ -6,6 +6,7 @@ const AllLists = () => {
   return (
     <div>
       <AddList/>
+      <ListContainer/>
     </div>
   )
 }

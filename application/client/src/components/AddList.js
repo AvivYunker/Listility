@@ -8,13 +8,7 @@ const AddList = () => {
     isEditing,
     showAlert,
     displayAlert,
-    position,
-    company,
-    jobLocation,
-    jobType,
-    jobTypeOptions,
-    status,
-    statusOptions,
+    noteTitle,
     handleChange,
     clearValues,
     createJob,
@@ -24,9 +18,7 @@ const AddList = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!jobLocation) {
-      console.log("The position is: " + position)
-      console.log("the jobLocation is: " + jobLocation)
+    if (!noteTitle) {
       displayAlert()
       return
     }
@@ -52,8 +44,8 @@ const AddList = () => {
           <FormRow
             type='text'
             labelText='Enter List Topic:'
-            name='jobLocation'
-            value={jobLocation}
+            name='noteTitle'
+            value={noteTitle}
             handleChange={handleJobInput}
           />
           {/* btn container */}

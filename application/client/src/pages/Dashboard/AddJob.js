@@ -10,7 +10,7 @@ const AddJob = () => {
     displayAlert,
     position,
     company,
-    jobLocation,
+    noteTitle,
     jobType,
     jobTypeOptions,
     status,
@@ -24,7 +24,7 @@ const AddJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!position || !company || !jobLocation) {
+    if (!position || !company || !noteTitle) {
       displayAlert()
       return
     }
@@ -64,8 +64,8 @@ const AddJob = () => {
           <FormRow
             type='text'
             labelText='job location'
-            name='jobLocation'
-            value={jobLocation}
+            name='noteTitle'
+            value={noteTitle}
             handleChange={handleJobInput}
           />
           {/* job status */}

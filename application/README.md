@@ -1777,7 +1777,7 @@ if (action.type === REGISTER_USER_SUCCESS) {
     user: action.payload.user,
     token: action.payload.token,
     userLocation: action.payload.location,
-    jobLocation: action.payload.location,
+    noteTitle: action.payload.location,
     isLoading: false,
     showAlert: true,
     alertType: 'success',
@@ -1850,7 +1850,7 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || '',
-  jobLocation: userLocation || '',
+  noteTitle: userLocation || '',
 }
 ```
 
@@ -1989,7 +1989,7 @@ if (action.type === LOGIN_USER_SUCCESS) {
     user: action.payload.user,
     token: action.payload.token,
     userLocation: action.payload.location,
-    jobLocation: action.payload.location,
+    noteTitle: action.payload.location,
     showAlert: true,
     alertType: 'success',
     alertText: 'Login Successful! Redirecting...',
@@ -2051,7 +2051,7 @@ if (action.type === SETUP_USER_SUCCESS) {
     token: action.payload.token,
     user: action.payload.user,
     userLocation: action.payload.location,
-    jobLocation: action.payload.location,
+    noteTitle: action.payload.location,
     showAlert: true,
     alertType: 'success',
     alertText: action.payload.alertText,
@@ -2408,7 +2408,7 @@ if (action.type === LOGOUT_USER) {
     user: null,
     token: null,
     userLocation: '',
-    jobLocation: '',
+    noteTitle: '',
   }
 }
 ```
@@ -3037,7 +3037,7 @@ if (action.type === UPDATE_USER_SUCCESS) {
     token:action.payload.token
     user: action.payload.user,
     userLocation: action.payload.location,
-    jobLocation: action.payload.location,
+    noteTitle: action.payload.location,
     showAlert: true,
     alertType: 'success',
     alertText: 'User Profile Updated!',
@@ -3129,7 +3129,7 @@ const JobSchema = new mongoose.Schema(
       enum: ['full-time', 'part-time', 'remote', 'internship'],
       default: 'full-time',
     },
-    jobLocation: {
+    noteTitle: {
       type: String,
       default: 'my city',
       required: true,
@@ -3178,7 +3178,7 @@ const initialState = {
   editJobId: '',
   position: '',
   company: '',
-  // jobLocation
+  // noteTitle
   jobTypeOptions: ['full-time', 'part-time', 'remote', 'internship'],
   jobType: 'full-time',
   statusOptions: ['pending', 'interview', 'declined'],
@@ -3199,7 +3199,7 @@ const AddJob = () => {
     displayAlert,
     position,
     company,
-    jobLocation,
+    noteTitle,
     jobType,
     jobTypeOptions,
     status,
@@ -3209,7 +3209,7 @@ const AddJob = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!position || !company || !jobLocation) {
+    if (!position || !company || !noteTitle) {
       displayAlert()
       return
     }
@@ -3247,8 +3247,8 @@ const AddJob = () => {
           <FormRow
             type='text'
             labelText='location'
-            name='jobLocation'
-            value={jobLocation}
+            name='noteTitle'
+            value={noteTitle}
             handleChange={handleJobInput}
           />
           {/* job type */}
@@ -3429,7 +3429,7 @@ if (action.type === CLEAR_VALUES) {
     editJobId: '',
     position: '',
     company: '',
-    jobLocation: state.userLocation,
+    noteTitle: state.userLocation,
     jobType: 'full-time',
     status: 'pending',
   }
@@ -3475,12 +3475,12 @@ appContext.js
 const createJob = async () => {
   dispatch({ type: CREATE_JOB_BEGIN })
   try {
-    const { position, company, jobLocation, jobType, status } = state
+    const { position, company, noteTitle, jobType, status } = state
 
     await authFetch.post('/jobs', {
       company,
       position,
-      jobLocation,
+      noteTitle,
       jobType,
       status,
     })
@@ -3509,7 +3509,7 @@ const handleSubmit = (e) => {
   e.preventDefault()
   // while testing
 
-  // if (!position || !company || !jobLocation) {
+  // if (!position || !company || !noteTitle) {
   //   displayAlert()
   //   return
   // }
@@ -3770,7 +3770,7 @@ const Job = ({
   _id,
   position,
   company,
-  jobLocation,
+  noteTitle,
   jobType,
   createdAt,
   status,
@@ -3841,7 +3841,7 @@ Job.js
 return (
   <div className='content'>
     <div className='content-center'>
-      <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+      <JobInfo icon={<FaLocationArrow />} text={noteTitle} />
       <JobInfo icon={<FaCalendarAlt />} text={date} />
       <JobInfo icon={<FaBriefcase />} text={jobType} />
       <div className={`status ${status}`}>{status}</div>
@@ -3875,14 +3875,14 @@ reducer.js
 
 if (action.type === SET_EDIT_JOB) {
   const job = state.jobs.find((job) => job._id === action.payload.id)
-  const { _id, position, company, jobLocation, jobType, status } = job
+  const { _id, position, company, noteTitle, jobType, status } = job
   return {
     ...state,
     isEditing: true,
     editJobId: _id,
     position,
     company,
-    jobLocation,
+    noteTitle,
     jobType,
     status,
   }
@@ -3895,7 +3895,7 @@ const { isEditing, editJob } = useAppContext()
 const handleSubmit = (e) => {
   e.preventDefault()
 
-  if (!position || !company || !jobLocation) {
+  if (!position || !company || !noteTitle) {
     displayAlert()
     return
   }
@@ -3949,7 +3949,7 @@ const updateJob = async (req, res) => {
 jobsController.js
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params
-  const { company, position, jobLocation } = req.body
+  const { company, position, noteTitle } = req.body
 
   if (!position || !company) {
     throw new BadRequestError('Please provide all values')
@@ -3966,7 +3966,7 @@ const updateJob = async (req, res) => {
 
   job.position = position
   job.company = company
-  job.jobLocation = jobLocation
+  job.noteTitle = noteTitle
 
   await job.save()
   res.status(StatusCodes.OK).json({ job })
@@ -4092,12 +4092,12 @@ appContext.js
 const editJob = async () => {
   dispatch({ type: EDIT_JOB_BEGIN })
   try {
-    const { position, company, jobLocation, jobType, status } = state
+    const { position, company, noteTitle, jobType, status } = state
 
     await authFetch.patch(`/jobs/${state.editJobId}`, {
       company,
       position,
-      jobLocation,
+      noteTitle,
       jobType,
       status,
     })

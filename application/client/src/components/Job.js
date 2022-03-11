@@ -7,12 +7,8 @@ import JobInfo from './JobInfo'
 
 const Job = ({
   _id,
-  position,
-  company,
-  jobLocation,
-  jobType,
+  noteTitle,
   createdAt,
-  status,
 }) => {
   const { setEditJob, deleteJob } = useAppContext()
 
@@ -21,28 +17,33 @@ const Job = ({
   return (
     <Wrapper>
       <header>
-        <div className='main-icon'>{company.charAt(0)}</div>
         <div className='info'>
-          <h5>{position}</h5>
-          <p>{company}</p>
+          <h5>{noteTitle}</h5>
+          <JobInfo icon={<FaCalendarAlt />} text={date} />
         </div>
       </header>
       <div className='content'>
-        <div className='content-center'>
-          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
-          <JobInfo icon={<FaCalendarAlt />} text={date} />
-          <JobInfo icon={<FaBriefcase />} text={jobType} />
-          <div className={`status ${status}`}>{status}</div>
-        </div>
         <footer>
           <div className='actions'>
-            <Link
-              to='/add-job'
-              className='btn edit-btn'
-              onClick={() => setEditJob(_id)}
+            {/* Start of Share button */}
+            <button
+              type='button'
+              className='btn edit-btn' // this should be green
+              // onClick={() => deleteJob(_id)}
             >
-              Edit
-            </Link>
+              Add Task
+            </button>
+            {/* End of Share button */}
+            {/* Start of Share button */}
+            <button
+              type='button'
+              className='btn add-btn' // this should be yellow
+              // onClick={() => deleteJob(_id)}
+            >
+              share
+            </button>
+            {/* End of Share button */}
+            {/* Start of Delete button */}
             <button
               type='button'
               className='btn delete-btn'
@@ -50,6 +51,7 @@ const Job = ({
             >
               Delete
             </button>
+            {/* End of Delete button */}
           </div>
         </footer>
       </div>
