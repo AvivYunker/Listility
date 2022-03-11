@@ -1,5 +1,6 @@
 import moment from 'moment'
-import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt, FaShareAlt, FaTrashAlt } from 'react-icons/fa'
+import { BsShareFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Job'
@@ -13,7 +14,7 @@ const Job = ({
   const { setEditJob, deleteJob } = useAppContext()
 
   let date = moment(createdAt)
-  date = date.format('MMM Do, YYYY')
+  date = date.format('Do MMM, YYYY')
   return (
     <Wrapper>
       <header>
@@ -45,7 +46,7 @@ const Job = ({
               className='btn add-btn' // this should be yellow
               // onClick={() => deleteJob(_id)}
             >
-              share
+              Share
             </button>
             {/* End of Share button */}
             {/* Start of Delete button */}
