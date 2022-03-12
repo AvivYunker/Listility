@@ -32,15 +32,6 @@ const Job = ({
       <div className='content'>
         <footer>
           <div className='actions'>
-            {/* Start of Add-Task button */}
-            <button
-              type='button'
-              className='btn edit-btn' // this should be green
-              // onClick={() => deleteJob(_id)}
-            >
-              Add Task
-            </button>
-            {/* End of Add-Task button */}
             {/* Start of Share button */}
             <button
               type='button'
