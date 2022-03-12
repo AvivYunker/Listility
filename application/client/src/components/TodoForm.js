@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { FormRow, FormRowSelect, Alert } from '../components'
+import Wrapper from '../assets/wrappers/DashboardFormPage'
+
 
 const TodoForm = (props) => {
   const [input, setInput] = useState(props.edit ? props.edit.value : '');
@@ -24,35 +27,18 @@ const TodoForm = (props) => {
 
   return (
       <form className="todo-form" onSubmit={handleSubmit}>
-        {props.edit ? (
-        <>
         <input
           type="text"
-          placeholder="Update your item"
+          placeholder={props.edit ? "Update your item" : "Add a todo"}
           value={input}
           name="text"
           className="todo-input"
           onChange={handleChange}
-          ref={inputRef}
+          // ref={inputRef}
           />
-          <button className="todo-button">Update</button>
-          </>
-          ) : (
-          <>
-          <input
-            type="text"
-            placeholder="Add a todo"
-            value={input}
-            name="text"
-            className="todo-input"
-            onChange={handleChange}
-            // ref={inputRef}
-          />
-          <button className='todo-button'>Add todo</button>
-          </>
-          )}
+          <button className="todo-button btn edit-btn">{props.edit ? "Update" : "Add Task"}</button>
       </form>
-  )
-}
+    )
+  }
 
 export default TodoForm
