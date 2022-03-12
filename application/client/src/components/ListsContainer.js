@@ -1,7 +1,7 @@
 import { useAppContext } from '../context/appContext'
 import { useEffect } from 'react'
 import Loading from './Loading'
-import Job from './Job'
+import Job from './List'
 import Wrapper from '../assets/wrappers/JobsContainer'
 import PageBtnContainer from './PageBtnContainer'
 

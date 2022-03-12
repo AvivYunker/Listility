@@ -7,7 +7,7 @@ import Wrapper from '../assets/wrappers/Job'
 import ListInfo from './ListInfo'
 import TodoList from './TodoList'
 
-const Job = ({
+const List = ({
   _id,
   noteTitle,
   createdAt,
@@ -57,4 +57,4 @@ const Job = ({
   )
 }
 
-export default Job
+export default List

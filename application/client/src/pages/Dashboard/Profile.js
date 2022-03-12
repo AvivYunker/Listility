@@ -8,16 +8,14 @@ const Profile = () => {
 
   const [name, setName] = useState(user?.name)
   const [email, setEmail] = useState(user?.email)
-  const [lastName, setLastName] = useState(user?.lastName)
-  const [location, setLocation] = useState(user?.location)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!name || !email || !lastName || !location) {
+    if (!name || !email) {
       displayAlert()
       return
     }
-    updateUser({ name, email, lastName, location })
+    updateUser({ name, email })
   }
 
   return (
