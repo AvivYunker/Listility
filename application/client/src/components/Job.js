@@ -4,7 +4,7 @@ import { BsShareFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Job'
-import JobInfo from './JobInfo'
+import ListInfo from './ListInfo'
 import TodoList from './TodoList'
 
 const Job = ({
@@ -21,7 +21,7 @@ const Job = ({
       <header>
         <div className='info'>
           <h5>{noteTitle}</h5>
-          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <ListInfo icon={<FaCalendarAlt />} text={date} />
         </div>
       </header>
       <main>

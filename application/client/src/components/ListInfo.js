@@ -1,6 +1,6 @@
-import Wrapper from '../assets/wrappers/JobInfo'
+import Wrapper from '../assets/wrappers/ListInfo'
 
-const JobInfo = ({ icon, text }) => {
+const ListInfo = ({ icon, text }) => {
   return (
     <Wrapper>
       <span className='icon'>{icon}</span>
@@ -9,4 +9,4 @@ const JobInfo = ({ icon, text }) => {
   )
 }
 
-export default JobInfo
+export default ListInfo
