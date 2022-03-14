@@ -6,6 +6,8 @@ import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Job'
 import ListInfo from './ListInfo'
 import TodoList from './TodoList'
+import { TiEdit } from 'react-icons/ti'
+
 
 const List = ({
   _id,
@@ -21,6 +23,10 @@ const List = ({
       <header>
         <div className='info'>
           <h5>{noteTitle}</h5>
+          <TiEdit
+                    // onClick={() => setEdit({id: todo.id, value: todo.text})}
+                    className='edit-icon'
+          />
           <ListInfo icon={<FaCalendarAlt />} text={date} />
         </div>
       </header>

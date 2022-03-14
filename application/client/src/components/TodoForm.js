@@ -23,6 +23,7 @@ const TodoForm = (props) => {
           text: input
       })
       setInput('');
+      alert("this will create the task")
   }
 
   return (
