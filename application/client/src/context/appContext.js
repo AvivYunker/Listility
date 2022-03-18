@@ -29,9 +29,9 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
-  CREATE_TASK_BEGIN,
-  CREATE_TASK_SUCCESS,
-  CREATE_TASK_ERROR,
+  // CREATE_TASK_BEGIN,
+  // CREATE_TASK_SUCCESS,
+  // CREATE_TASK_ERROR,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -263,25 +263,25 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const createTask = async () => {
-    dispatch({ type: CREATE_TASK_BEGIN })
-    try {
-      const { taskTitle, isChecked } = state
-      await authFetch.post('/jobs', {
-        taskTitle,
-        isChecked,
-      })
-      dispatch({ type: CREATE_TASK_SUCCESS })
-      dispatch({ type: CLEAR_VALUES })
-    } catch (error) {
-      if (error.response.status === 401) return
-      dispatch({
-        type: CREATE_TASK_ERROR,
-        payload: { msg: error.response.data.msg },
-      })
-    }
-    clearAlert()
-  }
+  // const createTask = async () => {
+  //   dispatch({ type: CREATE_TASK_BEGIN })
+  //   try {
+  //     const { taskTitle, isChecked } = state
+  //     await authFetch.post('/jobs', {
+  //       taskTitle,
+  //       isChecked,
+  //     })
+  //     dispatch({ type: CREATE_TASK_SUCCESS })
+  //     dispatch({ type: CLEAR_VALUES })
+  //   } catch (error) {
+  //     if (error.response.status === 401) return
+  //     dispatch({
+  //       type: CREATE_TASK_ERROR,
+  //       payload: { msg: error.response.data.msg },
+  //     })
+  //   }
+  //   clearAlert()
+  // }
 
   const showStats = async () => {
     dispatch({ type: SHOW_STATS_BEGIN })
@@ -324,7 +324,7 @@ const AppProvider = ({ children }) => {
         showStats,
         clearFilters,
         changePage,
-        createTask,
+        // createTask,
       }}
     >
       {children}

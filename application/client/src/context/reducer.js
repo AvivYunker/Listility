@@ -11,11 +11,14 @@ import {
   UPDATE_USER_ERROR,
   HANDLE_CHANGE,
   CLEAR_VALUES,
+
   CREATE_JOB_BEGIN,
   CREATE_JOB_SUCCESS,
   CREATE_JOB_ERROR,
+  
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
+  
   SET_EDIT_JOB,
   DELETE_JOB_BEGIN,
   EDIT_JOB_BEGIN,
@@ -26,13 +29,13 @@ import {
   CLEAR_FILTERS,
   CHANGE_PAGE,
 
-  CREATE_TASK_BEGIN,
-  CREATE_TASK_SUCCESS,
-  CREATE_TASK_ERROR,
+  // CREATE_TASK_BEGIN,
+  // CREATE_TASK_SUCCESS,
+  // CREATE_TASK_ERROR,
 
-  EDIT_TASK_BEGIN,
-  EDIT_TASK_SUCCESS,
-  EDIT_TASK_ERROR,
+  // EDIT_TASK_BEGIN,
+  // EDIT_TASK_SUCCESS,
+  // EDIT_TASK_ERROR,
 
 } from './actions'
 
@@ -219,28 +222,28 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
-  if (action.type === CREATE_TASK_BEGIN) {
-    return { ...state, isLoading: true }
-  }
+  // if (action.type === CREATE_TASK_BEGIN) {
+  //   return { ...state, isLoading: true }
+  // }
 
-  if (action.type === CREATE_TASK_SUCCESS) {
-    return {
-      ...state,
-      isLoading: false,
-      showAlert: true,
-      alertType: 'success',
-      alertText: 'New Task Created!',
-    }
-  }
-  if (action.type === CREATE_TASK_ERROR) {
-    return {
-      ...state,
-      isLoading: false,
-      showAlert: true,
-      alertType: 'danger',
-      alertText: action.payload.msg,
-    }
-  }
+  // if (action.type === CREATE_TASK_SUCCESS) {
+  //   return {
+  //     ...state,
+  //     isLoading: false,
+  //     showAlert: true,
+  //     alertType: 'success',
+  //     alertText: 'New Task Created!',
+  //   }
+  // }
+  // if (action.type === CREATE_TASK_ERROR) {
+  //   return {
+  //     ...state,
+  //     isLoading: false,
+  //     showAlert: true,
+  //     alertType: 'danger',
+  //     alertText: action.payload.msg,
+  //   }
+  // }
   if (action.type === SHOW_STATS_BEGIN) {
     return {
       ...state,
