@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/Job'
 import ListInfo from './ListInfo'
-import TodoList from './TodoList'
+import AddTask from './AddTask'
 import { TiEdit } from 'react-icons/ti'
 
 
@@ -32,7 +32,7 @@ const List = ({
       </header>
       <main>
         <div className='info'>
-          <TodoList/>
+          <AddTask/>
         </div>
       </main>
       <div className='content'>

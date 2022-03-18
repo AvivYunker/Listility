@@ -25,6 +25,15 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+
+  CREATE_TASK_BEGIN,
+  CREATE_TASK_SUCCESS,
+  CREATE_TASK_ERROR,
+
+  EDIT_TASK_BEGIN,
+  EDIT_TASK_SUCCESS,
+  EDIT_TASK_ERROR,
+
 } from './actions'
 
 import { initialState } from './appContext'
@@ -202,6 +211,28 @@ const reducer = (state, action) => {
     }
   }
   if (action.type === EDIT_JOB_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+  if (action.type === CREATE_TASK_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+
+  if (action.type === CREATE_TASK_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New Task Created!',
+    }
+  }
+  if (action.type === CREATE_TASK_ERROR) {
     return {
       ...state,
       isLoading: false,

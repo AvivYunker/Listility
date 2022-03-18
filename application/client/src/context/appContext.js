@@ -29,6 +29,9 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
+  CREATE_TASK_BEGIN,
+  CREATE_TASK_SUCCESS,
+  CREATE_TASK_ERROR,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -235,13 +238,9 @@ const AppProvider = ({ children }) => {
     dispatch({ type: EDIT_JOB_BEGIN })
 
     try {
-      const { position, company, noteTitle, jobType, status } = state
+      const { noteTitle } = state
       await authFetch.patch(`/jobs/${state.editJobId}`, {
-        company,
-        position,
         noteTitle,
-        jobType,
-        status,
       })
       dispatch({ type: EDIT_JOB_SUCCESS })
       dispatch({ type: CLEAR_VALUES })
@@ -263,6 +262,27 @@ const AppProvider = ({ children }) => {
       logoutUser()
     }
   }
+
+  const createTask = async () => {
+    dispatch({ type: CREATE_TASK_BEGIN })
+    try {
+      const { taskTitle, isChecked } = state
+      await authFetch.post('/jobs', {
+        taskTitle,
+        isChecked,
+      })
+      dispatch({ type: CREATE_TASK_SUCCESS })
+      dispatch({ type: CLEAR_VALUES })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: CREATE_TASK_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
   const showStats = async () => {
     dispatch({ type: SHOW_STATS_BEGIN })
     try {
@@ -304,6 +324,7 @@ const AppProvider = ({ children }) => {
         showStats,
         clearFilters,
         changePage,
+        createTask,
       }}
     >
       {children}

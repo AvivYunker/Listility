@@ -108,6 +108,18 @@ const deleteJob = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ msg: 'Success! Job removed' })
 }
+
+const createTask = async (req, res) => {
+  const { taskTitle } = req.body
+
+  if (!taskTitle) {
+    throw new BadRequestError("Please provide the task")
+  }
+  req.body.createdBy = req.user.userId
+  const task = await Task.create(req.body)
+  re.status(StatusCodes.CREATED).json({ task })
+}
+
 const showStats = async (req, res) => {
   let stats = await Job.aggregate([
     { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
@@ -153,4 +165,4 @@ const showStats = async (req, res) => {
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications })
 }
 
-export { createJob, deleteJob, getAllJobs, updateJob, showStats }
+export { createJob, deleteJob, getAllJobs, updateJob, showStats, createTask }
