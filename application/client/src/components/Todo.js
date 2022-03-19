@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Component } from 'react'
 import { Consumer } from '../context'
 
@@ -8,12 +9,13 @@ export default class Todo extends Component {
       return { textDecoration: complete ? "line-through" : "none"}
   }
 
-  toggle = (id, dispatch) => {
-      dispatch({ type: "TOGGLE", payload: id })
+  toggle = (_id, dispatch) => {
+      dispatch({ type: "TOGGLE", payload: _id })
   }
 
-  remove = (id, dispatch) => {
-    dispatch({ type: "REMOVE", payload: id })
+  remove = (_id, dispatch) => {
+    axios.delete(`/jobs/${_id}`)
+    .then(() => dispatch({ type: "REMOVE", payload: _id }))
   }
 
   render() {
@@ -25,9 +27,7 @@ export default class Todo extends Component {
                 <i className="far fa-times-circle fa-sm float-left m-1 text-danger" onClick={this.remove.bind(this, _id, dispatch)}></i>{title}
                 <input type="checkbox" className="m-2 float-right" onChange={this.toggle.bind(this, _id, dispatch)}/>
             </h3>
-        }}
-
-        </Consumer>
+        }}</Consumer>
     )
   }
 }

@@ -7,7 +7,6 @@ import Wrapper from '../assets/wrappers/Job'
 import ListInfo from './ListInfo'
 import AddTask from './AddTask'
 import { TiEdit } from 'react-icons/ti'
-import Header from './Header'
 import Addtodo from './Addtodo'
 import Todos from './Todos'
 import  Provider  from '../context'
@@ -38,7 +37,6 @@ const List = ({
       <main>
         <Provider>
           <div className='app-container'>
-            <Header/>
             <Addtodo/>
             <Todos/>
           </div>

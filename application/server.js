@@ -54,18 +54,18 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('todo', todoSchema)
 
-app.get("/todos", (req, res) => {
+app.get("/jobs", (req, res) => {
   Todo.find().then(todo => res.json(todo))
 })
 
-app.post("/todos", (req, res) => {
+app.post("/jobs", (req, res) => {
   const newTodo = new Todo({
     title: req.body.title
   })
   newTodo.save().then(res=>res.json(todo))
 })
 
-app.delete("/todos/:id", (req, res) => {
+app.delete("/jobs/:id", (req, res) => {
   Todo.findByIdAndDelete(req.params.id)
     .then(() => res.json({ remove: true }))
 })

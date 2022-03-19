@@ -26,7 +26,7 @@ export default class Provider extends Component {
     }
 
     componentDidMount() {
-        axios.get("/todos")
+        axios.get("/jobs")
             .then(res => this.setState({ todos: res.data }))
     }
 

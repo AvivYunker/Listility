@@ -21,13 +21,13 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route path='all-lists' element={<AllLists />} />
+          <Route path='all-lists' element={<AllLists/>} />
           <Route path='settings' element={<Settings/>} />
-          <Route path='about' element={<About />} />
+          <Route path='about' element={<About/>}/>
         </Route>
-        <Route path='/register' element={<Register />} />
-        <Route path='/landing' element={<Landing />} />
-        <Route path='*' element={<Error />} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/landing' element={<Landing/>} />
+        <Route path='*' element={<Error/>} />
       </Routes>
     </BrowserRouter>
   )

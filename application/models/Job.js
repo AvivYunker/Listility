@@ -12,6 +12,13 @@ const JobSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Please provide user'],
     },
+    taskList: {
+      type: mongoose.Types.ObjectId,
+      complete: {
+        type: Boolean,
+        default: false,
+      }
+    }
   },
   { timestamps: true }
 )
