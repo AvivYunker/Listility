@@ -10,7 +10,6 @@ const AddTask = (props) => {
         showAlert,
         displayAlert,
         clearValues,
-
         createTask,
         editTask,
         checkTask,

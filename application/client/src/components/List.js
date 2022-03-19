@@ -26,11 +26,7 @@ const List = ({
     <Wrapper>
       <header>
         <div className='info'>
-          <h5>{noteTitle}</h5>
-          <TiEdit
-                    // onClick={() => setEdit({id: todo.id, value: todo.text})}
-                    className='edit-icon'
-          />
+          <h5>{noteTitle} </h5>
           <ListInfo icon={<FaCalendarAlt />} text={date} />
         </div>
       </header>
