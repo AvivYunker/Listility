@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios"
 
 const Context = React.createContext()
 
@@ -23,6 +24,12 @@ export default class Provider extends Component {
         todos: [],
         dispatch:(action)=> this.setState(prevState => reducer(prevState, action))
     }
+
+    componentDidMount() {
+        axios.get("/todos")
+            .then(res => this.setState({ todos: res.data }))
+    }
+
     render() {
     return (
       <Context.Provider value={this.state}>
