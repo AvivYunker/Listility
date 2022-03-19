@@ -1,5 +1,6 @@
-import express from 'express'
-const app = express()
+import mongoose from 'mongoose' // 1
+import express from 'express' // 2
+const app = express() // 3
 import dotenv from 'dotenv'
 dotenv.config()
 import 'express-async-errors'
@@ -35,13 +36,27 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 // only when ready to deploy
 // app.use(express.static(path.resolve(__dirname, './client/build')))
 
-app.use(express.json())
+app.use(express.json()) // 4
 app.use(helmet())
 app.use(xss())
 app.use(mongoSanitize())
 
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/jobs', authenticateUser, jobsRouter)
+
+const todoSchema = new mongoose.Schema({
+  title: String,
+  complete: {
+    type: Boolean,
+    default: false,
+  }
+})
+
+const Todo = mongoose.model('todo', todoSchema)
+
+app.get("/todos", (req, res) => {
+
+})
 
 // only when ready to deploy
 // app.get('*', (req, res) => {
