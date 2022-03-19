@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Todo from './Todo'
+import Todo from './Task'
 import { Consumer } from '../context'
 
-export default class Todos extends Component {
+export default class Tasks extends Component {
   render() {
     return (
         <Consumer>{value => {

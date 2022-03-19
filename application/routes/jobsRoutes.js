@@ -11,7 +11,7 @@ import {
 } from '../controllers/jobsController.js'
 
 router.route('/').post(createJob).get(getAllJobs)
-// router.route('/tasks').post(createTask).get(getAllTasks)
+// router.route('/').post(createTask).get(getAllTasks)
 // remember about :id
 router.route('/stats').get(showStats)
 router.route('/:id').delete(deleteJob).patch(updateJob)
