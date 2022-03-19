@@ -29,9 +29,16 @@ import {
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
-  // CREATE_TASK_BEGIN,
-  // CREATE_TASK_SUCCESS,
-  // CREATE_TASK_ERROR,
+  SHARE_JOB_BEGIN,
+  SHARE_JOB_SUCCESS,
+  SHARE_JOB_ERROR,
+  CREATE_TASK_BEGIN,
+  CREATE_TASK_SUCCESS,
+  CREATE_TASK_ERROR,
+  GET_TASKS_BEGIN,
+  GET_TASKS_SUCCESS,
+  SET_CHECK_TASK,
+  DELETE_TASK_BEGIN,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -253,6 +260,16 @@ const AppProvider = ({ children }) => {
     }
     clearAlert()
   }
+
+  const shareJob = async (jobId) => {
+    dispatch({ type: SHARE_JOB_BEGIN })
+    try {
+      console.log("The jobId is: " + jobId)
+    } catch (error) {
+      logoutUser()
+    }
+  }
+
   const deleteJob = async (jobId) => {
     dispatch({ type: DELETE_JOB_BEGIN })
     try {
@@ -319,6 +336,7 @@ const AppProvider = ({ children }) => {
         createJob,
         getJobs,
         setEditJob,
+        shareJob,
         deleteJob,
         editJob,
         showStats,

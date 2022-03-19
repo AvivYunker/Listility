@@ -8,8 +8,7 @@ export default class Addtodo extends Component {
       title: "",
       complete: false
   }
-  update 
-  = (e) => {
+  update = (e) => {
       this.setState({
           title: e.target.value
       })

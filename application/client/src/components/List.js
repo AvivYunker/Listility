@@ -18,7 +18,7 @@ const List = ({
   noteTitle,
   createdAt,
 }) => {
-  const { setEditJob, deleteJob } = useAppContext()
+  const { setEditJob, shareJob, deleteJob } = useAppContext()
 
   let date = moment(createdAt)
   date = date.format('Do MMM, YYYY')
@@ -49,7 +49,7 @@ const List = ({
             <button
               type='button'
               className='btn add-btn' // this should be yellow
-              // onClick={() => deleteJob(_id)}
+              onClick={() => shareJob(_id)}
             >
               Share
             </button>

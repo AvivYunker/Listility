@@ -29,9 +29,9 @@ import {
   CLEAR_FILTERS,
   CHANGE_PAGE,
 
-  // CREATE_TASK_BEGIN,
-  // CREATE_TASK_SUCCESS,
-  // CREATE_TASK_ERROR,
+  CREATE_TASK_BEGIN,
+  CREATE_TASK_SUCCESS,
+  CREATE_TASK_ERROR,
 
   // EDIT_TASK_BEGIN,
   // EDIT_TASK_SUCCESS,
@@ -222,28 +222,28 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
-  // if (action.type === CREATE_TASK_BEGIN) {
-  //   return { ...state, isLoading: true }
-  // }
+  if (action.type === CREATE_TASK_BEGIN) {
+    return { ...state, isLoading: true }
+  }
 
-  // if (action.type === CREATE_TASK_SUCCESS) {
-  //   return {
-  //     ...state,
-  //     isLoading: false,
-  //     showAlert: true,
-  //     alertType: 'success',
-  //     alertText: 'New Task Created!',
-  //   }
-  // }
-  // if (action.type === CREATE_TASK_ERROR) {
-  //   return {
-  //     ...state,
-  //     isLoading: false,
-  //     showAlert: true,
-  //     alertType: 'danger',
-  //     alertText: action.payload.msg,
-  //   }
-  // }
+  if (action.type === CREATE_TASK_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New Task Created!',
+    }
+  }
+  if (action.type === CREATE_TASK_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
   if (action.type === SHOW_STATS_BEGIN) {
     return {
       ...state,
