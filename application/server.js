@@ -55,7 +55,7 @@ const todoSchema = new mongoose.Schema({
 const Todo = mongoose.model('todo', todoSchema)
 
 app.get("/todos", (req, res) => {
-
+  Todo.find().then(todo => res.json(todo))
 })
 
 // only when ready to deploy
