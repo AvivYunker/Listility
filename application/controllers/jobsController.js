@@ -113,15 +113,12 @@ const createTask = async (req, res) => {
   const { taskTitle } = req.body
 
   if (!taskTitle) {
-    throw new BadRequestError("Please provide the task!") // ZZZZ
+    throw new BadRequestError("Please provide the task")
   }
-
   req.body.createdBy = req.user.userId
   const task = await Task.create(req.body)
   re.status(StatusCodes.CREATED).json({ task })
 }
-
-
 
 const showStats = async (req, res) => {
   let stats = await Job.aggregate([

@@ -8,7 +8,7 @@ import ListInfo from './ListInfo'
 import AddTask from './AddTask'
 import { TiEdit } from 'react-icons/ti'
 import Addtodo from './Addtodo'
-import Todos from './Tasks'
+import Todos from './Todos'
 import  Provider  from '../context'
 
 

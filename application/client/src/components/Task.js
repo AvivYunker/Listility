@@ -1,33 +1,45 @@
-import axios from 'axios'
-import React, { Component } from 'react'
-import { Consumer } from '../context'
+import moment from 'moment'
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { useAppContext } from '../context/appContext'
+import Wrapper from '../assets/wrappers/Job'
 
-export default class Task extends Component {
-  
-  style = () => {
-      const { complete } = this.props.todo
-      return { textDecoration: complete ? "line-through" : "none"}
-  }
+const Task = ({
+  _id,
+  title,
+  isChecked,
+}) => {
+  const { setEditTask, checkTask, deleteTask } = useAppContext()
 
-  toggle = (_id, dispatch) => {
-      dispatch({ type: "TOGGLE", payload: _id })
-  }
-
-  remove = (_id, dispatch) => {
-    axios.delete(`/jobs/${_id}`)
-    .then(() => dispatch({ type: "REMOVE", payload: _id }))
-  }
-
-  render() {
-    const { title, _id } = this.props.todo
-    return (
-        <Consumer>{value => {
-            const { dispatch } = value
-            return <h3 className="text-dark text-center p-1 bg-light border-bottom" style={this.style()}>
-                <i className="far fa-times-circle fa-sm float-left m-1 text-danger" onClick={this.remove.bind(this, _id, dispatch)}></i>{title}
-                <input type="checkbox" className="m-2 float-right" onChange={this.toggle.bind(this, _id, dispatch)}/>
-            </h3>
-        }}</Consumer>
-    )
-  }
+  let date = moment(createdAt)
+  return (
+    <form>
+      <header>
+        <div className='info'>
+          <h5>{title}</h5>
+        </div>
+      </header>
+      <div className='content'>
+        <footer>
+          <div className='actions'>
+            <button
+              className='btn edit-btn'
+              onClick={() => setEditJob(_id)}
+            >
+              Edit
+            </button>
+            <button
+              type='button'
+              className='btn delete-btn'
+              onClick={() => deleteJob(_id)}
+            >
+              Delete
+            </button>
+          </div>
+        </footer>
+      </div>
+    </form>
+  )
 }
+
+export default Job
