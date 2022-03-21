@@ -8,7 +8,7 @@ import ListInfo from './ListInfo'
 import AddTask from './AddTask'
 import { TiEdit } from 'react-icons/ti'
 import Addtodo from './Addtodo'
-import Todos from './Todos'
+import Tasks from './Tasks'
 import  Provider  from '../context'
 
 
@@ -34,7 +34,7 @@ const List = ({
         <Provider>
           <div className='app-container'>
             <Addtodo/>
-            <Todos/>
+            <Tasks/>
           </div>
         </Provider>
       </main>
