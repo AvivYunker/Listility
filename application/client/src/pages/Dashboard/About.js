@@ -7,7 +7,7 @@ import { FormRow, Alert } from '../../components'
 import { useAppContext } from '../../context/appContext'
 import Wrapper from '../../assets/wrappers/DashboardFormPage'
 
-function About() {
+const About = () => {
   return (
     <div>
       <div>

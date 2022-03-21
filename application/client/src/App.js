@@ -5,9 +5,9 @@ import {
   Profile,
   SharedLayout,
   AddJob,
-} from './pages/dashboard'
-import About from './pages/dashboard/About'
-import Settings from './pages/dashboard/Settings'
+} from './pages/Dashboard'
+import About from './pages/Dashboard/About'
+import Settings from './pages/Dashboard/Settings'
 
 function App() {
   return (
