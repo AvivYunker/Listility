@@ -45,33 +45,32 @@ const List = ({
       </header>
       <main>
         <Provider>
-          <div className='app-container'>
+          <div>
             <AppHeader/>
             <AppContent/>
           </div>
         </Provider>
       </main>
-      <div className='content'>
-        <footer>
-          <div className='actions'>
-            {/* Start of Share button */}
-            <Button variant="primary" onClick={() => setModalOpen(true)}>
-              Share
-            </Button>
-            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
-            {/* End of Share button */}
-            {/* Start of Delete button */}
-            <button
-              type='button'
-              className='btn delete-btn'
-              onClick={() => deleteJob(_id)}
-            >
-              Delete
-            </button>
-            {/* End of Delete button */}
-          </div>
-        </footer>
-      </div>
+      <footer className='content'>
+        <div className='actions'>
+          {/* Start of Share button */}
+          <Button variant="primary" onClick={() => setModalOpen(true)}>
+            Share
+          </Button>
+          <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+          {/* End of Share button */}
+          {/* Start of Delete button */}
+          <Button
+            type='button'
+            variant="delete"
+            className='btn delete-btn'
+            onClick={() => deleteJob(_id)}
+          >
+            Delete
+          </Button>
+          {/* End of Delete button */}
+        </div>
+      </footer>
     </Wrapper>
   )
 }

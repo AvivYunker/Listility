@@ -120,10 +120,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               </label>
               <div className={styles.buttonContainer}>
                 <Button type="submit" variant="primary">
-                  {type === 'add' ? 'Add Task' : 'Update Task'}
+                  {type === 'add' ? 'Add' : 'Update'}
                 </Button>
-                <Button variant="secondary" onClick={() => setModalOpen(false)}>
-                  Cancel (ZZZ)
+                <Button variant="cancel" onClick={() => setModalOpen(false)}>
+                  Cancel
                 </Button>
               </div>
             </form>
