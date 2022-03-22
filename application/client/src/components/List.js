@@ -11,6 +11,16 @@ import Addtodo from './Addtodo'
 import Tasks from './Tasks'
 import  Provider  from '../context'
 
+import AppHeader from './AppHeader'
+import AppContent from './AppContent'
+import Button from './Button'
+
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import ShareModal from './ShareModal';
+import { updateFilterStatus } from '../slices/todoSlice';
+
+
 
 
 const List = ({
@@ -19,6 +29,9 @@ const List = ({
   createdAt,
 }) => {
   const { setEditJob, shareJob, deleteJob } = useAppContext()
+
+  const [modalOpen, setModalOpen] = useState(false)
+  const dispatch = useDispatch()
 
   let date = moment(createdAt)
   date = date.format('Do MMM, YYYY')
@@ -33,8 +46,8 @@ const List = ({
       <main>
         <Provider>
           <div className='app-container'>
-            <Addtodo/>
-            <Tasks/>
+            <AppHeader/>
+            <AppContent/>
           </div>
         </Provider>
       </main>
@@ -42,13 +55,10 @@ const List = ({
         <footer>
           <div className='actions'>
             {/* Start of Share button */}
-            <button
-              type='button'
-              className='btn add-btn' // this should be yellow
-              onClick={() => shareJob(_id)}
-            >
+            <Button variant="primary" onClick={() => setModalOpen(true)}>
               Share
-            </button>
+            </Button>
+            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
             {/* End of Share button */}
             {/* Start of Delete button */}
             <button
