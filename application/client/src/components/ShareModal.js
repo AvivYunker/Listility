@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/modal.module.scss'
 import Button from './Button';
+import { useAppContext } from '../context/appContext'
+
 
 const dropIn = {
   hidden: {
@@ -33,6 +35,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
+  const { Title } = useAppContext()
 
   useEffect(() => {
     if (type === 'update' && todo) {
@@ -107,10 +110,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
 
             <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
               <h1 className={styles.formTitle}>
-                {type === 'add' ? 'Add' : 'Update'} Task
+                  Share List
               </h1>
               <label htmlFor="title">
-                Title
+                Email of user:
                 <input
                   type="text"
                   id="title"
@@ -118,12 +121,19 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
+              <label htmlFor="title">
+                Share Type
+                <label for="html">View Only</label>
+                <input type="radio" id="view" name="view-only" value="false"/>
+                <label for="html">View + Edit</label>
+                <input type="radio" id="edit" name="view-and-edit" value="true"/>
+              </label>
               <div className={styles.buttonContainer}>
                 <Button type="submit" variant="primary">
-                  {type === 'add' ? 'Add Task' : 'Update Task'}
+                  {type === 'add' ? 'Share' : 'Update Task'}
                 </Button>
                 <Button variant="secondary" onClick={() => setModalOpen(false)}>
-                  Cancel (ZZZ)
+                  Cancel (MMM)
                 </Button>
               </div>
             </form>
