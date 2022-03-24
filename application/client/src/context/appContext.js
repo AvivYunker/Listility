@@ -280,25 +280,25 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  // const createTask = async () => {
-  //   dispatch({ type: CREATE_TASK_BEGIN })
-  //   try {
-  //     const { taskTitle, isChecked } = state
-  //     await authFetch.post('/jobs', {
-  //       taskTitle,
-  //       isChecked,
-  //     })
-  //     dispatch({ type: CREATE_TASK_SUCCESS })
-  //     dispatch({ type: CLEAR_VALUES })
-  //   } catch (error) {
-  //     if (error.response.status === 401) return
-  //     dispatch({
-  //       type: CREATE_TASK_ERROR,
-  //       payload: { msg: error.response.data.msg },
-  //     })
-  //   }
-  //   clearAlert()
-  // }
+  const createTask = async () => {
+    dispatch({ type: CREATE_TASK_BEGIN })
+    try {
+      const { taskTitle, isChecked } = state
+      await authFetch.post('/jobs/tasks', {
+        taskTitle,
+        isChecked,
+      })
+      dispatch({ type: CREATE_TASK_SUCCESS })
+      dispatch({ type: CLEAR_VALUES })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: CREATE_TASK_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
 
   const showStats = async () => {
     dispatch({ type: SHOW_STATS_BEGIN })
