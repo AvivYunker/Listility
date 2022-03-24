@@ -157,7 +157,7 @@ const reducer = (state, action) => {
       isLoading: false,
       showAlert: true,
       alertType: 'success',
-      alertText: 'New Note Created!',
+      alertText: 'New List Created!',
     }
   }
   if (action.type === CREATE_JOB_ERROR) {
