@@ -61,6 +61,7 @@ const List = ({
       <div className={styles.todoActions}>
           <h3>{noteTitle}</h3>
           <div
+            id="EditListTitle"
             className={styles.icon}
             onClick={() => handleUpdate()}
             onKeyDown={() => handleUpdate()}

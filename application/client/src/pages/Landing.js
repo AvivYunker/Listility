@@ -20,7 +20,7 @@ const Landing = () => {
             cross-platform, and each list can be shared with collaborators,
             to either edit the list, or view contents only.
           </p>
-          <Link to='/register' className='btn btn-hero'>
+          <Link id="LoginRegister" to='/register' className='btn btn-hero'>
             Login/Register
           </Link>
         </div>

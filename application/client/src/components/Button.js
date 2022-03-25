@@ -8,9 +8,10 @@ const buttonTypes = {
   cancel: 'cancel'
 };
 
-function Button({ type, variant = 'primary', children, ...rest }) {
+function Button({ type, variant = 'primary', children, id, ...rest }) {
   return (
     <button
+      id={id}
       type={type === 'submit' ? 'submit' : 'button'}
       className={getClasses([
         styles.button,

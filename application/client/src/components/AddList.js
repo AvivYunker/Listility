@@ -43,6 +43,7 @@ const AddList = () => {
         <div className='form-center'>
           {/* location */}
           <FormRow
+            id="NewListTitle"
             type='text'
             labelText='Enter List Topic:'
             name='noteTitle'
@@ -52,6 +53,7 @@ const AddList = () => {
           {/* btn container */}
           <div className='btn-container'>
             <button
+              id="SubmitListTitle"
               type='submit'
               className='btn btn-block submit-btn'
               onClick={handleSubmit}
@@ -60,6 +62,7 @@ const AddList = () => {
               submit
             </button>
             <button
+              id="ClearListTitle"
               className='btn btn-block clear-btn'
               onClick={(e) => {
                 e.preventDefault()

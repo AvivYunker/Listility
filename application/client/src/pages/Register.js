@@ -63,6 +63,7 @@ const Register = () => {
         {/* name input */}
         {!values.isMember && (
           <FormRow
+            id="NameLoginRegister"
             type='text'
             name='name'
             value={values.name}
@@ -72,6 +73,7 @@ const Register = () => {
 
         {/* email input */}
         <FormRow
+          id="EmailLoginRegister"
           type='email'
           name='email'
           value={values.email}
@@ -79,17 +81,18 @@ const Register = () => {
         />
         {/* password input */}
         <FormRow
+          id="PasswordLoginRegister"
           type='password'
           name='password'
           value={values.password}
           handleChange={handleChange}
         />
-        <button type='submit' className='btn btn-block' disabled={isLoading}>
+        <button id="SubmitLoginRegister" type='submit' className='btn btn-block' disabled={isLoading}>
           submit
         </button>
         <p>
           {values.isMember ? 'Not a member yet?' : 'Already a member?'}
-          <button type='button' onClick={toggleMember} className='member-btn'>
+          <button id="ToggleLoginRegister" type='button' onClick={toggleMember} className='member-btn'>
             {values.isMember ? 'Register' : 'Login'}
           </button>
         </p>

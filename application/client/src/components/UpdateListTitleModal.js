@@ -113,16 +113,16 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 New List Title
                 <input
                   type="text"
-                  id="title"
+                  id="NewListTitle"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
               <div className={styles.buttonContainer}>
-                <Button type="submit" variant="primary">
-                  {type === 'add' ? 'Add' : 'Update'}
+                <Button id="ApplyNewListTitle" type="submit" variant="primary">
+                  Update
                 </Button>
-                <Button variant="cancel" onClick={() => setModalOpen(false)}>
+                <Button id="CancelNewListTitle" variant="cancel" onClick={() => setModalOpen(false)}>
                   Cancel
                 </Button>
               </div>
