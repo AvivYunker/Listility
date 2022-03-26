@@ -11,7 +11,7 @@ const Landing = () => {
       <div className='container page'>
         {/* info */}
         <div className='info'>
-          <h1>
+          <h1 id="DashboardHeader">
             list <span>creating</span> app
           </h1>
           <p>

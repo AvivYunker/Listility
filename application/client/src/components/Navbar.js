@@ -10,15 +10,16 @@ const Navbar = () => {
   return (
     <Wrapper>
       <div className='nav-center'>
-        <button type='button' className='toggle-btn' onClick={toggleSidebar}>
+        <button id="hamburgerMenu" type='button' className='toggle-btn' onClick={toggleSidebar}>
           <GiHamburgerMenu />
         </button>
         <div>
           <Logo />
-          <h3 className='logo-text'>welcome, {user.name}!</h3>
+          <h3 id="WelcomeUser" className='logo-text'>welcome, {user.name}!</h3>
         </div>
         <div className='btn-container'>
           <button
+            id="ProfileButton"
             type='button'
             className='btn'
             onClick={() => setShowLogout(!showLogout)}
@@ -28,7 +29,7 @@ const Navbar = () => {
             <FaCaretDown />
           </button>
           <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>
-            <button type='button' className='dropdown-btn' onClick={logoutUser}>
+            <button id="LogoutButton" type='button' className='dropdown-btn' onClick={logoutUser}>
               logout
             </button>
           </div>
