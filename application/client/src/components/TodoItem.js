@@ -54,6 +54,7 @@ function TodoItem({ todo }) {
           <CheckButton checked={checked} handleCheck={handleCheck} />
           <div className={styles.texts}>
             <p
+            id="TaskItem"
               className={getClasses([
                 styles.todoText,
                 todo.status === 'complete' && styles['todoText--completed'],
@@ -74,16 +75,17 @@ function TodoItem({ todo }) {
             tabIndex={0}
             role="button"
           >
-            <MdDelete />
+            <MdDelete/>
           </div>
           <div
+            id="EditTaskIcon"
             className={styles.icon}
             onClick={() => handleUpdate()}
             onKeyDown={() => handleUpdate()}
             tabIndex={0}
             role="button"
           >
-            <MdEdit />
+            <MdEdit/>
           </div>
         </div>
       </motion.div>

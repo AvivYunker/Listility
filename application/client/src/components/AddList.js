@@ -8,7 +8,7 @@ const AddList = () => {
     isEditing,
     showAlert,
     displayAlert,
-    noteTitle,
+    listTitle,
     handleChange,
     clearValues,
     createJob,
@@ -18,7 +18,7 @@ const AddList = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!noteTitle) {
+    if (!listTitle) {
       displayAlert()
       return
     }
@@ -46,8 +46,8 @@ const AddList = () => {
             id="NewListTitle"
             type='text'
             labelText='Enter List Topic:'
-            name='noteTitle'
-            value={noteTitle}
+            name='listTitle'
+            value={listTitle}
             handleChange={handleJobInput}
           />
           {/* btn container */}

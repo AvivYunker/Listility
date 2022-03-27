@@ -113,13 +113,13 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                 Title
                 <input
                   type="text"
-                  id="title"
+                  id="NewTaskTitle"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
               <div className={styles.buttonContainer}>
-                <Button type="submit" variant="primary">
+                <Button id="NewTaskSubmit" type="submit" variant="primary">
                   {type === 'add' ? 'Add' : 'Update'}
                 </Button>
                 <Button variant="cancel" onClick={() => setModalOpen(false)}>

@@ -109,7 +109,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             </motion.div>
 
             <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-              <h1 className={styles.formTitle}>
+              <h1 id="ShareListHeader" className={styles.formTitle}>
                   Share List
               </h1>
               <label htmlFor="title">

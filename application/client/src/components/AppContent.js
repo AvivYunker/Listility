@@ -53,7 +53,7 @@ function AppContent() {
             // </motion.div>
           ))
         ) : (
-          <motion.p variants={child} className={styles.emptyText}>
+          <motion.p id="NoTasksFound" variants={child} className={styles.emptyText}>
             Click on "Add Task" to add a new task
           </motion.p>
         )}

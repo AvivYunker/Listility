@@ -34,7 +34,7 @@ import UpdateListTitleModal from './UpdateListTitleModal';
 const List = ({
   todo,
   _id,
-  noteTitle,
+  listTitle,
   createdAt,
 }) => {
   const { setEditJob, shareJob, deleteJob } = useAppContext()
@@ -59,7 +59,7 @@ const List = ({
     <Wrapper>
       <header>
       <div className={styles.todoActions}>
-          <h3>{noteTitle}</h3>
+          <h3 id="listTitle">{listTitle}</h3>
           <div
             id="EditListTitle"
             className={styles.icon}
@@ -91,13 +91,14 @@ const List = ({
       <footer className='content'>
         <div className='actions'>
           {/* Start of Share button */}
-          <Button variant="primary" onClick={() => setModalOpen(true)}>
+          <Button id="ShareListButton" variant="primary" onClick={() => setModalOpen(true)}>
             Share
           </Button>
           <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
           {/* End of Share button */}
           {/* Start of Delete button */}
           <Button
+            id="DeleteListButton"
             type='button'
             variant="delete"
             className='btn delete-btn'

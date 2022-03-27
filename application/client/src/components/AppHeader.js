@@ -18,7 +18,7 @@ function AppHeader() {
 
   return (
     <div className={styles.appHeader}>
-      <Button variant="primary" onClick={() => setModalOpen(true)}>
+      <Button id="AddTaskButton" variant="primary" onClick={() => setModalOpen(true)}>
         Add Task
       </Button>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />

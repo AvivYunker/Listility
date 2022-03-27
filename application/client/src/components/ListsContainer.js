@@ -29,7 +29,7 @@ const ListsContainer = () => {
   if (jobs.length === 0) {
     return (
       <Wrapper>
-        <h2>No lists to display...</h2>
+        <h2 id="NoListsHeader">No lists to display...</h2>
       </Wrapper>
     )
   }
