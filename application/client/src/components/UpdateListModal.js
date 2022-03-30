@@ -29,7 +29,7 @@ const dropIn = {
   },
 };
 
-function TodoModal({ type, modalOpen, setModalOpen, todo }) {
+function UpdateListModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
@@ -42,7 +42,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       setTitle('');
       setStatus('incomplete');
     }
-  }, [type, todo, modalOpen]);
+  }, [type, modalOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,7 +63,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         toast.success('Task added successfully');
       }
       if (type === 'update') {
-        if (todo.title) {
+        if (list.listTitle) {
           dispatch(updateTodo({ ...todo, title }));
           toast.success('Task Updated successfully');
         } else {
@@ -134,4 +134,4 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   );
 }
 
-export default TodoModal;
+export default UpdateListModal;

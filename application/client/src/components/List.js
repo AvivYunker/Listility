@@ -28,7 +28,7 @@ import { motion } from 'framer-motion';
 
 import { deleteTodo, updateTodo } from '../slices/todoSlice';
 import toast from 'react-hot-toast';
-import UpdateListTitleModal from './UpdateListTitleModal';
+import UpdateListModal from './UpdateListModal';
 
 
 const List = ({
@@ -71,7 +71,7 @@ const List = ({
             <MdEdit />
           </div>
         </div>
-        <UpdateListTitleModal
+        <UpdateListModal
           type="update"
           modalOpen={updateModalOpen}
           setModalOpen={setUpdateModalOpen}

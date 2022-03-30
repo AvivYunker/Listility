@@ -83,7 +83,7 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'https://listility-backend-testing.azurewebsites.net' + '/api/v1',
   })
   // request
 
@@ -194,7 +194,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CREATE_JOB_BEGIN })
     try {
       const { listTitle } = state
-      await authFetch.post('/jobs', {
+      await authFetch.post('/lists', {
         listTitle,
       })
       dispatch({ type: CREATE_JOB_SUCCESS })
@@ -212,14 +212,14 @@ const AppProvider = ({ children }) => {
   const getJobs = async () => {
     const { page, search, searchStatus, searchType, sort } = state
 
-    let url = `/jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`
+    let url = `/lists?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`
     if (search) {
       url = url + `&search=${search}`
     }
     dispatch({ type: GET_JOBS_BEGIN })
     try {
       const { data } = await authFetch(url)
-      const { jobs, totalJobs, numOfPages } = data
+      const { lists:jobs, totalJobs, numOfPages } = data
       dispatch({
         type: GET_JOBS_SUCCESS,
         payload: {
@@ -230,6 +230,7 @@ const AppProvider = ({ children }) => {
       })
     } catch (error) {
       logoutUser()
+      dispatch({ type: GET_JOBS_SUCCESS, payload: error})
     }
     clearAlert()
   }
@@ -242,8 +243,8 @@ const AppProvider = ({ children }) => {
 
     try {
       const { listTitle } = state
-      await authFetch.patch(`/jobs/${state.editJobId}`, {
-        listTitle,
+      await authFetch.patch(`/lists?listID=${state.editJobId}`, {
+        listTitle:listTitle,
       })
       dispatch({ type: EDIT_JOB_SUCCESS })
       dispatch({ type: CLEAR_VALUES })
@@ -269,7 +270,7 @@ const AppProvider = ({ children }) => {
   const deleteJob = async (jobId) => {
     dispatch({ type: DELETE_JOB_BEGIN })
     try {
-      await authFetch.delete(`/jobs/${jobId}`)
+      await authFetch.delete(`/lists?listid=${jobId}`)
       getJobs()
     } catch (error) {
       logoutUser()
