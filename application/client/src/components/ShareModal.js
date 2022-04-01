@@ -121,13 +121,11 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
-              <label htmlFor="title">
-                Share Type
-                <label for="html">View Only</label>
-                <input type="radio" id="view" name="view-only" value="false"/>
-                <label for="html">View + Edit</label>
-                <input type="radio" id="edit" name="view-and-edit" value="true"/>
-              </label>
+              <label for="html">View Only</label>
+              <input type="radio" id="view" name="view-only" value="false"/>
+              <br/>
+              <label for="html">View + Edit</label>
+              <input type="radio" id="edit" name="view-and-edit" value="true"/>
               <div className={styles.buttonContainer}>
                 <Button type="submit" variant="primary">
                     Share
