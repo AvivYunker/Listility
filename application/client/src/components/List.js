@@ -68,15 +68,15 @@ const List = ({
             tabIndex={0}
             role="button"
           >
-            <MdEdit />
+            {/* <MdEdit /> */}
           </div>
         </div>
-        <UpdateListModal
+        {/* <UpdateListModal
           type="update"
           modalOpen={updateModalOpen}
           setModalOpen={setUpdateModalOpen}
           todo={todo}
-        />
+        /> */}
         <br/>
         <ListInfo icon={<FaCalendarAlt />} text={date} />
       </header>
