@@ -60,16 +60,16 @@ const List = ({
       <header>
       <div className={styles.todoActions}>
           <h3 id="listTitle">{listTitle}</h3>
-          <div
+          {/* <div
             id="EditListTitle"
             className={styles.icon}
             onClick={() => handleUpdate()}
             onKeyDown={() => handleUpdate()}
             tabIndex={0}
             role="button"
-          >
+          > */}
             {/* <MdEdit /> */}
-          </div>
+          {/* </div> */}
         </div>
         {/* <UpdateListModal
           type="update"
