@@ -63,7 +63,7 @@ function UpdateListModal({ type, modalOpen, setModalOpen, todo }) {
         toast.success('Task added successfully');
       }
       if (type === 'update') {
-        if (list.listTitle) {
+        if (todo.title) {
           dispatch(updateTodo({ ...todo, title }));
           toast.success('Task Updated successfully');
         } else {
