@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/modal.module.scss'
 import Button from './Button';
+import { useAppContext } from '../context/appContext';
 
 const dropIn = {
   hidden: {
@@ -29,50 +30,16 @@ const dropIn = {
   },
 };
 
-function DeleteModal({ type, modalOpen, setModalOpen, todo }) {
+function DeleteModal({ type, modalOpen, setModalOpen }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
+  const { deleteJob } = useAppContext()
 
-  useEffect(() => {
-    if (type === 'update' && todo) {
-      setTitle(todo.title);
-      setStatus(todo.status);
-    } else {
-      setTitle('');
-      setStatus('incomplete');
-    }
-  }, [type, modalOpen]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (title === '') {
-      toast.error('Please enter a title');
-      return;
-    }
-    if (title && status) {
-      if (type === 'add') {
-        dispatch(
-          addTodo({
-            id: uuid(),
-            title,
-            status,
-            time: new Date().toLocaleString(),
-          })
-        );
-        toast.success('Task added successfully');
-      }
-      if (type === 'update') {
-        if (todo.title) {
-          dispatch(updateTodo({ ...todo, title }));
-          toast.success('Task Updated successfully');
-        } else {
-          toast.error('No changes made');
-          return;
-        }
-      }
-      setModalOpen(false);
-    }
+  const handleDelete = () => {
+    // deleteJob(_id)
+    setModalOpen(false); // this is important!
+    toast.success('Todo Deleted Successfully');
   };
 
   return (
@@ -105,22 +72,13 @@ function DeleteModal({ type, modalOpen, setModalOpen, todo }) {
               <MdOutlineClose />
             </motion.div>
 
-            <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+            <form className={styles.form} onSubmit={(e) => handleDelete(e)}>
               <h1 className={styles.formTitle}>
-                Update List Title
+                Are you sure you want to delete?
               </h1>
-              <label htmlFor="title">
-                New List Title
-                <input
-                  type="text"
-                  id="NewListTitle"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </label>
               <div className={styles.buttonContainer}>
-                <Button id="ApplyNewListTitle" type="submit" variant="primary">
-                  Update
+                <Button id="ApplyNewListTitle" type="submit" variant="delete">
+                  Delete
                 </Button>
                 <Button id="CancelNewListTitle" variant="cancel" onClick={() => setModalOpen(false)}>
                   Cancel
