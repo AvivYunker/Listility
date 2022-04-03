@@ -279,8 +279,8 @@ const AppProvider = ({ children }) => {
   const createTask = async () => {
     dispatch({ type: CREATE_TASK_BEGIN })
     try {
-      const { taskTitle, isChecked } = state
-      await authFetch.post('/jobs/tasks', {
+      const { listId, taskTitle, isChecked } = state
+      await authFetch.post(`/list/${listId}/tasks`, {
         taskTitle,
         isChecked,
       })

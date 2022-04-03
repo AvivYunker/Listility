@@ -29,8 +29,8 @@ const AddList = () => {
     }
     createJob()
     window.setTimeout(()=>{
-      window.location.reload(false);
-      // this.useState({});
+    window.location.reload(false);
+      this.useState({});
     }, 1500);
   }
   const handleJobInput = (e) => {
