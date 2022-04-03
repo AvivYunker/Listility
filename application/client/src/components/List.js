@@ -3,7 +3,7 @@ import { FaLocationArrow, FaBriefcase, FaCalendarAlt, FaShareAlt, FaTrashAlt } f
 import { BsShareFill } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useAppContext } from '../context/appContext'
-import Wrapper from '../assets/wrappers/Job'
+import Wrapper from '../assets/wrappers/List'
 import ListInfo from './ListInfo'
 import AddTask from './AddTask'
 
@@ -15,7 +15,7 @@ import Tasks from './Tasks'
 import  Provider  from '../context'
 
 import AppHeader from './AppHeader'
-import AppContent from './AppContent'
+import TaskContainer from './TaskContainer'
 import Button from './Button'
 
 import React, { useState } from 'react';
@@ -59,8 +59,8 @@ const List = ({
   // }
 
   const handleUpdate = () => {
-    alert("The ID is: " + _id)
-    alert("The TITLE is: " + listTitle)
+    // alert("The ID is: " + _id)
+    // alert("The TITLE is: " + listTitle)
     setUpdateModalOpen(true);
   };
 
@@ -71,7 +71,7 @@ const List = ({
       <header>
       <div className={styles.todoActions}>
           <h3 id="listTitle">{listTitle}</h3>
-          {/* <div
+          <div
             id="EditListTitle"
             className={styles.icon}
             onClick={() => handleUpdate()}
@@ -80,7 +80,7 @@ const List = ({
             role="button"
           >
             <MdEdit />
-          </div> */}
+          </div>
         </div>
         <UpdateListModal
           type="update"
@@ -95,7 +95,7 @@ const List = ({
         <Provider>
           <div>
             <AppHeader/>
-            <AppContent/>
+            <TaskContainer/>
           </div>
         </Provider>
       </main>

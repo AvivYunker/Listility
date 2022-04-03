@@ -296,6 +296,10 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const updateTask = async (listId, taskId, taskTitle, isChecked) => {
+    
+  }
+
   const deleteTask = async (taskId, jobId) => {
     dispatch({ type: DELETE_TASK_BEGIN })
     try {
@@ -352,7 +356,9 @@ const AppProvider = ({ children }) => {
         showStats,
         clearFilters,
         changePage,
-        // createTask,
+        createTask,
+        updateTask,
+        deleteTask,
       }}
     >
       {children}

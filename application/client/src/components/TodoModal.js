@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/modal.module.scss'
 import Button from './Button';
+import { useAppContext } from '../context/appContext'
+
 
 const dropIn = {
   hidden: {
@@ -34,6 +36,12 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
 
+  const {
+    createTask,
+    updateTask,
+    deleteTask,
+  } = useAppContext()
+
   useEffect(() => {
     if (type === 'update' && todo) {
       setTitle(todo.title);
@@ -52,6 +60,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     }
     if (title && status) {
       if (type === 'add') {
+        alert("New task has been created###")
         dispatch(
           addTodo({
             id: uuid(),
@@ -64,7 +73,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       }
       if (type === 'update') {
         if (todo.title) {
-          // alert("The todo is: " + todo)
+          alert("New task has been updated&&&")
           dispatch(updateTodo({ ...todo, title }));
           toast.success('Task Updated successfully');
         } else {
