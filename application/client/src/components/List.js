@@ -53,11 +53,14 @@ const List = ({
   //   toast.success('Todo Deleted Successfully');
   // };
 
-  const handleDelete = () => {
-    setDeleteModalOpen(true);
-  }
+  // const handleDelete = () => {
+  //   console.log("The _id is: " + _id)
+  //   setDeleteModalOpen(true);
+  // }
 
   const handleUpdate = () => {
+    alert("The ID is: " + _id)
+    alert("The TITLE is: " + listTitle)
     setUpdateModalOpen(true);
   };
 
@@ -75,16 +78,16 @@ const List = ({
             onKeyDown={() => handleUpdate()}
             tabIndex={0}
             role="button"
-          > */}
-            {/* <MdEdit /> */}
-          {/* </div> */}
+          >
+            <MdEdit />
+          </div> */}
         </div>
-        {/* <UpdateListModal
+        <UpdateListModal
           type="update"
           modalOpen={updateModalOpen}
           setModalOpen={setUpdateModalOpen}
           todo={todo}
-        /> */}
+        />
         <br/>
         <ListInfo icon={<FaCalendarAlt />} text={date} />
       </header>
@@ -109,7 +112,7 @@ const List = ({
             <Button id="DeleteListButton" variant="delete" onClick={() => setDeleteModalOpen(true)}>
               Delete
             </Button>
-            <DeleteModal type="add" modalOpen={deleteModalOpen} setModalOpen={setDeleteModalOpen}/>
+            <DeleteModal type="add" modalOpen={deleteModalOpen} setModalOpen={setDeleteModalOpen} id={_id} title={listTitle}/>
           </span>
         </div>
       </footer>

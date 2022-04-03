@@ -30,16 +30,15 @@ const dropIn = {
   },
 };
 
-function DeleteModal({ type, modalOpen, setModalOpen }) {
+function DeleteModal({ type, modalOpen, setModalOpen, id, title }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
   const { deleteJob } = useAppContext()
+//   const _id = this.id
 
   const handleDelete = () => {
-    // deleteJob(_id)
-    setModalOpen(false); // this is important!
-    toast.success('Todo Deleted Successfully');
+    //   alert("The ID is: " + id)
+      deleteJob(id);
   };
 
   return (
@@ -72,15 +71,15 @@ function DeleteModal({ type, modalOpen, setModalOpen }) {
               <MdOutlineClose />
             </motion.div>
 
-            <form className={styles.form} onSubmit={(e) => handleDelete(e)}>
+            <form>
               <h1 className={styles.formTitle}>
-                Are you sure you want to delete?
+                Are you sure you want to delete {title}?
               </h1>
               <div className={styles.buttonContainer}>
-                <Button id="ApplyNewListTitle" type="submit" variant="delete">
+                <Button id="ApplyNewListTitle" type="submit" variant="delete" onClick={() => handleDelete()}>
                   Delete
                 </Button>
-                <Button id="CancelNewListTitle" variant="cancel" onClick={() => setModalOpen(false)}>
+                <Button variant="cancel" onClick={() => setModalOpen(false)}>
                   Cancel
                 </Button>
               </div>

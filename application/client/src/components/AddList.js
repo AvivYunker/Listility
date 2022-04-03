@@ -1,6 +1,7 @@
 import { FormRow, FormRowSelect, Alert } from '../components'
 import { useAppContext } from '../context/appContext'
 import Wrapper from '../assets/wrappers/DashboardFormPage'
+import ListsContainer from './ListsContainer'
 
 const AddList = () => {
   const {
@@ -29,6 +30,7 @@ const AddList = () => {
     createJob()
     window.setTimeout(()=>{
       window.location.reload(false);
+      // this.useState({});
     }, 1500);
   }
   const handleJobInput = (e) => {

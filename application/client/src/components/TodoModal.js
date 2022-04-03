@@ -64,6 +64,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       }
       if (type === 'update') {
         if (todo.title) {
+          // alert("The todo is: " + todo)
           dispatch(updateTodo({ ...todo, title }));
           toast.success('Task Updated successfully');
         } else {
