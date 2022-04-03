@@ -20,7 +20,10 @@ import Button from './Button'
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import ShareModal from './ShareModal';
+import DeleteModal from './DeleteModal';
+
 import { updateFilterStatus } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/todoItem.module.scss'
 import { MotionConfig } from 'framer-motion'
@@ -41,13 +44,18 @@ const List = ({
 
   const [modalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
-  const [updateModalOpen, setUpdateModalOpen] = useState(false); 
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
+
+  // const handleDelete = () => {
+  //   dispatch(deleteTodo(todo.id));
+  //   toast.success('Todo Deleted Successfully');
+  // };
 
   const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
-    toast.success('Todo Deleted Successfully');
-  };
+    setDeleteModalOpen(true);
+  }
 
   const handleUpdate = () => {
     setUpdateModalOpen(true);
@@ -98,10 +106,10 @@ const List = ({
           </span>
           <span>
             {/* <Button id="DeleteListButton" variant="delete" onClick={() => deleteJob(_id)}> */}
-            <Button id="DeleteListButton" variant="delete" onClick={() => setModalOpen(true)}>
+            <Button id="DeleteListButton" variant="delete" onClick={() => setDeleteModalOpen(true)}>
               Delete
             </Button>
-            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+            <DeleteModal type="add" modalOpen={deleteModalOpen} setModalOpen={setDeleteModalOpen}/>
           </span>
         </div>
       </footer>
