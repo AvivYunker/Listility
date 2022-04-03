@@ -27,7 +27,9 @@ const AddList = () => {
       return
     }
     createJob()
-    window.location.reload(false);
+    window.setTimeout(()=>{
+      window.location.reload(false);
+    }, 1500);
   }
   const handleJobInput = (e) => {
     const name = e.target.name

@@ -88,7 +88,7 @@ const List = ({
           </div>
         </Provider>
       </main>
-      <footer className='content'>
+      <footer /*className='content'*/>
         <div className='actions'>
           {/* Start of Share button */}
           <Button id="ShareListButton" variant="primary" onClick={() => setModalOpen(true)}>
@@ -97,13 +97,7 @@ const List = ({
           <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
           {/* End of Share button */}
           {/* Start of Delete button */}
-          <Button
-            id="DeleteListButton"
-            type='button'
-            variant="delete"
-            className='btn delete-btn'
-            onClick={() => deleteJob(_id)}
-          >
+          <Button id="DeleteListButton" variant="delete" onClick={() => deleteJob(_id)}>
             Delete
           </Button>
           {/* End of Delete button */}

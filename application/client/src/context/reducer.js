@@ -148,10 +148,12 @@ const reducer = (state, action) => {
     }
   }
   if (action.type === CREATE_JOB_BEGIN) {
+    // console.log("The request had begun...")
     return { ...state, isLoading: true }
   }
 
   if (action.type === CREATE_JOB_SUCCESS) {
+    // console.log("The request had succeeded!")
     return {
       ...state,
       isLoading: false,
@@ -161,6 +163,7 @@ const reducer = (state, action) => {
     }
   }
   if (action.type === CREATE_JOB_ERROR) {
+    // console.log("The request made an error...")
     return {
       ...state,
       isLoading: false,

@@ -83,7 +83,7 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    baseURL: 'https://listility-backend-testing.azurewebsites.net' + '/api/v1',
+    baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1',
   })
   // request
 
@@ -202,7 +202,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       if (error.response.status === 401) return
       dispatch({
-        type: CREATE_JOB_ERROR,
+        type: CREATE_JOB_ERROR, // we were here
         payload: { msg: error.response.data.msg },
       })
     }
@@ -240,7 +240,6 @@ const AppProvider = ({ children }) => {
   }
   const editJob = async () => {
     dispatch({ type: EDIT_JOB_BEGIN })
-
     try {
       const { listTitle } = state
       await authFetch.patch(`/lists?listID=${state.editJobId}`, {
@@ -295,6 +294,20 @@ const AppProvider = ({ children }) => {
       })
     }
     clearAlert()
+  }
+
+  const deleteTask = async (taskId, jobId) => {
+    dispatch({ type: DELETE_TASK_BEGIN })
+    try {
+      await authFetch.delete(`/list/${jobId}/task`)
+      getJobs() // don't have this function yet
+    } catch (error) {
+      if (error.response.status === 401) {
+        logoutUser()
+      } else {
+        alert("The error message is: " + error)
+      }
+    }
   }
 
   const showStats = async () => {

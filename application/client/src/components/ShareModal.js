@@ -134,6 +134,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   Cancel
                 </Button>
               </div>
+              <br/>
+              <div>
+                <h4>Manage Current Shares:</h4>
+              </div>
             </form>
           </motion.div>
         </motion.div>
