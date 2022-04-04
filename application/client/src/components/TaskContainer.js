@@ -24,14 +24,20 @@ const child = {
   },
 };
 
-function AppContent() {
-  const todoList = useSelector((state) => state.todo.todoList);
+function AppContent({tasks}) {
+  // const todoList = useSelector((state) => state.todo.todoList);
+  const todoList = tasks
   const filterStatus = useSelector((state) => state.todo.filterStatus);
   const sortedTodoList = [...todoList];
 
   sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
 
   const filteredTodoList = sortedTodoList.filter((item) => {
+    // tasks.map((task) => {
+    //   console.log("##Title ID is: " + task._id)
+    //   console.log("##Title is: " + task.taskTitle)
+    //   console.log("##IsChecked: " + task.isChecked)
+    // })
     if (filterStatus === 'all') {
       return true;
     }
@@ -49,9 +55,14 @@ function AppContent() {
         {filteredTodoList && filteredTodoList.length > 0 ? (
           filteredTodoList.map((todo) => (
             // <motion.div key={todo.id} variants={child}>
-            <TodoItem key={todo.id} todo={todo} />
+            <TodoItem key={todo._id} todo={todo} />
             // </motion.div>
           ))
+          // tasks.map((task) => {
+          //   console.log("##Title ID is: " + task._id)
+          //   console.log("##Title is: " + task.taskTitle)
+          //   console.log("##IsChecked: " + task.isChecked)
+          // })
         ) : (
           <motion.p id="NoTasksFound" variants={child} className={styles.emptyText}>
             Click on "Add Task" to add a new task

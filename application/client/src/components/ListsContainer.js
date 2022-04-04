@@ -41,7 +41,13 @@ const ListsContainer = () => {
       </h5>
       <div className='jobs'>
         {jobs.map((job) => {
-          return <Job key={job._id} {...job} />
+          // console.log(...job.taskList[0])
+          // let cnt = 0
+          // job.taskList.map((task) => {
+          //   console.log(`${task.taskTitle} => ${cnt}`)
+          //   cnt += 1
+          // })
+          return <Job key={job._id} {...job}/>
         })}
       </div>
       {numOfPages > 1 && <PageBtnContainer />}

@@ -24,7 +24,9 @@ function TodoItem({ todo }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
 
   useEffect(() => {
-    if (todo.status === 'complete') {
+          // console.log("$$$" + todo.taskTitle)
+    if (todo.isChecked) {
+      console.log(`Task with title ${todo.taskTitle} is checked? ${todo.isChecked}`)
       setChecked(true);
     } else {
       setChecked(false);
@@ -39,7 +41,7 @@ function TodoItem({ todo }) {
   };
 
   const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
+    dispatch(deleteTodo(todo._id));
     toast.success('Todo Deleted Successfully');
   };
 
@@ -60,7 +62,7 @@ function TodoItem({ todo }) {
                 todo.status === 'complete' && styles['todoText--completed'],
               ])}
             >
-              {todo.title}
+              {todo.taskTitle}
             </p>
             {/* <p className={styles.time}>
               {format(new Date(todo.time), 'p, MM/dd/yyyy')}

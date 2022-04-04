@@ -38,6 +38,7 @@ import {
   GET_TASKS_BEGIN,
   GET_TASKS_SUCCESS,
   SET_CHECK_TASK,
+  UPDATE_TASK_BEGIN,
   DELETE_TASK_BEGIN,
 } from './actions'
 
@@ -296,14 +297,45 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
-  const updateTask = async (listId, taskId, taskTitle, isChecked) => {
-    
+  // addTodo: (state, action) => {
+  //   state.todoList.push(action.payload);
+  //   const todoList = window.localStorage.getItem('todoList');
+  //   if (todoList) {
+  //     const todoListArr = JSON.parse(todoList);
+  //     todoListArr.push({
+  //       ...action.payload,
+  //     });
+  //     window.localStorage.setItem('todoList', JSON.stringify(todoListArr));
+  //   } else {
+  //     window.localStorage.setItem(
+  //       'todoList',
+  //       JSON.stringify([
+  //         {
+  //           ...action.payload,
+  //         },
+  //       ])
+  //     );
+  //   }
+  // },
+
+  const updateTask = async (listId, taskId, taskTitle, isChecked, jobId) => {
+    dispatch({ type: UPDATE_TASK_BEGIN })
+    try {
+      await authFetch.put(`/list/${jobId}/task`)
+      getJobs()
+    } catch (error) {
+      if (error.response.status === 401) {
+        logoutUser()
+      } else {
+        alert("The error message is: " + error)
+      }
+    }
   }
 
-  const deleteTask = async (taskId, jobId) => {
+  const deleteTask = async (taskId, listId) => {
     dispatch({ type: DELETE_TASK_BEGIN })
     try {
-      await authFetch.delete(`/list/${jobId}/task`)
+      await authFetch.delete(`/list/${listId}/task`)
       getJobs() // don't have this function yet
     } catch (error) {
       if (error.response.status === 401) {

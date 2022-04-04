@@ -36,6 +36,7 @@ import UpdateListModal from './UpdateListModal';
 
 const List = ({
   todo,
+  taskList,
   _id,
   listTitle,
   createdAt,
@@ -61,6 +62,15 @@ const List = ({
   const handleUpdate = () => {
     // alert("The ID is: " + _id)
     // alert("The TITLE is: " + listTitle)
+
+
+    // VERY IMPORATANT!
+    // taskList.map((task) => {
+    //   console.log("Title ID is: " + task._id)
+    //   console.log("Title is: " + task.taskTitle)
+    //   console.log("IsChecked: " + task.isChecked)
+    // })
+
     setUpdateModalOpen(true);
   };
 
@@ -96,7 +106,7 @@ const List = ({
         <Provider>
           <div>
             <AppHeader/>
-            <TaskContainer/>
+            <TaskContainer tasks={taskList}/>
           </div>
         </Provider>
       </main>

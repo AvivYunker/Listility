@@ -44,7 +44,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
 
   useEffect(() => {
     if (type === 'update' && todo) {
-      setTitle(todo.title);
+      setTitle(todo.taskTitle);
       setStatus(todo.status);
     } else {
       setTitle('');
@@ -72,9 +72,9 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
         toast.success('Task added successfully');
       }
       if (type === 'update') {
-        if (todo.title) {
+        if (todo.taskTitle) {
           alert("New task has been updated&&&")
-          dispatch(updateTodo({ ...todo, title }));
+          dispatch(updateTodo({ ...todo, title:todo.taskTitle }));
           toast.success('Task Updated successfully');
         } else {
           toast.error('No changes made');
@@ -125,6 +125,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   type="text"
                   id="NewTaskTitle"
                   value={title}
+                  // value={todo.taskTitle}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
