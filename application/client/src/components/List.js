@@ -87,6 +87,7 @@ const List = ({
           modalOpen={updateModalOpen}
           setModalOpen={setUpdateModalOpen}
           todo={todo}
+          prevTitle={listTitle}
         />
         <br/>
         <ListInfo icon={<FaCalendarAlt />} text={date} />
