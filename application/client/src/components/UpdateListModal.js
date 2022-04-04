@@ -29,7 +29,7 @@ const dropIn = {
   },
 };
 
-function UpdateListModal({ type, modalOpen, setModalOpen, todo }) {
+function UpdateListModal({ type, modalOpen, setModalOpen, todo, prevTitle }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
@@ -45,32 +45,18 @@ function UpdateListModal({ type, modalOpen, setModalOpen, todo }) {
   }, [type, modalOpen]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // alert("the prevTitle is: " + prevTitle)
+    // alert("The title is: " + title)
+    // e.preventDefault();
     if (title === '') {
+      alert("TITLE IS EMPTY!")
       toast.error('Please enter a title');
       return;
-    }
-    if (title && status) {
-      if (type === 'add') {
-        dispatch(
-          addTodo({
-            id: uuid(),
-            title,
-            status,
-            time: new Date().toLocaleString(),
-          })
-        );
-        toast.success('Task added successfully');
-      }
-      if (type === 'update') {
-        if (todo.title) {
-          dispatch(updateTodo({ ...todo, title }));
-          toast.success('Task Updated successfully');
-        } else {
-          toast.error('No changes made');
-          return;
-        }
-      }
+    } else {
+      alert("TITLE IS VALID!")
+      prevTitle = title;
+      // dispatch(prevTitle = title);
+      toast.success('Task added successfully');
       setModalOpen(false);
     }
   };
