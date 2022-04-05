@@ -337,12 +337,10 @@ const AppProvider = ({ children }) => {
         taskTitle,
         isChecked,
       })
-
       dispatch({
         type: UPDATE_TASK_SUCCESS,
         payload: { taskId, taskTitle, isChecked }
       })
-
       getJobs()
     } catch (error) {
       if (error.response.status !== 401) {

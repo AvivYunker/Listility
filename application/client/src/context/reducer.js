@@ -286,9 +286,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
-      token: action.payload.token,
-      user: action.payload.user,
-      userLocation: action.payload.location,
+      isChecked: action.payload.isChecked,
+      taskId: action.payload.taskId,
+      taskTitle: action.payload.taskTitle,
       listTitle: action.payload.location,
       showAlert: true,
       alertType: 'success',
