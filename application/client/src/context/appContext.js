@@ -277,14 +277,21 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const createTask = async () => {
+  const createTask = async (listId, taskTitle, isChecked) => {
     dispatch({ type: CREATE_TASK_BEGIN })
+    // alert("in createTask");
     try {
-      const { listId, taskTitle, isChecked } = state
-      await authFetch.post(`/list/${listId}/tasks`, {
+      isChecked = false
+      // const { listId, taskTitle, isChecked } = state
+      // alert("in createTask, listId is: " + listId)
+      // alert("in createTask, taskTitle is: " + taskTitle)
+      // alert("in createTask, isChecked is: " + isChecked)
+      // await authFetch.post(`/list/${listId}/task`, {
+      await authFetch.post(`/list/${listId}/task`, {
         taskTitle,
         isChecked,
       })
+      getJobs()
       dispatch({ type: CREATE_TASK_SUCCESS })
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
@@ -320,6 +327,12 @@ const AppProvider = ({ children }) => {
 
   const updateTask = async (listId, taskId, taskTitle, isChecked, jobId) => {
     dispatch({ type: UPDATE_TASK_BEGIN })
+    alert("In updateTask right now...")
+    alert("In UpdateTask, ")
+    alert("In UpdateTask, ")
+    alert("In UpdateTask, ")
+    alert("In UpdateTask, ")
+    alert("In UpdateTask, ")
     try {
       await authFetch.put(`/list/${jobId}/task`)
       getJobs()

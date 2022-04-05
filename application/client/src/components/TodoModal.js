@@ -31,10 +31,10 @@ const dropIn = {
   },
 };
 
-function TodoModal({ type, modalOpen, setModalOpen, todo }) {
+function TodoModal({ type, modalOpen, setModalOpen, todo, listId }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [status, setStatus] = useState('incomplete');
+  const [isChecked, setIsChecked] = useState('incomplete');
 
   const {
     createTask,
@@ -42,33 +42,19 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
     deleteTask,
   } = useAppContext()
 
-  useEffect(() => {
-    if (type === 'update' && todo) {
-      setTitle(todo.taskTitle);
-      setStatus(todo.status);
-    } else {
-      setTitle('');
-      setStatus('incomplete');
-    }
-  }, [type, todo, modalOpen]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title === '') {
       toast.error('Please enter a title');
       return;
     }
-    if (title && status) {
+    if (title && isChecked) {
+      // alert("The title is: " + title);
+      // alert("The status is: " + isChecked);
       if (type === 'add') {
         alert("New task has been created###")
-        dispatch(
-          addTodo({
-            id: uuid(),
-            title,
-            status,
-            time: new Date().toLocaleString(),
-          })
-        );
+        dispatch(createTask(listId, title, isChecked));
+        alert("FINISHED...")
         toast.success('Task added successfully');
       }
       if (type === 'update') {
