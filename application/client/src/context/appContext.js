@@ -38,7 +38,11 @@ import {
   GET_TASKS_BEGIN,
   GET_TASKS_SUCCESS,
   SET_CHECK_TASK,
+
   UPDATE_TASK_BEGIN,
+  UPDATE_TASK_SUCCESS,
+  UPDATE_TASK_ERROR,
+
   DELETE_TASK_BEGIN,
 } from './actions'
 
@@ -325,22 +329,27 @@ const AppProvider = ({ children }) => {
   //   }
   // },
 
-  const updateTask = async (listId, taskId, taskTitle, isChecked, jobId) => {
+  const updateTask = async (listId, taskId, taskTitle, isChecked) => {
     dispatch({ type: UPDATE_TASK_BEGIN })
-    alert("In updateTask right now...")
-    alert("In UpdateTask, listId is: " + listId)
-    alert("In UpdateTask, jobId is: " + jobId)
-    alert("In UpdateTask, taskId is: " + taskId)
-    alert("In UpdateTask, taskTitle is: " + taskTitle)
-    alert("In UpdateTask, isChecked is: " + isChecked)
     try {
-      await authFetch.put(`/list/${jobId}/task`)
+      await authFetch.put(`/list/${listId}/task/?taskId=${taskId}`, {
+        taskId,
+        taskTitle,
+        isChecked,
+      })
+
+      dispatch({
+        type: UPDATE_TASK_SUCCESS,
+        payload: { taskId, taskTitle, isChecked }
+      })
+
       getJobs()
     } catch (error) {
-      if (error.response.status === 401) {
-        logoutUser()
-      } else {
-        alert("The error message is: " + error)
+      if (error.response.status !== 401) {
+        dispatch({
+          type: UPDATE_TASK_ERROR,
+          payload: { msg: error.response.data.msg },
+        })
       }
     }
   }

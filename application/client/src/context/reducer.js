@@ -29,6 +29,10 @@ import {
   CLEAR_FILTERS,
   CHANGE_PAGE,
 
+  UPDATE_TASK_BEGIN,
+  UPDATE_TASK_SUCCESS,
+  UPDATE_TASK_ERROR,
+
   CREATE_TASK_BEGIN,
   CREATE_TASK_SUCCESS,
   CREATE_TASK_ERROR,
@@ -274,7 +278,35 @@ const reducer = (state, action) => {
   if (action.type === CHANGE_PAGE) {
     return { ...state, page: action.payload.page }
   }
+
+  if (action.type === UPDATE_TASK_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+  if (action.type === UPDATE_TASK_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      token: action.payload.token,
+      user: action.payload.user,
+      userLocation: action.payload.location,
+      listTitle: action.payload.location,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Task Updated!',
+    }
+  }
+  if (action.type === UPDATE_TASK_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
   throw new Error(`no such action : ${action.type}`)
 }
+
+
 
 export default reducer

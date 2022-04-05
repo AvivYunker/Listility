@@ -18,7 +18,7 @@ const child = {
   },
 };
 
-function TodoItem({ todo }) {
+function TodoItem({ todo, listId }) {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
@@ -96,6 +96,7 @@ function TodoItem({ todo }) {
         modalOpen={updateModalOpen}
         setModalOpen={setUpdateModalOpen}
         todo={todo}
+        listId = {listId}
       />
     </>
   );

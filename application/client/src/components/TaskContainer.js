@@ -24,7 +24,7 @@ const child = {
   },
 };
 
-function AppContent({tasks}) {
+function TaskContainer({tasks, listId}) {
   // const todoList = useSelector((state) => state.todo.todoList);
   const todoList = tasks
   const filterStatus = useSelector((state) => state.todo.filterStatus);
@@ -55,7 +55,7 @@ function AppContent({tasks}) {
         {filteredTodoList && filteredTodoList.length > 0 ? (
           filteredTodoList.map((todo) => (
             // <motion.div key={todo.id} variants={child}>
-            <TodoItem key={todo._id} todo={todo} />
+            <TodoItem key={todo._id} todo={todo} listId={listId}/>
             // </motion.div>
           ))
           // tasks.map((task) => {
@@ -73,4 +73,4 @@ function AppContent({tasks}) {
   );
 }
 
-export default AppContent;
+export default TaskContainer;

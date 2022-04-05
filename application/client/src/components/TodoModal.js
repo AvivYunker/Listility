@@ -35,6 +35,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo, listId }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [isChecked, setIsChecked] = useState('incomplete');
+  let taskId;
 
   const {
     createTask,
@@ -48,20 +49,24 @@ function TodoModal({ type, modalOpen, setModalOpen, todo, listId }) {
       toast.error('Please enter a title');
       return;
     }
-    if (title && isChecked) {
-      // alert("The title is: " + title);
+    if (title) {
+      alert("The title is: " + title);
       // alert("The status is: " + isChecked);
       if (type === 'add') {
         alert("New task has been created###")
+        // alert("The listId outside of AppContext (now 'add') is: " + listId)
         dispatch(createTask(listId, title, isChecked));
         alert("FINISHED...")
         toast.success('Task added successfully');
       }
       if (type === 'update') {
+        alert("The list-id is...: " + listId)
         if (todo.taskTitle) {
-          alert("New task has been updated&&&")
-          dispatch(updateTodo());
-          toast.success('Task Updated successfully');
+          alert("The todo-id is: " + todo._id);
+          // alert("New task has been updated&&&")
+          // alert("The listId outside of AppContext (not 'update') is: " + listId)
+          dispatch(updateTask(listId, todo._id, title, isChecked));
+          toast.success('Task Updated successfully'); 
         } else {
           toast.error('No changes made');
           return;

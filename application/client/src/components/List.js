@@ -106,7 +106,7 @@ const List = ({
         <Provider>
           <div>
             <AppHeader listId={_id}/>
-            <TaskContainer tasks={taskList}/>
+            <TaskContainer tasks={taskList} listId={_id}/>
           </div>
         </Provider>
       </main>
