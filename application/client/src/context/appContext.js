@@ -328,11 +328,11 @@ const AppProvider = ({ children }) => {
   const updateTask = async (listId, taskId, taskTitle, isChecked, jobId) => {
     dispatch({ type: UPDATE_TASK_BEGIN })
     alert("In updateTask right now...")
-    alert("In UpdateTask, ")
-    alert("In UpdateTask, ")
-    alert("In UpdateTask, ")
-    alert("In UpdateTask, ")
-    alert("In UpdateTask, ")
+    alert("In UpdateTask, listId is: " + listId)
+    alert("In UpdateTask, jobId is: " + jobId)
+    alert("In UpdateTask, taskId is: " + taskId)
+    alert("In UpdateTask, taskTitle is: " + taskTitle)
+    alert("In UpdateTask, isChecked is: " + isChecked)
     try {
       await authFetch.put(`/list/${jobId}/task`)
       getJobs()

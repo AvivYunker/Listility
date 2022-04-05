@@ -60,7 +60,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo, listId }) {
       if (type === 'update') {
         if (todo.taskTitle) {
           alert("New task has been updated&&&")
-          dispatch(updateTodo({ ...todo, title:todo.taskTitle }));
+          dispatch(updateTodo());
           toast.success('Task Updated successfully');
         } else {
           toast.error('No changes made');
