@@ -37,6 +37,10 @@ import {
   CREATE_TASK_SUCCESS,
   CREATE_TASK_ERROR,
 
+  DELETE_TASK_BEGIN,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_ERROR,
+
   // EDIT_TASK_BEGIN,
   // EDIT_TASK_SUCCESS,
   // EDIT_TASK_ERROR,
@@ -304,7 +308,28 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
-  throw new Error(`no such action : ${action.type}`)
+  if (action.type === DELETE_TASK_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+  if (action.type === DELETE_TASK_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Task Deleted!',
+    }
+  }
+  if (action.type === DELETE_TASK_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+  // throw new Error(`no such action : ${action.type}`)
 }
 
 

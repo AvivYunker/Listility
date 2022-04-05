@@ -44,6 +44,8 @@ import {
   UPDATE_TASK_ERROR,
 
   DELETE_TASK_BEGIN,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_ERROR,
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -295,8 +297,8 @@ const AppProvider = ({ children }) => {
         taskTitle,
         isChecked,
       })
-      getJobs()
       dispatch({ type: CREATE_TASK_SUCCESS })
+      getJobs()
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) return
@@ -353,16 +355,22 @@ const AppProvider = ({ children }) => {
   }
 
   const deleteTask = async (taskId, listId) => {
+    alert("The task ID is: " + taskId)
+    alert("The listId is: " + listId)
     dispatch({ type: DELETE_TASK_BEGIN })
     try {
-      await authFetch.delete(`/list/${listId}/task`)
-      getJobs() // don't have this function yet
+      await authFetch.delete(`/list/${listId}/task/?taskId=${taskId}`)
+      dispatch({ type: DELETE_TASK_SUCCESS })
+      getJobs()
+      dispatch({ CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) {
         logoutUser()
+        dispatch({ type: DELETE_TASK_ERROR })
       } else {
         alert("The error message is: " + error)
       }
+      clearAlert()
     }
   }
 

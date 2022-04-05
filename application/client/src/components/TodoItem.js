@@ -9,6 +9,7 @@ import styles from '../assets/styles/modules/todoItem.module.scss'
 import { getClasses } from '../utils/getClasses';
 import CheckButton from './CheckButton';
 import TodoModal from './TodoModal';
+import { useAppContext } from '../context/appContext';
 
 const child = {
   hidden: { y: 20, opacity: 0 },
@@ -22,6 +23,7 @@ function TodoItem({ todo, listId }) {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const { deleteTask } = useAppContext();
 
   useEffect(() => {
           // console.log("$$$" + todo.taskTitle)
@@ -31,18 +33,19 @@ function TodoItem({ todo, listId }) {
     } else {
       setChecked(false);
     }
-  }, [todo.status]);
+  }, [todo.isChecked]);
 
-  const handleCheck = () => {
+  const handleCheck = () => { // isChecked...(VERY IMPORTANT)
     setChecked(!checked);
     dispatch(
-      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
+      updateTodo({ ...todo, isChecked: checked ? 'false' : 'complete' })
     );
   };
 
   const handleDelete = () => {
-    dispatch(deleteTodo(todo._id));
-    toast.success('Todo Deleted Successfully');
+    dispatch(deleteTask(todo._id, listId));
+    // dispatch(deleteTodo(todo._id));
+    // toast.success('Todo Deleted Successfully');
   };
 
   const handleUpdate = () => {
@@ -59,7 +62,7 @@ function TodoItem({ todo, listId }) {
             id="TaskItem"
               className={getClasses([
                 styles.todoText,
-                todo.status === 'complete' && styles['todoText--completed'],
+                todo.isChecked === 'complete' && styles['todoText--completed'],
               ])}
             >
               {todo.taskTitle}
