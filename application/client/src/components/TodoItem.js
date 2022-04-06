@@ -44,8 +44,7 @@ function TodoItem({ todo, listId }) {
 
   const handleDelete = () => {
     dispatch(deleteTask(todo._id, listId));
-    // dispatch(deleteTodo(todo._id));
-    // toast.success('Todo Deleted Successfully');
+    toast.success('Todo Deleted Successfully');
   };
 
   const handleUpdate = () => {
@@ -76,9 +75,9 @@ function TodoItem({ todo, listId }) {
           <div
             className={styles.icon}
             onClick={() => handleDelete()}
-            onKeyDown={() => handleDelete()}
+            // onKeyDown={() => handleDelete()}
             tabIndex={0}
-            role="button"
+            // role="button"
           >
             <MdDelete/>
           </div>
@@ -86,7 +85,7 @@ function TodoItem({ todo, listId }) {
             id="EditTaskIcon"
             className={styles.icon}
             onClick={() => handleUpdate()}
-            onKeyDown={() => handleUpdate()}
+            // onKeyDown={() => handleUpdate()}
             tabIndex={0}
             role="button"
           >

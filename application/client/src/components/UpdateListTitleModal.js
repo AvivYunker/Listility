@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/modal.module.scss'
 import Button from './Button';
+import { useAppContext } from '../context/appContext'
+
 
 const dropIn = {
   hidden: {
@@ -29,36 +31,29 @@ const dropIn = {
   },
 };
 
-function UpdateListModal({ type, modalOpen, setModalOpen, todo, prevTitle }) {
+function TodoModal({ type, modalOpen, setModalOpen, listId, prevTitle }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [status, setStatus] = useState('incomplete');
+  let taskId = useState();
 
-  useEffect(() => {
-    if (type === 'update' && todo) {
-      setTitle(todo.title);
-      setStatus(todo.status);
-    } else {
-      setTitle('');
-      setStatus('incomplete');
-    }
-  }, [type, modalOpen]);
+  const {
+    editListTitle
+  } = useAppContext()
 
   const handleSubmit = (e) => {
-    // alert("the prevTitle is: " + prevTitle)
-    // alert("The title is: " + title)
-    // e.preventDefault();
+    // alert("TITLE UPDATER IS HERE!")
+    e.preventDefault();
     if (title === '') {
-      alert("TITLE IS EMPTY!")
       toast.error('Please enter a title');
+      // alert("The title is empty...")
       return;
-    } else {
-      alert("TITLE IS VALID!")
-      prevTitle = title;
-      // dispatch(prevTitle = title);
-      toast.success('Task added successfully');
+    }
+    if (title) {
+      // alert("THe new title is: " + title)
+      editListTitle(listId, title)
       setModalOpen(false);
     }
+    // clearAlert()
   };
 
   return (
@@ -93,22 +88,23 @@ function UpdateListModal({ type, modalOpen, setModalOpen, todo, prevTitle }) {
 
             <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
               <h1 className={styles.formTitle}>
-                Update List Title
+                Change List Title
               </h1>
               <label htmlFor="title">
-                New List Title
+                New Title
                 <input
                   type="text"
-                  id="NewListTitle"
+                  id="NewTaskTitle"
                   value={title}
+                  // value={todo.taskTitle}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
               <div className={styles.buttonContainer}>
-                <Button id="ApplyNewListTitle" type="submit" variant="primary">
-                  Update
+                <Button id="NewTaskSubmit" type="submit" variant="primary">
+                  Change
                 </Button>
-                <Button id="CancelNewListTitle" variant="cancel" onClick={() => setModalOpen(false)}>
+                <Button variant="cancel" onClick={() => setModalOpen(false)}>
                   Cancel
                 </Button>
               </div>
@@ -120,4 +116,4 @@ function UpdateListModal({ type, modalOpen, setModalOpen, todo, prevTitle }) {
   );
 }
 
-export default UpdateListModal;
+export default TodoModal;

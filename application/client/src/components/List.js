@@ -31,7 +31,7 @@ import { motion } from 'framer-motion';
 
 import { deleteTodo, updateTodo } from '../slices/todoSlice';
 import toast from 'react-hot-toast';
-import UpdateListModal from './UpdateListModal';
+import UpdateListTitleModal from './UpdateListTitleModal';
 
 
 const List = ({
@@ -41,7 +41,7 @@ const List = ({
   listTitle,
   createdAt,
 }) => {
-  const { setEditJob, shareJob, deleteJob } = useAppContext()
+  const { setEditJob, shareJob, deleteJob, editListTitle } = useAppContext()
 
   const [modalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
@@ -92,11 +92,12 @@ const List = ({
             <MdEdit />
           </div>
         </div>
-        <UpdateListModal
+        <UpdateListTitleModal
           type="update"
           modalOpen={updateModalOpen}
           setModalOpen={setUpdateModalOpen}
           todo={todo}
+          listId={_id}
           prevTitle={listTitle}
         />
         <br/>

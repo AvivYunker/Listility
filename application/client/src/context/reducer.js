@@ -41,6 +41,10 @@ import {
   DELETE_TASK_SUCCESS,
   DELETE_TASK_ERROR,
 
+  LIST_TITLE_BEGIN,
+  LIST_TITLE_SUCCESS,
+  LIST_TITLE_ERROR,
+
   // EDIT_TASK_BEGIN,
   // EDIT_TASK_SUCCESS,
   // EDIT_TASK_ERROR,
@@ -329,9 +333,38 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
+
+  if (action.type === LIST_TITLE_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+  if (action.type === LIST_TITLE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      isChecked: action.payload.isChecked,
+      taskId: action.payload.taskId,
+      taskTitle: action.payload.taskTitle,
+      listTitle: action.payload.location,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Task Updated!',
+    }
+  }
+  if (action.type === LIST_TITLE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+
+  // export const LIST_TITLE_BEGIN = 'LIST_TITLE_BEGIN'
+  // export const LIST_TITLE_SUCCESS = 'LIST_TITTLE_SUCCESS'
+  // export const LIST_TITLE_ERROR = 'LIST_TITLE_ERROR'
+
   // throw new Error(`no such action : ${action.type}`)
 }
-
-
 
 export default reducer

@@ -46,6 +46,12 @@ import {
   DELETE_TASK_BEGIN,
   DELETE_TASK_SUCCESS,
   DELETE_TASK_ERROR,
+
+  LIST_TITLE_BEGIN,
+  LIST_TITLE_SUCCESS,
+  LIST_TITLE_ERROR,
+
+
 } from './actions'
 
 const token = localStorage.getItem('token')
@@ -112,7 +118,7 @@ const AppProvider = ({ children }) => {
     (error) => {
       // console.log(error.response)
       if (error.response.status === 401) {
-        logoutUser()
+        // logoutUser()
       }
       return Promise.reject(error)
     }
@@ -236,7 +242,7 @@ const AppProvider = ({ children }) => {
         },
       })
     } catch (error) {
-      logoutUser()
+      // logoutUser()
       dispatch({ type: GET_JOBS_SUCCESS, payload: error})
     }
     clearAlert()
@@ -264,12 +270,36 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const editListTitle = async (listId, listTitle) => { // WORK HERE
+    // alert("In editListTitle, the listId is: " + listId)
+    // alert("In editListTitle, the newTitle is: " + listTitle)
+    dispatch({ type: LIST_TITLE_BEGIN })
+    try {
+      await authFetch.put(`/lists?listTitle=${listTitle}`, {
+        listId,
+        listTitle,
+      })
+      dispatch({
+        type: LIST_TITLE_SUCCESS,
+        payload: { listTitle }
+      })
+      getJobs()
+    } catch(error) {
+      if (error.response.status !== 401) {
+        dispatch({
+          type: LIST_TITLE_ERROR,
+          payload: { msg: error.response.data.msg },
+        })
+      }
+    }
+  }
+
   const shareJob = async (jobId) => {
     dispatch({ type: SHARE_JOB_BEGIN })
     try {
       console.log("The jobId is: " + jobId)
     } catch (error) {
-      logoutUser()
+      // logoutUser()
     }
   }
 
@@ -279,7 +309,7 @@ const AppProvider = ({ children }) => {
       await authFetch.delete(`/lists?listid=${jobId}`)
       getJobs()
     } catch (error) {
-      logoutUser()
+      // logoutUser()
     }
   }
 
@@ -355,20 +385,19 @@ const AppProvider = ({ children }) => {
   }
 
   const deleteTask = async (taskId, listId) => {
-    alert("The task ID is: " + taskId)
-    alert("The listId is: " + listId)
+    // alert("The task ID is: " + taskId)
+    // alert("The listId is: " + listId)
     dispatch({ type: DELETE_TASK_BEGIN })
     try {
       await authFetch.delete(`/list/${listId}/task/?taskId=${taskId}`)
       dispatch({ type: DELETE_TASK_SUCCESS })
       getJobs()
-      dispatch({ CLEAR_VALUES })
+      dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) {
-        logoutUser()
+        // logoutUser()
         dispatch({ type: DELETE_TASK_ERROR })
       } else {
-        alert("The error message is: " + error)
       }
       clearAlert()
     }
@@ -386,7 +415,7 @@ const AppProvider = ({ children }) => {
         },
       })
     } catch (error) {
-      logoutUser()
+      // logoutUser()
     }
     clearAlert()
   }
@@ -419,6 +448,7 @@ const AppProvider = ({ children }) => {
         createTask,
         updateTask,
         deleteTask,
+        editListTitle
       }}
     >
       {children}
