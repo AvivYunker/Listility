@@ -23,7 +23,7 @@ function TodoItem({ todo, listId }) {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
-  const { deleteTask } = useAppContext();
+  const { updateTask, deleteTask } = useAppContext();
 
   // useEffect(() => {
   //         // console.log("$$$" + todo.taskTitle)
@@ -38,12 +38,17 @@ function TodoItem({ todo, listId }) {
   const handleCheck = () => { // isChecked...(VERY IMPORTANT)
     // alert("has been checked")
     todo.isChecked = !todo.isChecked
-    // alert("todo.isChecked is: " + todo.isChecked)
-    // alert("The task title is: " + todo.taskTitle)
+    // alert("Now, todo.isChecked is: " + todo.isChecked)
+    // alert("The listId is: " + listId) // first item
+    // alert("The taskId is: " + todo._id) // second item
+    alert("The task title is: " + todo.taskTitle) // third item
+    // alert("todo.isChecked is: " + todo.isChecked) // forth item
     setChecked(todo.isChecked);
     // dispatch(
     //   updateTodo({ ...todo, isChecked: checked ? 'false' : 'complete' })
     // );
+    // alert("todo.isChecked inside TodoItem is: " + todo.isChecked)
+    dispatch(updateTask(listId, todo._id, todo.taskTitle, todo.isChecked))
   };
 
   const handleDelete = () => {
