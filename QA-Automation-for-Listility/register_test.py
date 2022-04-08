@@ -10,7 +10,7 @@ class RegisterTest: # definition of class, it's PascalCasing.
        # "get" - this will access the website.
        # "self.url" - this is parameter that stores the URL.
        return None # if the function doesn't need to return anything, then we type "return None" just that there will be a return statement
-    
+
     def click_login_register(self): # this function will find the button "Login / Register", and will click on it
         login_register_button = self.driver.find_element_by_id('LoginRegister') # defining a variable - that receives the button, that appears in the website.
         login_register_button.click() # this will click on the button
@@ -29,7 +29,7 @@ class RegisterTest: # definition of class, it's PascalCasing.
         username_field.send_keys(username) # take the 'username' that we've received in the function-call, insert into the text-box
         password_field.send_keys(password) # take the 'password' that we've received in the function-call, insert into the text-box
         return None # if the function doesn't need to return anything, then we type "return None" just that there will be a return statement
-    
+
     def submit_username_password(self): # this function will find the "submit" button, and will click it.
         submit_button = self.driver.find_element_by_id('SubmitLoginRegister') # defining a variable - that receives the button, that appears in the website.
         submit_button.click() # this will click on the button
@@ -37,7 +37,7 @@ class RegisterTest: # definition of class, it's PascalCasing.
 
     def confirm_register_success(self, confirmation_text): # this function will confirm that the user registration had succeeded.
         time.sleep(5) # wait till the application loads, and then continue with the Python code (this code)
-        welcome_header = self.driver.find_element_by_id('WelcomeUser')  # defining a variable - that receives the text, that appears in the website.
+        welcome_header = self.driver.find_element_by_id('WelcomeUser') # defining a variable - that receives the text, that appears in the website.
         welcome_header = welcome_header.text # get the text-content from the element
         return (welcome_header == confirmation_text) # if the welcome_header (element) is equal to the string that we've received from the function-call, then return "true", otherwise, return "false"
 
@@ -57,8 +57,8 @@ test_object.click_login_register() # here - we're calling the "click_login_regis
 test_object.go_to_register() # here - we're calling the "go_to_register" method of the class "RegisterTest" (making the "go_to_register" function run)
 test_object.enter_username_password("Test6", "test6@gmail.com", "123123") # here - we're calling the "enter_username_password" method of the class "RegisterTest" (making the "enter_username_password" function run)
 # also - we're passing the 3 parameters, which are: "Test4", "test4@gmail.com" and "123123"
-test_object.submit_username_password()# here - we're calling the "submit_username_password" method of the class "RegisterTest" (making the "submit_username_password" function run)
-is_success = test_object.confirm_register_success("Welcome, Test6!") # the "confirm_register_success" returns a value. This value will be stored in "is_success" for future use 
+test_object.submit_username_password() # here - we're calling the "submit_username_password" method of the class "RegisterTest" (making the "submit_username_password" function run)
+is_success = test_object.confirm_register_success("Welcome, Test6!") # the "confirm_register_success" returns a value. This value will be stored in "is_success" for future use
 
 print(is_success) # print the value that had been stored inside "is_success" (whether test had succeeded or not)
 driver.close() # this closes the browser, because we've finished writing the test.
