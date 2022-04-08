@@ -25,21 +25,25 @@ function TodoItem({ todo, listId }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const { deleteTask } = useAppContext();
 
-  useEffect(() => {
-          // console.log("$$$" + todo.taskTitle)
-    if (todo.isChecked) {
-      console.log(`Task with title ${todo.taskTitle} is checked? ${todo.isChecked}`)
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [todo.isChecked]);
+  // useEffect(() => {
+  //         // console.log("$$$" + todo.taskTitle)
+  //   if (todo.isChecked) {
+  //     console.log(`Task with title ${todo.taskTitle} is checked? ${todo.isChecked}`)
+  //     setChecked(true);
+  //   } else {
+  //     setChecked(false);
+  //   }
+  // }, [todo.isChecked]);
 
   const handleCheck = () => { // isChecked...(VERY IMPORTANT)
-    setChecked(!checked);
-    dispatch(
-      updateTodo({ ...todo, isChecked: checked ? 'false' : 'complete' })
-    );
+    // alert("has been checked")
+    todo.isChecked = !todo.isChecked
+    // alert("todo.isChecked is: " + todo.isChecked)
+    // alert("The task title is: " + todo.taskTitle)
+    setChecked(todo.isChecked);
+    // dispatch(
+    //   updateTodo({ ...todo, isChecked: checked ? 'false' : 'complete' })
+    // );
   };
 
   const handleDelete = () => {
