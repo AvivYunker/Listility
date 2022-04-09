@@ -131,10 +131,7 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
               <input
                 type="checkbox"
                 id="isEdit"
-                // value={title}
-                // onClick={(e) => (isEdit = e.target.checked)}
-                onChange={(e) => alert(e.target.checked)}
-                isEdit={(e) => isEdit = e.target.checked}
+                onChange={(e) => setIsEdit(e.target.checked)}
                 />
               <label>&nbsp;&nbsp;Allow user to edit {listTitle}</label>
               <div className={styles.buttonContainer}>

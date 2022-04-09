@@ -54,7 +54,14 @@ import {
   DUPLICATE_LIST_BEGIN,
   DUPLICATE_LIST_SUCCESS,
   DUPLICATE_LIST_ERROR,
+  
+  ADD_SHARE_BEGIN,
+  ADD_SHARE_SUCCESS,
+  ADD_SHARE_ERROR,
 
+  REMOVE_SHARE_BEGIN,
+  REMOVE_SHARE_SUCCESS,
+  REMOVE_SHARE_ERROR,
 
 } from './actions'
 
@@ -399,6 +406,42 @@ const AppProvider = ({ children }) => {
       if (error.response.status === 401) return
       dispatch({
         type: DUPLICATE_LIST_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
+  const addShare = async (listId /* what else?*/) => {
+    dispatch({ type: ADD_SHARE_BEGIN })
+    try {
+      await authFetch.put(`/list/${listId}/shares`, {
+        // what else?
+      })
+      dispatch({ type: ADD_SHARE_SUCCESS })
+      getJobs()
+      dispatch({ type: CLEAR_VALUES })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: ADD_SHARE_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
+  const removeShare = async(listId, /*what else?*/) => {
+    dispatch({ type: REMOVE_SHARE_BEGIN })
+    try {
+      await authFetch.delete(`/list/${listId}/shares`)
+      dispatch({ type: REMOVE_SHARE_SUCCESS })
+      getJobs()
+      dispatch({ type: CLEAR_VALUES })
+    } catch (error) {
+      if (error.response.status == 401) return
+      dispatch({
+        type: REMOVE_SHARE_ERROR,
         payload: { msg: error.response.data.msg },
       })
     }
