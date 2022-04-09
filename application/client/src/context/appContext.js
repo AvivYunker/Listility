@@ -100,7 +100,8 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1',
+    // baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1',
+    baseURL: 'http://listility-backend.azurewebsites.net' + '/api/v1',
   })
   // request
 
@@ -384,13 +385,13 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const duplicateList = async (listTitle, tasksOfList) => {
+  const duplicateList = async (listId) => {
+
     dispatch({ type: DUPLICATE_LIST_BEGIN })
     try {
       // const { listTitle } = state
-      await authFetch.post('/lists', {
-        listTitle,
-        tasksOfList,
+      await authFetch.post(`/lists/dup`, {
+        listId
       })
       dispatch({ type: DUPLICATE_LIST_SUCCESS })
       getJobs()

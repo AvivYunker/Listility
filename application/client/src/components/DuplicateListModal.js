@@ -30,14 +30,15 @@ const dropIn = {
   },
 };
 
-function DeleteModal({ type, modalOpen, setModalOpen, listTitle, allTasks }) {
+function DuplicateListModal({ type, modalOpen, setModalOpen, listId, listTitle}) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState('incomplete');
   const { duplicateList } = useAppContext()
 //   const _id = this.id
 
   const handleDuplicate = () => {
-      duplicateList(listTitle, allTasks);
+    //   duplicateList(listTitle, allTasks);
+    duplicateList(listId)
   };
 
   return (
@@ -90,4 +91,4 @@ function DeleteModal({ type, modalOpen, setModalOpen, listTitle, allTasks }) {
   );
 }
 
-export default DeleteModal;
+export default DuplicateListModal;
