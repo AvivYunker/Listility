@@ -30,15 +30,14 @@ const dropIn = {
   },
 };
 
-function DeleteModal({ type, modalOpen, setModalOpen, id, title }) {
+function DeleteModal({ type, modalOpen, setModalOpen, listTitle, allTasks }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState('incomplete');
   const { duplicateList } = useAppContext()
 //   const _id = this.id
 
   const handleDuplicate = () => {
-    //   alert("The ID is: " + id)
-      duplicateList(id);
+      duplicateList(listTitle, allTasks);
   };
 
   return (
@@ -73,7 +72,7 @@ function DeleteModal({ type, modalOpen, setModalOpen, id, title }) {
 
             <form>
               <h1 className={styles.formTitle}>
-                Are you sure you want to duplicate {title}?
+                Are you sure you want to duplicate {listTitle}?
               </h1>
               <div className={styles.buttonContainer}>
                 <Button id="ApplyNewListTitle" type="submit" variant="primary" onClick={() => handleDuplicate()}>

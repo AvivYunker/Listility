@@ -45,6 +45,10 @@ import {
   LIST_TITLE_SUCCESS,
   LIST_TITLE_ERROR,
 
+  DUPLICATE_LIST_BEGIN,
+  DUPLICATE_LIST_SUCCESS,
+  DUPLICATE_LIST_ERROR,
+
   // EDIT_TASK_BEGIN,
   // EDIT_TASK_SUCCESS,
   // EDIT_TASK_ERROR,
@@ -351,6 +355,31 @@ const reducer = (state, action) => {
     }
   }
   if (action.type === LIST_TITLE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+  if (action.type === DUPLICATE_LIST_BEGIN) {
+    // console.log("The request had begun...")
+    return { ...state, isLoading: true }
+  }
+
+  if (action.type === DUPLICATE_LIST_SUCCESS) {
+    // console.log("The request had succeeded!")
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New List Created!',
+    }
+  }
+  if (action.type === DUPLICATE_LIST_ERROR) {
+    // console.log("The request made an error...")
     return {
       ...state,
       isLoading: false,

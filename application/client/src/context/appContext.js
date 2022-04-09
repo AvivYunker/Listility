@@ -393,6 +393,7 @@ const AppProvider = ({ children }) => {
         tasksOfList,
       })
       dispatch({ type: DUPLICATE_LIST_SUCCESS })
+      getJobs()
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) return
@@ -449,7 +450,8 @@ const AppProvider = ({ children }) => {
         createTask,
         updateTask,
         deleteTask,
-        editListTitle
+        editListTitle,
+        duplicateList
       }}
     >
       {children}

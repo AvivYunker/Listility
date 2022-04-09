@@ -112,8 +112,8 @@ const List = ({
           modalOpen={duplicateModalOpen}
           setModalOpen={setDuplicateModalOpen}
           todo={todo}
-          listId={_id}
-          title={listTitle}
+          listTitle={listTitle}
+          allTasks={taskList}
         />
         <br/>
         <ListInfo icon={<FaCalendarAlt />} text={date} />
