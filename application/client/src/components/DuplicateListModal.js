@@ -33,12 +33,12 @@ const dropIn = {
 function DeleteModal({ type, modalOpen, setModalOpen, id, title }) {
   const dispatch = useDispatch();
   const [status, setStatus] = useState('incomplete');
-  const { deleteJob } = useAppContext()
+  const { duplicateList } = useAppContext()
 //   const _id = this.id
 
-  const handleDelete = () => {
+  const handleDuplicate = () => {
     //   alert("The ID is: " + id)
-      deleteJob(id);
+      duplicateList(id);
   };
 
   return (
@@ -76,7 +76,7 @@ function DeleteModal({ type, modalOpen, setModalOpen, id, title }) {
                 Are you sure you want to duplicate {title}?
               </h1>
               <div className={styles.buttonContainer}>
-                <Button id="ApplyNewListTitle" type="submit" variant="primary" onClick={() => handleDelete()}>
+                <Button id="ApplyNewListTitle" type="submit" variant="primary" onClick={() => handleDuplicate()}>
                   Duplicate
                 </Button>
                 <Button variant="cancel" onClick={() => setModalOpen(false)}>
