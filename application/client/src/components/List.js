@@ -33,6 +33,7 @@ import { motion } from 'framer-motion';
 import { deleteTodo, updateTodo } from '../slices/todoSlice';
 import toast from 'react-hot-toast';
 import UpdateListTitleModal from './UpdateListTitleModal';
+import DuplicateListModal from './DuplicateListModal';
 
 
 const List = ({
@@ -47,6 +48,7 @@ const List = ({
   const [modalOpen, setModalOpen] = useState(false)
   const dispatch = useDispatch()
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const [duplicateModalOpen, setDuplicateModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
 
@@ -61,19 +63,12 @@ const List = ({
   // }
 
   const handleUpdate = () => {
-    // alert("The ID is: " + _id)
-    // alert("The TITLE is: " + listTitle)
-
-
-    // VERY IMPORATANT!
-    // taskList.map((task) => {
-    //   console.log("Title ID is: " + task._id)
-    //   console.log("Title is: " + task.taskTitle)
-    //   console.log("IsChecked: " + task.isChecked)
-    // })
-
     setUpdateModalOpen(true);
   };
+
+  const handleDuplicate = () => {
+    setDuplicateModalOpen(true);
+  }
 
   let date = moment(createdAt)
   date = date.format('Do MMM, YYYY')
@@ -91,8 +86,18 @@ const List = ({
             role="button"
           >
             <MdEdit />
+          </div>
+          <div
+            id="DuplicateList"
+            className={styles.icon}
+            onClick={() => handleDuplicate()}
+            onKeyDown={() => handleDuplicate()}
+            tabIndex={0}
+            role="button"
+          >
             <IoCopy />
           </div>
+
         </div>
         <UpdateListTitleModal
           type="update"
@@ -101,6 +106,14 @@ const List = ({
           todo={todo}
           listId={_id}
           prevTitle={listTitle}
+        />
+        <DuplicateListModal
+          type="update"
+          modalOpen={duplicateModalOpen}
+          setModalOpen={setDuplicateModalOpen}
+          todo={todo}
+          listId={_id}
+          title={listTitle}
         />
         <br/>
         <ListInfo icon={<FaCalendarAlt />} text={date} />
