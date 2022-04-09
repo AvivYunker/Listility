@@ -51,6 +51,10 @@ import {
   LIST_TITLE_SUCCESS,
   LIST_TITLE_ERROR,
 
+  DUPLICATE_LIST_BEGIN,
+  DUPLICATE_LIST_SUCCESS,
+  DUPLICATE_LIST_ERROR,
+
 
 } from './actions'
 
@@ -317,12 +321,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CREATE_TASK_BEGIN })
     // alert("in createTask");
     try {
-      isChecked = false
-      // const { listId, taskTitle, isChecked } = state
-      // alert("in createTask, listId is: " + listId)
-      // alert("in createTask, taskTitle is: " + taskTitle)
-      // alert("in createTask, isChecked is: " + isChecked)
-      // await authFetch.post(`/list/${listId}/task`, {
       await authFetch.post(`/list/${listId}/task`, {
         taskTitle,
         isChecked,
@@ -339,27 +337,6 @@ const AppProvider = ({ children }) => {
     }
     clearAlert()
   }
-
-  // addTodo: (state, action) => {
-  //   state.todoList.push(action.payload);
-  //   const todoList = window.localStorage.getItem('todoList');
-  //   if (todoList) {
-  //     const todoListArr = JSON.parse(todoList);
-  //     todoListArr.push({
-  //       ...action.payload,
-  //     });
-  //     window.localStorage.setItem('todoList', JSON.stringify(todoListArr));
-  //   } else {
-  //     window.localStorage.setItem(
-  //       'todoList',
-  //       JSON.stringify([
-  //         {
-  //           ...action.payload,
-  //         },
-  //       ])
-  //     );
-  //   }
-  // },
 
   const updateTask = async (listId, taskId, taskTitle, isChecked) => {
     // alert("in UpdateTask, listId is: " + listId)
@@ -405,6 +382,26 @@ const AppProvider = ({ children }) => {
       }
       clearAlert()
     }
+  }
+
+  const duplicateList = async (listTitle, tasksOfList) => {
+    dispatch({ type: DUPLICATE_LIST_BEGIN })
+    try {
+      // const { listTitle } = state
+      await authFetch.post('/lists', {
+        listTitle,
+        tasksOfList,
+      })
+      dispatch({ type: DUPLICATE_LIST_SUCCESS })
+      dispatch({ type: CLEAR_VALUES })
+    } catch (error) {
+      if (error.response.status === 401) return
+      dispatch({
+        type: DUPLICATE_LIST_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
   }
 
   const showStats = async () => {
