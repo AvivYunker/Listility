@@ -9,6 +9,7 @@ import AddTask from './AddTask'
 
 import { TiEdit } from 'react-icons/ti'
 import { MdDelete, MdEdit } from 'react-icons/md';
+import { IoCopy } from 'react-icons/io5';
 
 import Addtodo from './Addtodo'
 import Tasks from './Tasks'
@@ -90,6 +91,7 @@ const List = ({
             role="button"
           >
             <MdEdit />
+            <IoCopy />
           </div>
         </div>
         <UpdateListTitleModal
