@@ -133,7 +133,7 @@ const List = ({
             <Button id="ShareListButton" variant="primary" onClick={() => setModalOpen(true)}>
               Share
             </Button>
-            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} listTitle={listTitle}/>
           </span>
           <span>
             {/* <Button id="DeleteListButton" variant="delete" onClick={() => deleteJob(_id)}> */}

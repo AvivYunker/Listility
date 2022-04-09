@@ -31,34 +31,41 @@ const dropIn = {
   },
 };
 
-function TodoModal({ type, modalOpen, setModalOpen, todo }) {
+function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
+  const [emailOfShared, setEmailOfShared] = useState('');
+  const [isEdit, setIsEdit] = useState('');
   const [status, setStatus] = useState('incomplete');
-  const { Title } = useAppContext()
+  // const { Title } = useAppContext()
 
   useEffect(() => {
     if (type === 'update' && todo) {
-      setTitle(todo.title);
-      setStatus(todo.status);
+      setEmailOfShared(todo.title);
+      setEmailOfShared(todo.status);
     } else {
-      setTitle('');
+      setEmailOfShared('');
       setStatus('incomplete');
     }
   }, [type, todo, modalOpen]);
 
+  const handleShare = () => {
+    // alert("ready to share...")
+    alert("the email of the user is: " + emailOfShared)
+    alert("The isEdit is: " + isEdit)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title === '') {
+    if (emailOfShared === '') {
       toast.error('Please enter a title');
       return;
     }
-    if (title && status) {
+    if (emailOfShared && status) {
       if (type === 'add') {
         dispatch(
           addTodo({
             id: uuid(),
-            title,
+            emailOfShared,
             status,
             time: new Date().toLocaleString(),
           })
@@ -67,7 +74,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       }
       if (type === 'update') {
         if (todo.title) {
-          dispatch(updateTodo({ ...todo, title }));
+          dispatch(updateTodo({ ...todo, emailOfShared }));
           toast.success('Task Updated successfully');
         } else {
           toast.error('No changes made');
@@ -110,25 +117,27 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
 
             <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
               <h1 id="ShareListHeader" className={styles.formTitle}>
-                  Share List
+                Share {listTitle}
               </h1>
-              <label htmlFor="title">
+              <label htmlFor="emailOfShared">
                 Email of user:
                 <input
-                  type="text"
-                  id="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
+                  type="email"
+                  id="EmailOfShared"
+                  value={emailOfShared}
+                  onChange={(e) => setEmailOfShared(e.target.value)}
                 />
               </label>
-              <label for="html">View Only</label>
-              <input type="radio" id="view" name="view-only" value="false"/>
-              <br/>
-              <label for="html">View + Edit</label>
-              <input type="radio" id="edit" name="view-and-edit" value="true"/>
+              <input
+                type="checkbox"
+                id="isEdit"
+                value={isEdit}
+                onChange={(f) => setIsEdit(f.target.value)}
+              />
+              <label>&nbsp;&nbsp;Allow user to edit {listTitle}</label>
               <div className={styles.buttonContainer}>
-                <Button type="submit" variant="primary">
-                    Share
+                <Button type="submit" variant="primary" onClick={() => handleShare(emailOfShared, isEdit)}>
+                  Share
                 </Button>
                 <Button variant="cancel" onClick={() => setModalOpen(false)}>
                   Cancel
@@ -146,4 +155,4 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   );
 }
 
-export default TodoModal;
+export default ShareModal;

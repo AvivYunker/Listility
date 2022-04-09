@@ -386,7 +386,6 @@ const AppProvider = ({ children }) => {
   }
 
   const duplicateList = async (listId) => {
-
     dispatch({ type: DUPLICATE_LIST_BEGIN })
     try {
       // const { listTitle } = state
