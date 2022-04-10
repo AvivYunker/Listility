@@ -1,7 +1,6 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import React from 'react';
-import styles from '../assets/styles/modules/todoItem.module.scss'
-
+import styles from '../assets/styles/modules/todoItem.module.scss';
 
 const checkVariants = {
   initial: {
@@ -13,7 +12,7 @@ const checkVariants = {
 
 const boxVariants = {
   checked: {
-    background: 'var(--gray-2)',
+    background: 'var(--primaryPurple)',
     transition: { duration: 0.1 },
   },
   unchecked: { background: 'var(--gray-2)', transition: { duration: 0.1 } },

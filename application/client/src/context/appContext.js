@@ -349,7 +349,7 @@ const AppProvider = ({ children }) => {
   const updateTask = async (listId, taskId, taskTitle, isChecked) => {
     // alert("in UpdateTask, listId is: " + listId)
     // alert("in UpdateTask, taskId is: " + taskId)
-    alert("in UpdateTask, taskTitle is: " + taskTitle)
+    // alert("in UpdateTask, taskTitle is: " + taskTitle)
     // alert("todo.isChecked inside AppContext is: " + isChecked)
     dispatch({ type: UPDATE_TASK_BEGIN })
     try {

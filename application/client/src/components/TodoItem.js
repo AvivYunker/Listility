@@ -25,30 +25,19 @@ function TodoItem({ todo, listId }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const { updateTask, deleteTask } = useAppContext();
 
-  // useEffect(() => {
-  //         // console.log("$$$" + todo.taskTitle)
-  //   if (todo.isChecked) {
-  //     console.log(`Task with title ${todo.taskTitle} is checked? ${todo.isChecked}`)
-  //     setChecked(true);
-  //   } else {
-  //     setChecked(false);
-  //   }
-  // }, [todo.isChecked]);
+  useEffect(() => {
+    if (todo.status === 'complete') {
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+  }, [todo.status]);
 
-  const handleCheck = () => { // isChecked...(VERY IMPORTANT)
-    // alert("has been checked")
-    todo.isChecked = !todo.isChecked
-    // alert("Now, todo.isChecked is: " + todo.isChecked)
-    // alert("The listId is: " + listId) // first item
-    // alert("The taskId is: " + todo._id) // second item
-    alert("The task title is: " + todo.taskTitle) // third item
-    // alert("todo.isChecked is: " + todo.isChecked) // forth item
-    setChecked(todo.isChecked);
-    // dispatch(
-    //   updateTodo({ ...todo, isChecked: checked ? 'false' : 'complete' })
-    // );
-    // alert("todo.isChecked inside TodoItem is: " + todo.isChecked)
-    dispatch(updateTask(listId, todo._id, todo.taskTitle, todo.isChecked))
+  const handleCheck = () => {
+    setChecked(!checked);
+    dispatch(
+      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
+    );
   };
 
   const handleDelete = () => {
@@ -64,7 +53,7 @@ function TodoItem({ todo, listId }) {
     <>
       <motion.div className={styles.item} variants={child}>
         <div className={styles.todoDetails}>
-          <CheckButton checked={checked} handleCheck={handleCheck} />
+        <CheckButton checked={checked} handleCheck={handleCheck} />
           <div className={styles.texts}>
             <p
             id="TaskItem"
