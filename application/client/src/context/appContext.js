@@ -104,6 +104,7 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  let baseURL;
 
   // axios
   const authFetch = axios.create({
@@ -162,8 +163,8 @@ const AppProvider = ({ children }) => {
   const setupUser = async ({ currentUser, endPoint, alertText }) => {
     dispatch({ type: SETUP_USER_BEGIN })
     try {
-      const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
-
+      // const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
+      const { data } = await axios.post(`http://listility-backend-testing.azurewebsites.net/api/v1/${endPoint}`, currentUser)
       const { user, token, location } = data
       dispatch({
         type: SETUP_USER_SUCCESS,

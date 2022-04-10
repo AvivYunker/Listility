@@ -8,6 +8,7 @@ import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../assets/styles/modules/modal.module.scss'
 import Button from './Button';
 import { useAppContext } from '../context/appContext'
+import ShareContainer from './ShareContainer';
 
 
 const dropIn = {
@@ -147,7 +148,7 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) 
               <br/>
               <div>
                 <h4>Manage Current Shares:</h4>
-                <p>Render all shares</p>
+                <ShareContainer/>
               </div>
             </form>
           </motion.div>

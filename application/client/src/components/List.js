@@ -42,6 +42,7 @@ const List = ({
   _id,
   listTitle,
   createdAt,
+  shares,
 }) => {
   const { setEditJob, shareJob, deleteJob, editListTitle } = useAppContext()
 
@@ -63,7 +64,10 @@ const List = ({
   // }
 
   const handleUpdate = () => {
-    setUpdateModalOpen(true);
+    shares.map((share) => {
+      alert(share)
+    });
+    // setUpdateModalOpen(true); // UNCOMMENT THIS!!!
   };
 
   const handleDuplicate = () => {
