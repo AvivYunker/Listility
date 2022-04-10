@@ -31,7 +31,7 @@ const dropIn = {
   },
 };
 
-function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
+function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) {
   const dispatch = useDispatch();
   const [emailOfShared, setEmailOfShared] = useState('');
   const [isEdit, setIsEdit] = useState(false);
@@ -50,10 +50,10 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
   }, [type, todo, modalOpen]);
 
   const handleShare = () => {
-    // alert("ready to share...")
-    // alert("the email of the user is: " + emailOfShared)
-    // alert("The isEdit is: " + isEdit)
-    // dispatch(addShare()) // I WAS HERE (10/04/2022)
+    alert("ready to share...")
+    alert("the email of the user is: " + emailOfShared)
+    alert("The isEdit is: " + isEdit)
+    dispatch(addShare(listId, emailOfShared, isEdit))
   }
 
   const handleSubmit = (e) => {
@@ -147,6 +147,7 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
               <br/>
               <div>
                 <h4>Manage Current Shares:</h4>
+                <p>Render all shares</p>
               </div>
             </form>
           </motion.div>

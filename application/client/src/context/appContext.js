@@ -107,8 +107,8 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    // baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1',
-    baseURL: 'http://listility-backend.azurewebsites.net' + '/api/v1',
+    baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1', // NEW
+    // baseURL: 'http://listility-backend.azurewebsites.net' + '/api/v1', // OLD
   })
   // request
 
@@ -412,29 +412,32 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
-  const addShare = async (listId /* what else?*/) => {
+  const addShare = async (listId, userEmail, isEdit) => {
+
+    alert("Started the 'addShare'!")
+    alert("listId inside addShare is: " + listId)
+    alert("userEmail inside addShare is: " + userEmail)
+    alert("isEdit inside addShare is: " + isEdit)
+    // alert("")
     dispatch({ type: ADD_SHARE_BEGIN })
     try {
-      await authFetch.put(`/list/${listId}/shares`, {
-        // what else?
+      await authFetch.post(`/list/${listId}/share`, {
+        userEmail,
+        isEdit,
       })
       dispatch({ type: ADD_SHARE_SUCCESS })
       getJobs()
-      dispatch({ type: CLEAR_VALUES })
+      // dispatch({ type: CLEAR_VALUES })
     } catch (error) {
-      if (error.response.status === 401) return
-      dispatch({
-        type: ADD_SHARE_ERROR,
-        payload: { msg: error.response.data.msg },
-      })
+      dispatch({ type: ADD_SHARE_ERROR })
     }
     clearAlert()
   }
 
-  const removeShare = async(listId, /*what else?*/) => {
+  const removeShare = async(listId, userId) => {
     dispatch({ type: REMOVE_SHARE_BEGIN })
     try {
-      await authFetch.delete(`/list/${listId}/shares`)
+      await authFetch.delete(`/list/${listId}/shares/?userId=${userId}`)
       dispatch({ type: REMOVE_SHARE_SUCCESS })
       getJobs()
       dispatch({ type: CLEAR_VALUES })
@@ -494,7 +497,9 @@ const AppProvider = ({ children }) => {
         updateTask,
         deleteTask,
         editListTitle,
-        duplicateList
+        duplicateList,
+        addShare,
+        removeShare,
       }}
     >
       {children}
