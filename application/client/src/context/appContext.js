@@ -415,10 +415,10 @@ const AppProvider = ({ children }) => {
 
   const addShare = async (listId, userEmail, isEdit) => {
 
-    alert("Started the 'addShare'!")
-    alert("listId inside addShare is: " + listId)
-    alert("userEmail inside addShare is: " + userEmail)
-    alert("isEdit inside addShare is: " + isEdit)
+    // alert("Started the 'addShare'!")
+    // alert("listId inside addShare is: " + listId)
+    // alert("userEmail inside addShare is: " + userEmail)
+    // alert("isEdit inside addShare is: " + isEdit)
     // alert("")
     dispatch({ type: ADD_SHARE_BEGIN })
     try {
@@ -436,13 +436,16 @@ const AppProvider = ({ children }) => {
   }
 
   const removeShare = async(listId, userId) => {
+    alert("in AppContext/removeShare, the listId: " + listId)
+    alert("in AppContext/removeShare, the userId: " + userId)
     dispatch({ type: REMOVE_SHARE_BEGIN })
     try {
-      await authFetch.delete(`/list/${listId}/shares/?userId=${userId}`)
+      await authFetch.delete(`/list/${listId}/share/?userId=${userId}`)
       dispatch({ type: REMOVE_SHARE_SUCCESS })
       getJobs()
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
+      alert("in removeShare, the error.response.data: " + error.response.data)
       if (error.response.status == 401) return
       dispatch({
         type: REMOVE_SHARE_ERROR,

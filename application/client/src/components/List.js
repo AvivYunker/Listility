@@ -64,9 +64,11 @@ const List = ({
   // }
 
   const handleUpdate = () => {
-    shares.map((share) => {
-      alert(share)
-    });
+    // shares.map((share) => {
+    //   alert(share.isEdit)
+    //   alert(share._id.name)
+    //   alert(share._id.email)
+    // });
     // setUpdateModalOpen(true); // UNCOMMENT THIS!!!
   };
 
@@ -137,7 +139,7 @@ const List = ({
             <Button id="ShareListButton" variant="primary" onClick={() => setModalOpen(true)}>
               Share
             </Button>
-            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} listTitle={listTitle} listId={_id}/>
+            <ShareModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} listTitle={listTitle} listId={_id} shares={shares}/>
           </span>
           <span>
             {/* <Button id="DeleteListButton" variant="delete" onClick={() => deleteJob(_id)}> */}

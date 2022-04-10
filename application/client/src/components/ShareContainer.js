@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import styles from '../assets/styles/modules/app.module.scss'
 
 
-import TodoItem from './TodoItem';
+// import TodoItem from './TodoItem';
+import ShareItem from './ShareItem';
+
 
 const container = {
   hidden: { opacity: 1 },
@@ -24,15 +26,15 @@ const child = {
   },
 };
 
-function ShareContainer({tasks, listId}) {
+function ShareContainer({listId, shares}) {
   // const todoList = useSelector((state) => state.todo.todoList);
-  const todoList = tasks
+  const shareList = shares
   const filterStatus = useSelector((state) => state.todo.filterStatus);
-  const sortedTodoList = [...todoList];
+  const sortedSharesList = [...shareList];
 
-  sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
+  sortedSharesList.sort((a, b) => new Date(b.time) - new Date(a.time));
 
-  const filteredTodoList = sortedTodoList.filter((item) => {
+  const filteredShareList = sortedSharesList.filter((share) => {
     // tasks.map((task) => {
     //   console.log("##Title ID is: " + task._id)
     //   console.log("##Title is: " + task.taskTitle)
@@ -41,7 +43,7 @@ function ShareContainer({tasks, listId}) {
     if (filterStatus === 'all') {
       return true;
     }
-    return item.status === filterStatus;
+    return share.status === filterStatus;
   });
 
   return (
@@ -52,20 +54,20 @@ function ShareContainer({tasks, listId}) {
       animate="visible"
     >
       <AnimatePresence>
-        {filteredTodoList && filteredTodoList.length > 0 ? (
-          filteredTodoList.map((todo) => (
+        {filteredShareList && filteredShareList.length > 0 ? (
+          filteredShareList.map((share) => (
             // <motion.div key={todo.id} variants={child}>
-            <TodoItem key={todo._id} todo={todo} listId={listId}/>
+            <ShareItem userName={share._id.name} userEmail={share._id.userEmail} listId={listId} isEdit={share._id.isEdit} userId={share._id.userId}/>
             // </motion.div>
           ))
-          // tasks.map((task) => {
-          //   console.log("##Title ID is: " + task._id)
-          //   console.log("##Title is: " + task.taskTitle)
-          //   console.log("##IsChecked: " + task.isChecked)
-          // })
+    // shares.map((share) => {
+    //   alert(share.isEdit)
+    //   alert(share._id.name)
+    //   alert(share._id.email)
+    // });
         ) : (
-          <motion.p id="NoTasksFound" variants={child} className={styles.emptyText}>
-            Click on "Add Task" to add a new task
+          <motion.p id="NoSharesFound" variants={child} className={styles.emptyText}>
+            There are no current shares.
           </motion.p>
         )}
       </AnimatePresence>

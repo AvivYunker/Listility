@@ -32,7 +32,7 @@ const dropIn = {
   },
 };
 
-function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) {
+function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId, shares }) {
   const dispatch = useDispatch();
   const [emailOfShared, setEmailOfShared] = useState('');
   const [isEdit, setIsEdit] = useState(false);
@@ -50,10 +50,10 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) 
     }
   }, [type, todo, modalOpen]);
 
-  const handleShare = () => {
-    alert("ready to share...")
-    alert("the email of the user is: " + emailOfShared)
-    alert("The isEdit is: " + isEdit)
+  const handleShare = (listId, emailOfShared, isEdit) => {
+    alert("In List/ShareModal, listId is: " + listId)
+    alert("In List/ShareModal, emailOfShared is: " + emailOfShared)
+    alert("In List/ShareModal, isEdit is: " + isEdit)
     dispatch(addShare(listId, emailOfShared, isEdit))
   }
 
@@ -138,7 +138,7 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) 
                 />
               <label>&nbsp;&nbsp;Allow user to edit {listTitle}</label>
               <div className={styles.buttonContainer}>
-                <Button type="submit" variant="primary" onClick={() => handleShare(emailOfShared, isEdit)}>
+                <Button type="submit" variant="primary" onClick={() => handleShare(listId, emailOfShared, isEdit)}>
                   Share
                 </Button>
                 <Button variant="cancel" onClick={() => setModalOpen(false)}>
@@ -148,7 +148,7 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle, listId }) 
               <br/>
               <div>
                 <h4>Manage Current Shares:</h4>
-                <ShareContainer/>
+                <ShareContainer listId={listId} shares={shares}/>
               </div>
             </form>
           </motion.div>
