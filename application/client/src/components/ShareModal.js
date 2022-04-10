@@ -34,8 +34,9 @@ const dropIn = {
 function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
   const dispatch = useDispatch();
   const [emailOfShared, setEmailOfShared] = useState('');
-  const [isEdit, setIsEdit] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
   const [status, setStatus] = useState('incomplete');
+  const { addShare, removeShare } = useAppContext();
   // const { Title } = useAppContext()
 
   useEffect(() => {
@@ -50,8 +51,9 @@ function ShareModal({ type, modalOpen, setModalOpen, todo, listTitle }) {
 
   const handleShare = () => {
     // alert("ready to share...")
-    alert("the email of the user is: " + emailOfShared)
-    alert("The isEdit is: " + isEdit)
+    // alert("the email of the user is: " + emailOfShared)
+    // alert("The isEdit is: " + isEdit)
+    // dispatch(addShare()) // I WAS HERE (10/04/2022)
   }
 
   const handleSubmit = (e) => {
