@@ -57,7 +57,8 @@ function TodoItem({ todo, listId }) {
             id="TaskItem"
               className={getClasses([
                 styles.todoText,
-                todo.isChecked === true && styles['todoText--completed'],
+
+                todo.isChecked === true && styles['todoText--completed']
               ])}
             >
               {todo.taskTitle}

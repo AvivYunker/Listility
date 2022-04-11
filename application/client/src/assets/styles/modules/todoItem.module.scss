@@ -40,7 +40,10 @@
 		align-items: center;
 		justify-content: center;
 		background-color: darkgray;
-		
+		&--completed {
+			text-decoration: line-through;
+			opacity: 1;
+		}
 	}
 }
 .texts {
