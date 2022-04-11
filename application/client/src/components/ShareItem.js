@@ -30,8 +30,8 @@ function ShareItem({ userName, userEmail, listId, isEdit, userId }) {
   const handleDeleteShare = (listId, userId) => {
     // alert("the listId is: " + listId)
     // alert("the userId is: " + userId)
-    alert("The isEdit is: " + isEdit)
-    // dispatch(removeShare(listId, userId))
+    // alert("The isEdit is: " + isEdit)
+    dispatch(removeShare(listId, userId))
   }
 
   return (
@@ -48,10 +48,6 @@ function ShareItem({ userName, userEmail, listId, isEdit, userId }) {
               {/* {todo.taskTitle} */}
               {userName} {isEdit ? <AiFillEdit/> : <AiFillEye/>}
             </p>
-            {/* {isEdit ? <AiFillEdit/> : <AiFillEye/>} */}
-            {/* <p className={styles.time}>
-              {format(new Date(todo.time), 'p, MM/dd/yyyy')}
-            </p> */}
           </div>
         </div>
         <div className={styles.todoActions}>
