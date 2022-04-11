@@ -49,6 +49,14 @@ import {
   DUPLICATE_LIST_SUCCESS,
   DUPLICATE_LIST_ERROR,
 
+  ADD_SHARE_BEGIN, 
+  ADD_SHARE_SUCCESS,
+  ADD_SHARE_ERROR,
+
+  REMOVE_SHARE_BEGIN,
+  REMOVE_SHARE_SUCCESS,
+  REMOVE_SHARE_ERROR,
+git a
   // EDIT_TASK_BEGIN,
   // EDIT_TASK_SUCCESS,
   // EDIT_TASK_ERROR,
@@ -380,6 +388,49 @@ const reducer = (state, action) => {
   }
   if (action.type === DUPLICATE_LIST_ERROR) {
     // console.log("The request made an error...")
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+  if (action.type === ADD_SHARE_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+
+  if (action.type === ADD_SHARE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New Share Added!',
+    }
+  }
+  if (action.type === ADD_SHARE_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+  if (action.type === REMOVE_SHARE_BEGIN) {
+    return { ...state, isLoading: true }
+  }
+  if (action.type === REMOVE_SHARE_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Share Removed!',
+    }
+  }
+  if (action.type === REMOVE_SHARE_ERROR) {
     return {
       ...state,
       isLoading: false,

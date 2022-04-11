@@ -59,7 +59,7 @@ import {
   ADD_SHARE_SUCCESS,
   ADD_SHARE_ERROR,
 
-  REMOVE_SHARE_BEGIN,
+  REMOVE_SHARE_BEGIN, // the problem is that it doesn't appear in reducer.js!!!
   REMOVE_SHARE_SUCCESS,
   REMOVE_SHARE_ERROR,
 
@@ -436,23 +436,21 @@ const AppProvider = ({ children }) => {
   }
 
   const removeShare = async(listId, userId) => {
-    alert("in AppContext/removeShare, the listId: " + listId)
-    alert("in AppContext/removeShare, the userId: " + userId)
-    dispatch({ type: REMOVE_SHARE_BEGIN })
+    // dispatch({ type: REMOVE_SHARE_BEGIN })
     try {
-      await authFetch.delete(`/list/${listId}/share/?userId=${userId}`)
-      dispatch({ type: REMOVE_SHARE_SUCCESS })
-      getJobs()
-      dispatch({ type: CLEAR_VALUES })
+      // await authFetch.delete(`/list/${listId}/share/?userId=${userId}`)
+      // dispatch({ type: REMOVE_SHARE_SUCCESS })
+      // getJobs()
+      // dispatch({ type: CLEAR_VALUES })
     } catch (error) {
-      alert("in removeShare, the error.response.data: " + error.response.data)
-      if (error.response.status == 401) return
-      dispatch({
-        type: REMOVE_SHARE_ERROR,
-        payload: { msg: error.response.data.msg },
-      })
+      // alert("in removeShare, the error.response.data: " + error.response.data)
+      // if (error.response.status == 401) return
+      // dispatch({
+        // type: REMOVE_SHARE_ERROR,
+        // payload: { msg: error.response.data.msg },
+      // })
     }
-    clearAlert()
+    // clearAlert()
   }
 
   const showStats = async () => {

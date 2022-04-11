@@ -52,6 +52,7 @@ function ShareContainer({listId, shares}) {
       variants={container}
       initial="hidden"
       animate="visible"
+      key={shares._id}
     >
       <AnimatePresence>
         {filteredShareList && filteredShareList.length > 0 ? (
