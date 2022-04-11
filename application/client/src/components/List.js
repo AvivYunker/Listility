@@ -69,7 +69,7 @@ const List = ({
     //   alert(share._id.name)
     //   alert(share._id.email)
     // });
-    // setUpdateModalOpen(true); // UNCOMMENT THIS!!!
+    setUpdateModalOpen(true); // UNCOMMENT THIS!!!
   };
 
   const handleDuplicate = () => {

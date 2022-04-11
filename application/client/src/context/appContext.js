@@ -15,23 +15,23 @@ import {
   UPDATE_USER_ERROR,
   HANDLE_CHANGE,
   CLEAR_VALUES,
-  CREATE_JOB_BEGIN,
-  CREATE_JOB_SUCCESS,
-  CREATE_JOB_ERROR,
-  GET_JOBS_BEGIN,
-  GET_JOBS_SUCCESS,
-  SET_EDIT_JOB,
-  DELETE_JOB_BEGIN,
-  EDIT_JOB_BEGIN,
-  EDIT_JOB_SUCCESS,
-  EDIT_JOB_ERROR,
+  CREATE_LIST_BEGIN,
+  CREATE_LIST_SUCCESS,
+  CREATE_LIST_ERROR,
+  GET_LISTS_BEGIN,
+  GET_LISTS_SUCCESS,
+  SET_EDIT_LIST,
+  DELETE_LIST_BEGIN,
+  EDIT_LIST_BEGIN,
+  EDIT_LIST_SUCCESS,
+  EDIT_LIST_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
   CHANGE_PAGE,
-  SHARE_JOB_BEGIN,
-  SHARE_JOB_SUCCESS,
-  SHARE_JOB_ERROR,
+  SHARE_LIST_BEGIN,
+  SHARE_LIST_SUCCESS,
+  SHARE_LIST_ERROR,
   CREATE_TASK_BEGIN,
   CREATE_TASK_SUCCESS,
   CREATE_TASK_ERROR,
@@ -217,18 +217,18 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CLEAR_VALUES })
   }
   const createJob = async () => {
-    dispatch({ type: CREATE_JOB_BEGIN })
+    dispatch({ type: CREATE_LIST_BEGIN })
     try {
       const { listTitle } = state
       await authFetch.post('/lists', {
         listTitle,
       })
-      dispatch({ type: CREATE_JOB_SUCCESS })
+      dispatch({ type: CREATE_LIST_SUCCESS })
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) return
       dispatch({
-        type: CREATE_JOB_ERROR, // we were here
+        type: CREATE_LIST_ERROR, // we were here
         payload: { msg: error.response.data.msg },
       })
     }
@@ -242,12 +242,12 @@ const AppProvider = ({ children }) => {
     if (search) {
       url = url + `&search=${search}`
     }
-    dispatch({ type: GET_JOBS_BEGIN })
+    dispatch({ type: GET_LISTS_BEGIN })
     try {
       const { data } = await authFetch(url)
       const { lists:jobs, totalJobs, numOfPages } = data
       dispatch({
-        type: GET_JOBS_SUCCESS,
+        type: GET_LISTS_SUCCESS,
         payload: {
           jobs,
           totalJobs,
@@ -256,27 +256,27 @@ const AppProvider = ({ children }) => {
       })
     } catch (error) {
       // logoutUser()
-      dispatch({ type: GET_JOBS_SUCCESS, payload: error})
+      dispatch({ type: GET_LISTS_SUCCESS, payload: error})
     }
     clearAlert()
   }
 
   const setEditJob = (id) => {
-    dispatch({ type: SET_EDIT_JOB, payload: { id } })
+    dispatch({ type: SET_EDIT_LIST, payload: { id } })
   }
   const editJob = async () => {
-    dispatch({ type: EDIT_JOB_BEGIN })
+    dispatch({ type: EDIT_LIST_BEGIN })
     try {
       const { listTitle } = state
       await authFetch.patch(`/lists?listID=${state.editJobId}`, {
         listTitle:listTitle,
       })
-      dispatch({ type: EDIT_JOB_SUCCESS })
+      dispatch({ type: EDIT_LIST_SUCCESS })
       dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       if (error.response.status === 401) return
       dispatch({
-        type: EDIT_JOB_ERROR,
+        type: EDIT_LIST_ERROR,
         payload: { msg: error.response.data.msg },
       })
     }
@@ -308,7 +308,7 @@ const AppProvider = ({ children }) => {
   }
 
   const shareJob = async (jobId) => {
-    dispatch({ type: SHARE_JOB_BEGIN })
+    dispatch({ type: SHARE_LIST_BEGIN })
     try {
       console.log("The jobId is: " + jobId)
     } catch (error) {
@@ -317,7 +317,7 @@ const AppProvider = ({ children }) => {
   }
 
   const deleteJob = async (jobId) => {
-    dispatch({ type: DELETE_JOB_BEGIN })
+    dispatch({ type: DELETE_LIST_BEGIN })
     try {
       await authFetch.delete(`/lists?listid=${jobId}`)
       getJobs()

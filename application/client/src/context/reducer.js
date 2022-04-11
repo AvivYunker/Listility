@@ -12,18 +12,18 @@ import {
   HANDLE_CHANGE,
   CLEAR_VALUES,
 
-  CREATE_JOB_BEGIN,
-  CREATE_JOB_SUCCESS,
-  CREATE_JOB_ERROR,
+  CREATE_LIST_BEGIN,
+  CREATE_LIST_SUCCESS,
+  CREATE_LIST_ERROR,
   
-  GET_JOBS_BEGIN,
-  GET_JOBS_SUCCESS,
+  GET_LISTS_BEGIN,
+  GET_LISTS_SUCCESS,
   
-  SET_EDIT_JOB,
-  DELETE_JOB_BEGIN,
-  EDIT_JOB_BEGIN,
-  EDIT_JOB_SUCCESS,
-  EDIT_JOB_ERROR,
+  SET_EDIT_LIST,
+  DELETE_LIST_BEGIN,
+  EDIT_LIST_BEGIN,
+  EDIT_LIST_SUCCESS,
+  EDIT_LIST_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
   CLEAR_FILTERS,
@@ -163,12 +163,12 @@ const reducer = (state, action) => {
       ...initialState,
     }
   }
-  if (action.type === CREATE_JOB_BEGIN) {
+  if (action.type === CREATE_LIST_BEGIN) {
     // console.log("The request had begun...")
     return { ...state, isLoading: true }
   }
 
-  if (action.type === CREATE_JOB_SUCCESS) {
+  if (action.type === CREATE_LIST_SUCCESS) {
     // console.log("The request had succeeded!")
     return {
       ...state,
@@ -178,7 +178,7 @@ const reducer = (state, action) => {
       alertText: 'New List Created!',
     }
   }
-  if (action.type === CREATE_JOB_ERROR) {
+  if (action.type === CREATE_LIST_ERROR) {
     // console.log("The request made an error...")
     return {
       ...state,
@@ -188,10 +188,10 @@ const reducer = (state, action) => {
       alertText: action.payload.msg,
     }
   }
-  if (action.type === GET_JOBS_BEGIN) {
+  if (action.type === GET_LISTS_BEGIN) {
     return { ...state, isLoading: true, showAlert: false }
   }
-  if (action.type === GET_JOBS_SUCCESS) {
+  if (action.type === GET_LISTS_SUCCESS) {
     return {
       ...state,
       isLoading: false,
@@ -200,7 +200,7 @@ const reducer = (state, action) => {
       numOfPages: action.payload.numOfPages,
     }
   }
-  if (action.type === SET_EDIT_JOB) {
+  if (action.type === SET_EDIT_LIST) {
     const job = state.jobs.find((job) => job._id === action.payload.id)
     const { _id, position, company, listTitle, jobType, status } = job
     return {
@@ -214,16 +214,16 @@ const reducer = (state, action) => {
       status,
     }
   }
-  if (action.type === DELETE_JOB_BEGIN) {
+  if (action.type === DELETE_LIST_BEGIN) {
     return { ...state, isLoading: true }
   }
-  if (action.type === EDIT_JOB_BEGIN) {
+  if (action.type === EDIT_LIST_BEGIN) {
     return {
       ...state,
       isLoading: true,
     }
   }
-  if (action.type === EDIT_JOB_SUCCESS) {
+  if (action.type === EDIT_LIST_SUCCESS) {
     return {
       ...state,
       isLoading: false,
@@ -232,7 +232,7 @@ const reducer = (state, action) => {
       alertText: 'Job Updated!',
     }
   }
-  if (action.type === EDIT_JOB_ERROR) {
+  if (action.type === EDIT_LIST_ERROR) {
     return {
       ...state,
       isLoading: false,
