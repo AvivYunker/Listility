@@ -164,7 +164,8 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN })
     try {
       // const { data } = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
-      const { data } = await axios.post(`http://listility-backend-testing.azurewebsites.net/api/v1/${endPoint}`, currentUser)
+      const { data } = await axios.post(`http://listility-backend.azurewebsites.net/api/v1/${endPoint}`, currentUser)
+      // const { data } = await axios.post(`http://listility-backend-testing.azurewebsites.net/api/v1/${endPoint}`, currentUser)
       const { user, token, location } = data
       dispatch({
         type: SETUP_USER_SUCCESS,
@@ -364,6 +365,7 @@ const AppProvider = ({ children }) => {
         payload: { taskId, taskTitle, isChecked }
       })
       getJobs()
+      alert("something")
     } catch (error) {
       if (error.response.status !== 401) {
         dispatch({

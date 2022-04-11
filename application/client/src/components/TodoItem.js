@@ -34,10 +34,8 @@ function TodoItem({ todo, listId }) {
   }, [todo.status]);
 
   const handleCheck = () => {
-    setChecked(!checked);
-    dispatch(
-      updateTodo({ ...todo, status: checked ? 'incomplete' : 'complete' })
-    );
+    todo.isChecked = !todo.isChecked
+    dispatch(updateTask(listId, todo._id, todo.taskTitle, todo.isChecked))
   };
 
   const handleDelete = () => {
@@ -59,7 +57,7 @@ function TodoItem({ todo, listId }) {
             id="TaskItem"
               className={getClasses([
                 styles.todoText,
-                todo.isChecked === 'complete' && styles['todoText--completed'],
+                todo.isChecked === true && styles['todoText--completed'],
               ])}
             >
               {todo.taskTitle}
