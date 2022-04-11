@@ -51,7 +51,6 @@ const AddList = () => {
             type='text'
             labelText='Enter List Topic:'
             name='listTitle'
-            value={listTitle}
             handleChange={handleJobInput}
           />
           {/* btn container */}
