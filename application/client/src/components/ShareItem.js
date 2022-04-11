@@ -28,9 +28,10 @@ function ShareItem({ userName, userEmail, listId, isEdit, userId }) {
   const { removeShare } = useAppContext();
 
   const handleDeleteShare = (listId, userId) => {
-    alert("the listId is: " + listId)
-    alert("the userId is: " + userId)
-    dispatch(removeShare(listId, userId))
+    // alert("the listId is: " + listId)
+    // alert("the userId is: " + userId)
+    alert("The isEdit is: " + isEdit)
+    // dispatch(removeShare(listId, userId))
   }
 
   return (

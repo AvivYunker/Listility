@@ -64,12 +64,13 @@ const List = ({
   // }
 
   const handleUpdate = () => {
-    // shares.map((share) => {
-    //   alert(share.isEdit)
-    //   alert(share._id.name)
-    //   alert(share._id.email)
-    // });
-    setUpdateModalOpen(true); // UNCOMMENT THIS!!!
+    shares.map((share) => {
+      console.log(share.isEdit)
+      console.log(share._id.name)
+      console.log(share._id.email)
+      console.log(share._id._id)
+    });
+    // setUpdateModalOpen(true); // UNCOMMENT THIS!!!
   };
 
   const handleDuplicate = () => {

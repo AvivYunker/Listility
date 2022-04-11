@@ -57,7 +57,7 @@ function ShareContainer({listId, shares}) {
         {filteredShareList && filteredShareList.length > 0 ? (
           filteredShareList.map((share) => (
             // <motion.div key={todo.id} variants={child}>
-            <ShareItem userName={share._id.name} userEmail={share._id.userEmail} listId={listId} isEdit={share._id.isEdit} userId={share._id.userId}/>
+            <ShareItem userName={share._id.name} userEmail={share._id.userEmail} listId={listId} isEdit={share.isEdit} userId={share._id._id}/>
             // </motion.div>
           ))
     // shares.map((share) => {

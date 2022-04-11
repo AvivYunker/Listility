@@ -348,10 +348,10 @@ const AppProvider = ({ children }) => {
   }
 
   const updateTask = async (listId, taskId, taskTitle, isChecked) => {
-    // alert("in UpdateTask, listId is: " + listId)
-    // alert("in UpdateTask, taskId is: " + taskId)
-    // alert("in UpdateTask, taskTitle is: " + taskTitle)
-    // alert("todo.isChecked inside AppContext is: " + isChecked)
+    alert("in AppContext/UpdateTask, listId is: " + listId)
+    alert("in AppContext/UpdateTask, taskId is: " + taskId)
+    alert("in AppContext/UpdateTask, taskTitle is: " + taskTitle)
+    alert("todo.isChecked inside AppContext is: " + isChecked)
     dispatch({ type: UPDATE_TASK_BEGIN })
     try {
       await authFetch.put(`/list/${listId}/task/?taskId=${taskId}`, {
@@ -428,7 +428,7 @@ const AppProvider = ({ children }) => {
       })
       dispatch({ type: ADD_SHARE_SUCCESS })
       getJobs()
-      // dispatch({ type: CLEAR_VALUES })
+      dispatch({ type: CLEAR_VALUES })
     } catch (error) {
       dispatch({ type: ADD_SHARE_ERROR })
     }
