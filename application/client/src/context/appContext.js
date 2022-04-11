@@ -108,8 +108,8 @@ const AppProvider = ({ children }) => {
 
   // axios
   const authFetch = axios.create({
-    baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1', // NEW
-    // baseURL: 'http://listility-backend.azurewebsites.net' + '/api/v1', // OLD
+    baseURL: 'http://listility-backend.azurewebsites.net' + '/api/v1', // NEW
+    // baseURL: 'http://listility-backend-testing.azurewebsites.net' + '/api/v1', // OLD
   })
   // request
 
